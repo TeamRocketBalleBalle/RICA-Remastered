@@ -1,0 +1,14 @@
+[pycodestyle]
+count = True
+ignore = E226,E302,E41
+max-line-length = 120
+statistics = True
+
+[flake8]
+max-line-length = 120
+exclude = .git,__pycache__
+
+
+[isort]
+line_length = 79
+balanced_wrapping = True
