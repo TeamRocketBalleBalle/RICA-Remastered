@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="216px" preserveAspectRatio="none" style="width:1121px;height:216px;background:#FFFFFF;" version="1.1" viewBox="0 0 1121 216" width="1121px" zoomAndPan="magnify"><defs><filter height="300%" id="f8dd8r06jpfr4" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[0e2fca46aaab176b84fe2d8a4a447048]
+cluster Backend Team--><polygon fill="#FFFFFF" filter="url(#f8dd8r06jpfr4)" points="854,6,978,6,985,28.2969,1104,28.2969,1104,103,854,103,854,6" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="854" x2="985" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="118" x="858" y="20.9951">Backend Team</text><!--MD5=[f46f11a20630dd7fc1413f7c7ba88385]
+cluster Fontend Team--><polygon fill="#FFFFFF" filter="url(#f8dd8r06jpfr4)" points="16,6,138,6,145,28.2969,351,28.2969,351,209,16,209,16,6" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="145" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="116" x="20" y="20.9951">Fontend Team</text><!--MD5=[40c182084eb8a390ed45e280b7ddf9c9]
+cluster Hardware Team--><polygon fill="#FFFFFF" filter="url(#f8dd8r06jpfr4)" points="375,6,508,6,515,28.2969,830,28.2969,830,209,375,209,375,6" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="375" x2="515" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="127" x="379" y="20.9951">Hardware Team</text><!--MD5=[645d8587175d8f7ad110cd370775931d]
+entity API--><rect fill="#FEFECE" filter="url(#f8dd8r06jpfr4)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="63" x="1024.5" y="41"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="1067.5" y="46"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="1065.5" y="48"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="1065.5" y="52"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="23" x="1039.5" y="73.9951">API</text><!--MD5=[69b11d05da168f5de9349de9989cf735]
+entity Encryption--><rect fill="#FEFECE" filter="url(#f8dd8r06jpfr4)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="119" x="870.5" y="41"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="969.5" y="46"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="967.5" y="48"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="967.5" y="52"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="79" x="885.5" y="73.9951">Encryption</text><!--MD5=[dc7d65d50c09fafa20e0568e12890e8d]
+entity UI Design--><rect fill="#FEFECE" filter="url(#f8dd8r06jpfr4)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="106" x="32" y="41"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="118" y="46"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="116" y="48"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="116" y="52"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="47" y="73.9951">UI Design</text><!--MD5=[c93c842f1bc2e02e385b8fa74fabf7b1]
+entity Clienst side code--><rect fill="#FEFECE" filter="url(#f8dd8r06jpfr4)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="162" x="173" y="41"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="315" y="46"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="313" y="48"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="313" y="52"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="122" x="188" y="73.9951">Clienst side code</text><!--MD5=[651d906eeca5d868ad2c6a91c06c0753]
+entity COnfiguring esp32 from website--><rect fill="#FEFECE" filter="url(#f8dd8r06jpfr4)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="272" x="32" y="147"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="284" y="152"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="282" y="154"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="282" y="158"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="232" x="47" y="179.9951">COnfiguring esp32 from website</text><!--MD5=[f294024a8b8a04558a56b8f0e0009172]
+entity processing hear rate data--><rect fill="#FEFECE" filter="url(#f8dd8r06jpfr4)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="224" x="391" y="41"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="595" y="46"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="593" y="48"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="593" y="52"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="184" x="406" y="73.9951">processing hear rate data</text><!--MD5=[669c9e15aa3f44394cf0b1b0c304ff0c]
+entity oled dispaly stuff--><rect fill="#FEFECE" filter="url(#f8dd8r06jpfr4)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="163" x="650.5" y="41"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="793.5" y="46"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="791.5" y="48"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="791.5" y="52"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="665.5" y="73.9951">oled dispaly stuff</text><!--MD5=[7522dc1450ffd26f63ae141a5d58b5cc]
+entity server part--><rect fill="#FEFECE" filter="url(#f8dd8r06jpfr4)" height="46.2969" style="stroke:#A80036;stroke-width:1.5;" width="120" x="443" y="147"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="543" y="152"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="541" y="154"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="541" y="158"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="458" y="179.9951">server part</text><!--MD5=[53a77719ac76177da8156be8417bb54f]
+link UI Design to Clienst side code--><!--MD5=[2f56afcc808eb149040139fe8b5e57aa]
+link UI Design to COnfiguring esp32 from website--><!--MD5=[156809727c566c9d350029f9640f3982]
+link processing hear rate data to oled dispaly stuff--><!--MD5=[b5aa2fe5a5dc778f4d6266f9bf52c60a]
+link processing hear rate data to server part--><!--MD5=[36b9f5777a1ff71d958a119b6052c31e]
+@startuml
+package "Backend Team" {
+    [API]
+    [Encryption]
+}
+package "Fontend Team" {
+    [UI Design]
+    [Clienst side code]
+    [COnfiguring esp32 from website]
+}
+package "Hardware Team" {
+    [processing hear rate data]
+    [oled dispaly stuff]
+    [server part]
+}
+@enduml
+
+PlantUML version 1.2021.11beta5(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
