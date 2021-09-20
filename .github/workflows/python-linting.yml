@@ -1,0 +1,26 @@
+name: Flake8 - python
+
+on:
+  pull_request:
+
+jobs:
+  lint-code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+
+      - name: Install Python dependencies
+        run: pip install flake8
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          continue_on_error: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          flake8: true
