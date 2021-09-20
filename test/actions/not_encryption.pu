@@ -1,0 +1,16 @@
+@startuml
+package "Backend Team" {
+    [API]
+    [Encryption]
+}
+package "Fontend Team" {
+    [UI Design]
+    [Clienst side code]
+    [COnfiguring esp32 from website]
+}
+package "Hardware Team" {
+    [processing hear rate data]
+    [oled dispaly stuff]
+    [server part]
+}
+@enduml
