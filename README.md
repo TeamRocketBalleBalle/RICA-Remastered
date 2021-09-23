@@ -8,7 +8,7 @@ this part of README will be updated
 ## Setting up dev environment
 
 1. install `pre-commit` \
-   `pip install pre-commit`
+   `pip install -r requirements-dev.txt`
 2. Set up `pre-commit` as a "pre-commit hook" \
    `pre-commit install --install-hooks`
 
