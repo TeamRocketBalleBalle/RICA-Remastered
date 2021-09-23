@@ -1,0 +1,10 @@
+# add a Review pending label on all new PRs
+Review Pending:
+  - "{.[^.],}**/**"
+
+Flowcharts:
+  - Flowcharts/**
+
+Backend:
+  - "**.py"
+# more to be added later
