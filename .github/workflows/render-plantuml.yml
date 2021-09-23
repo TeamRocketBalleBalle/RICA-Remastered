@@ -1,0 +1,26 @@
+name: render plantuml
+on:
+  push:
+    paths:
+      - "**.plantuml"
+      - "**.pml"
+      - "**.puml"
+      - "**.pu"
+
+jobs:
+  generate-plantuml:
+    runs-on: ubuntu-latest
+    name: plantuml
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: plantuml
+        id: plantuml
+        uses: grassedge/generate-plantuml-action@v1.5
+        with:
+          path: Flowcharts/Rendered
+          message: "🤖 Rendered PlantUML diagrams"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
