@@ -12,6 +12,12 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
+      - id: file-contents-sorter
+        args:
+          [
+            ".github/codespell/allow-words.txt",
+            ".github/codespell/custom-dictionary.txt",
+          ]
       - id: trailing-whitespace
       - id: check-yaml
       - id: requirements-txt-fixer
