@@ -1,0 +1,38 @@
+@startuml
+entity User{
+    * Name
+    * UiD (Primary Key)
+    * email
+    * phone_number
+    * public_Key
+    * PassWord(Hash)/ Private Key(Encrypt)
+}
+
+entity Patient{
+    * Name
+    * PiD (SK -> user.UiD)
+    * Medical History(JSON)
+}
+
+entity Doctor{
+    * Name
+    * DiD (SK -> User.UiD)
+    * Degree
+    * Patient History(JSON)
+}
+
+entity Chemist{
+    * Name
+    * CiD(SK -> user.UiD)
+    * Location
+    * Order History(JSON)
+}
+
+Patient }|--|{ Doctor
+Chemist }|--|{ Patient
+
+User ||--|| Patient
+User ||--|| Chemist
+User ||--|| Doctor
+
+@enduml
