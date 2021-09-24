@@ -1,0 +1,10 @@
+@startuml
+actor Client
+
+Client <--> Server:SRP login
+Client <-> Server: (OPTIONAL) communicate via the generated hash
+...
+Client <- Server: Sends the Encrypted private key
+Client -> Client: Performs decryption of the key
+Server -> Client: Sends back encrypted Medical records
+@enduml
