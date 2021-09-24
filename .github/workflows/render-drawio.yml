@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - "**.drawio"
+      - "**.drawio.xml"
       - .github/workflows/render-drawio.yml
 
 jobs:
@@ -13,6 +14,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "rename **.drawio.xml to **.drawio if exists"
+        continue-on-error: true
+        run: "mv **.drawio.xml **.drawio"
 
       - name: Export drawio files to svg
         uses: rlespinasse/drawio-export-action@v1.x
