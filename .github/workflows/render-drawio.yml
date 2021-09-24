@@ -19,7 +19,7 @@ jobs:
         with:
           path: Flowcharts/
           format: svg
-          output: Flowcharts/Rendered
+          output: Rendered
           transparent: true
 
       - name: Git Auto Commit
