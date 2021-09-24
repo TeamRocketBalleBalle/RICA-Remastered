@@ -1,0 +1,31 @@
+name: Render Draw.io
+on:
+  push:
+    paths:
+      - "**.drawio"
+      - .github/workflows/render-drawio.yml
+
+jobs:
+  drawio-export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Export drawio files to svg
+        uses: rlespinasse/drawio-export-action@v1.x
+        with:
+          path: Flowcharts/
+          format: svg
+          output: Flowcharts/Rendered
+          transparent: true
+
+      - name: Git Auto Commit
+        if: github.ref != 'refs/heads/main'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 🤖 Rendered draw.io diagrams
+          commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
