@@ -19,6 +19,7 @@ jobs:
 
       - name: Run clang-format
         run: "clang-format -i **.ino **.c **.cpp **.h"
+        continue-on-error: true
 
       - name: Commit changed files
         if: github.ref != 'refs/heads/main'
