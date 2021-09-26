@@ -28,3 +28,6 @@ indent_size = 2
 [*.md]
 trim_trailing_whitespace = true
 indent_style = space
+
+[*.ino]
+indent_size = 2

@@ -12,9 +12,18 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
+      - id: file-contents-sorter
+        args:
+          [
+            ".github/codespell/allow-words.txt",
+            ".github/codespell/custom-dictionary.txt",
+          ]
       - id: trailing-whitespace
       - id: check-yaml
       - id: requirements-txt-fixer
+      - id: end-of-file-fixer
+      - id: detect-private-key
+      - id: no-commit-to-branch
 
   - repo: https://github.com/asottile/pyupgrade
     rev: v2.26.0
@@ -26,3 +35,9 @@ repos:
     rev: v2.4.1
     hooks:
       - id: prettier
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.1.0
+    hooks:
+      - id: codespell
+        args: ["--config", "pyproject.toml", "-D", "-"]

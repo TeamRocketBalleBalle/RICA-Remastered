@@ -1,0 +1,30 @@
+name: Format .ino
+on:
+  push:
+    paths:
+      - "**.ino"
+      - "**.cpp"
+      - "**.h"
+      - .github/workflows/format-ino.yml
+
+jobs:
+  format-ino:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Install clang-format
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends clang-format
+
+      - name: Run clang-format
+        run: "clang-format -i **.ino **.c **.cpp **.h"
+        continue-on-error: true
+
+      - name: Commit changed files
+        if: github.ref != 'refs/heads/main'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 🤖 Formatted .ino files
+          commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com

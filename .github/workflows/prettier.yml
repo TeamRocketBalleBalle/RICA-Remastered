@@ -32,3 +32,4 @@ jobs:
         uses: creyD/prettier_action@v4.0
         with:
           commit_message: "🤖 Automated Code Formatting (bot)"
+          prettier_options: --write .

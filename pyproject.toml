@@ -12,3 +12,7 @@ exclude = .git,__pycache__
 [isort]
 line_length = 79
 balanced_wrapping = True
+
+[codespell]
+ignore-words = .github/codespell/allow-words.txt
+dictionary = .github/codespell/custom-dictionary.txt
