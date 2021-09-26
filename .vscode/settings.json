@@ -1,0 +1,8 @@
+{
+    "[cpp]": {
+        "editor.formatOnType": true
+    },
+    "[ino]": {
+        "editor.formatOnType": true
+    }
+}

@@ -9,6 +9,13 @@ repos:
     hooks:
       - id: autopep8
 
+  - repo: https://github.com/pocc/pre-commit-hooks
+    rev: master
+    hooks:
+      - id: clang-format
+        args: ["-i", "**.ino"]
+        files: \.(c|cc|cxx|cpp|h|hpp|hxx|m|mm|ino)$
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
