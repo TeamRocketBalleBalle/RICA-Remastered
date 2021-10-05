@@ -24,8 +24,17 @@ jobs:
         uses: rlespinasse/drawio-export-action@v1.x
         with:
           path: Flowcharts/
-          format: png
+          format: svg
           output: Rendered
+          transparent:  true
+
+      - name: Export drawio files to png
+        uses: rlespinasse/drawio-export-action@v1.x
+        with:
+          path: Flowcharts/
+          format: png
+          scale: 100
+          output: Rendered/PNGs
           transparent:  true
 
       - name: Git Auto Commit
