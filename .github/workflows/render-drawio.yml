@@ -23,7 +23,7 @@ jobs:
         uses: rlespinasse/drawio-export-action@v1.x
         with:
           path: Flowcharts/
-          format: svg
+          format: png
           output: Rendered
           transparent: true
 
