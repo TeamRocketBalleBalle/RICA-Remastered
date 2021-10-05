@@ -33,7 +33,6 @@ jobs:
         with:
           path: Flowcharts/
           format: png
-          scale: 100
           output: Rendered/PNGs
           transparent:  true
 
