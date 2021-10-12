@@ -2,8 +2,16 @@
 
 ## Hello! 👋
 
-The structure of how we'll work is not decided yet, but when we figure it out,
-this part of README will be updated
+The structure of how we'll work is what we did
+[earlier](<(https://github.com/TeamRocketBalleBalle/Ricktionary)>). In seperate
+branches for individual pieces of work.
+
+> **Note to Evaluator:** Our repository has more branches than `main` branch
+> where code for those specific things is being developed. Those branches will
+> have the latest commits than this `main` branch and you are encouraged to
+> check those branches out too. \
+> Once code has been developed for that particular category, it will be merged onto
+> main.
 
 ## Setting up dev environment
 
