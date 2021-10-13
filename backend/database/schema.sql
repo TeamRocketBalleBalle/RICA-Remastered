@@ -1,36 +1,36 @@
-create database if not exists rica;
+CREATE DATABASE IF NOT EXISTS rica;
 
-create TABLE IF NOT EXISTS user (
-    UiD varchar(10) not null primary key,
-    Name varchar(30) not null,
-    Email varchar(50) not null,
-    Phone int not null
-    );
+CREATE TABLE IF NOT EXISTS user (
+    UiD varchar(10) NOT NULL PRIMARY KEY,
+    Name varchar(30) NOT NULL,
+    Email varchar(50) NOT NULL,
+    Phone int NOT NULL
+);
 
-create TABLE IF NOT EXISTS patient (
-    PiD varchar(10) not null,
-    Name varchar(30) not null,
+CREATE TABLE IF NOT EXISTS patient (
+    PiD varchar(10) NOT NULL,
+    Name varchar(30) NOT NULL,
     FOREIGN KEY (PiD) REFERENCES user(UiD)
-    );
+);
 
-create TABLE IF NOT EXISTS doctor(
-    DiD varchar(10) not null,
-    Name varchar(30) not null,
-    Degree varchar(15) not null,
+CREATE TABLE IF NOT EXISTS doctor(
+    DiD varchar(10) NOT NULL,
+    Name varchar(30) NOT NULL,
+    Degree varchar(15) NOT NULL,
     FOREIGN KEY (DiD) REFERENCES user(UiD)
-    );
+);
 
-create TABLE IF NOT EXISTS chemist(
-    CiD varchar(10) not null,
-    Name varchar(30) not null,
-    location varchar(30) not null,
+CREATE TABLE IF NOT EXISTS chemist(
+    CiD varchar(10) NOT NULL,
+    Name varchar(30) NOT NULL,
+    location varchar(30) NOT NULL,
     FOREIGN KEY (CiD) REFERENCES user(UiD)
-    );
+);
 
-create TABLE IF NOT EXISTS orders(
-    PiD varchar(10) not null,
-    CiD varchar(10) not null,
-    prescription JSON not null,
+CREATE TABLE IF NOT EXISTS orders(
+    PiD varchar(10) NOT NULL,
+    CiD varchar(10) NOT NULL,
+    prescription JSON NOT NULL,
     FOREIGN KEY (PiD) REFERENCES patient(PiD),
     FOREIGN KEY (CiD) REFERENCES chemist(CiD)
-    );
+);
