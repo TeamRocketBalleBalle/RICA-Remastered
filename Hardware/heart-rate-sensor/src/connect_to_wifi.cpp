@@ -16,8 +16,8 @@ const char *DEFAULT_WIFI_PASS = "YOUR PASSWORD";
 #include <Arduino.h>
 #include <WiFi.h>
 
+// demo function to check connection wifi network
 bool __default_connect_to_wifi() {
-  // We start by connecting to a WiFi network
 
   Serial.println();
   Serial.println();
@@ -35,6 +35,7 @@ bool __default_connect_to_wifi() {
     delay(50);
     Serial.print(".");
   }
+  // give a visual cue with short blinks that esp has connected
   blinkLed(PIN_INBUILT_LED, 100, 3);
 
   Serial.println("");
