@@ -4,3 +4,4 @@
 .vscode/ipch
 .vscode
 !.pio/libdeps
+default_wifi_creds.h
