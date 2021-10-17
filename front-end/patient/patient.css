@@ -1,25 +1,22 @@
-body{
-
+body {
     background-color: rgb(10, 201, 201);
 }
-.motivationalQuote{
+.motivationalQuote {
     position: absolute;
-    
-    top: 150%; 
+
+    top: 150%;
     left: 50%;
-
-
 }
-.oval{
+.oval {
     position: absolute;
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     height: 50px;
-  width: 300px;
-  background-color: rgb(156, 239, 245);
-  border-radius: 10%;
-  left: 40%;
-  top: 1%;
+    width: 300px;
+    background-color: rgb(156, 239, 245);
+    border-radius: 10%;
+    left: 40%;
+    top: 1%;
 }
 .circle {
     position: absolute;
@@ -29,49 +26,46 @@ body{
     border-radius: 70%;
     top: 12%;
     left: 10%;
-    
+
     transition: 1s;
-  }
-.image{
-    position: absolute ;
-    top:25%;
+}
+.image {
+    position: absolute;
+    top: 25%;
     left: 10%;
 }
-.f1{
+.f1 {
     position: absolute;
     top: 18%;
     left: 35%;
     transform: rotate(-90deg);
-     color: white; 
-     user-select: none;
+    color: white;
+    user-select: none;
 }
-.f2{
+.f2 {
     position: absolute;
     top: 70%;
     left: 40%;
     transform: rotate(90deg);
-    color: white; 
+    color: white;
     user-select: none;
-
 }
-.f3{
+.f3 {
     position: absolute;
     top: 45%;
     left: 65%;
     transform: rotate(-360deg);
-     color: white; 
-     user-select: none;
-
+    color: white;
+    user-select: none;
 }
-.f4{
+.f4 {
     position: absolute;
     top: 46%;
     left: 15%;
     transform: rotate(-180deg);
-  
-     color: rgb(255, 255, 255);
-     user-select: none;
 
+    color: rgb(255, 255, 255);
+    user-select: none;
 }
 /* .arrow {
     position: absolute;
@@ -81,55 +75,44 @@ body{
 
 
 } */
-#upButton{
+#upButton {
     position: absolute;
     left: 90%;
     top: 45%;
-    
-
 }
-#downButton{
+#downButton {
     position: absolute;
     left: 90%;
     top: 52%;
     transform: scaleY(-1);
-    
-
 }
- 
-#logOut{
+
+#logOut {
     position: absolute;
     left: 95%;
     top: 5%;
-    
-
-
 }
-#home{
+#home {
     position: absolute;
     left: 88%;
     top: 5%;
-    
-
 }
 
-.hide{
-    
+.hide {
     width: 0;
     height: 0;
     border-top: 500px solid rgb(255, 255, 255);
     border-right: 500px solid transparent;
     border-bottom: 500px solid rgb(255, 255, 255);
     border-left: 500px solid rgb(255, 255, 255);
-     position: absolute;
-    top:-15%;
-    left: -1%; 
-    
+    position: absolute;
+    top: -15%;
+    left: -1%;
 }
-.features{
+.features {
     position: absolute;
     left: 89.5%;
     top: 48%;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, "Times New Roman", Times, serif;
     user-select: none;
 }
