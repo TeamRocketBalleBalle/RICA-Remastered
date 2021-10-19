@@ -1,10 +1,13 @@
 /*
- *  This sketch demonstrates how to scan WiFi networks.
- *  The API is almost the same as with the WiFi Shield library,
- *  the most obvious difference being the different file you need to include:
+ *  This is the main file that will have these components working together.
+ *  - Networking: dealing with all conditions, storing credentials, dynamically
+ *    getting credentials if not found.
+ *  - Websocket support: instead of having RESTful API to send biometric values,
+ *    use websockets instead
  */
-#include "WiFi.h"
 #include "wifi_funcs.h"
+
+#include <Arduino.h>
 
 Networking networking;
 
