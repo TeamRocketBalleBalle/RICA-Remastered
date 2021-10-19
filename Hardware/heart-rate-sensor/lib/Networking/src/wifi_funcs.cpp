@@ -36,6 +36,12 @@ bool Networking::__default_connect_to_wifi() {
   return __connect_to_wifi(DEFAULT_WIFI_SSID, DEFAULT_WIFI_PASS);
 }
 // TODO: return false if credentials are wrong
+/**
+ * Connects to wifi
+ * @param SSID the SSID of the wifi network
+ * @param PASSWORD the password of the wifi network
+ * @return true if connection was successful
+ */
 bool Networking::__connect_to_wifi(const char *SSID, const char *PASSWORD) {
 
   Serial.println();
