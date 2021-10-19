@@ -12,9 +12,9 @@
 Networking networking;
 
 void setup() {
-  Serial.begin(115200);
-  delay(10);
-  networking.start_networking();
+    Serial.begin(115200);
+    delay(10);
+    networking.start_networking();
 }
 
 void loop() {}

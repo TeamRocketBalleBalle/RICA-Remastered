@@ -25,15 +25,15 @@ const char *DEFAULT_WIFI_PASS = "YOUR PASSWORD";
  * blocking method
  */
 bool Networking::start_networking() {
-  WiFi.mode(WIFI_MODE_APSTA);
-  __default_connect_to_wifi();
-  // start the hotspot
-  WiFi.softAP(DEFAULT_HOTSPOT_SSID, NULL);
-  return true;
+    WiFi.mode(WIFI_MODE_APSTA);
+    __default_connect_to_wifi();
+    // start the hotspot
+    WiFi.softAP(DEFAULT_HOTSPOT_SSID, NULL);
+    return true;
 }
 // demo function to check connection wifi network
 bool Networking::__default_connect_to_wifi() {
-  return __connect_to_wifi(DEFAULT_WIFI_SSID, DEFAULT_WIFI_PASS);
+    return __connect_to_wifi(DEFAULT_WIFI_SSID, DEFAULT_WIFI_PASS);
 }
 // TODO: return false if credentials are wrong
 /**
@@ -44,29 +44,29 @@ bool Networking::__default_connect_to_wifi() {
  */
 bool Networking::__connect_to_wifi(const char *SSID, const char *PASSWORD) {
 
-  Serial.println();
-  Serial.println();
-  Serial.print("Connecting to ");
-  Serial.println(SSID);
-  pinMode(PIN_INBUILT_LED, OUTPUT);
+    Serial.println();
+    Serial.println();
+    Serial.print("Connecting to ");
+    Serial.println(SSID);
+    pinMode(PIN_INBUILT_LED, OUTPUT);
 
-  WiFi.begin(SSID, PASSWORD);
+    WiFi.begin(SSID, PASSWORD);
 
-  while (WiFi.status() != WL_CONNECTED) { // give loading like look with the LED
-                                          // blink when connecting
-    digitalWrite(PIN_INBUILT_LED, HIGH);
-    delay(500);
-    digitalWrite(PIN_INBUILT_LED, LOW);
-    delay(50);
-    Serial.print(".");
-  }
-  // give a visual cue with short blinks that esp has connected
-  blinkLed(PIN_INBUILT_LED, 100, 3);
+    while (WiFi.status() != WL_CONNECTED) { // give loading like look with the
+                                            // LED blink when connecting
+        digitalWrite(PIN_INBUILT_LED, HIGH);
+        delay(500);
+        digitalWrite(PIN_INBUILT_LED, LOW);
+        delay(50);
+        Serial.print(".");
+    }
+    // give a visual cue with short blinks that esp has connected
+    blinkLed(PIN_INBUILT_LED, 100, 3);
 
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
+    Serial.println("");
+    Serial.println("WiFi connected");
+    Serial.println("IP address: ");
+    Serial.println(WiFi.localIP());
 
-  return true;
+    return true;
 }
