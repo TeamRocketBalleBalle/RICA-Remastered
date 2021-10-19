@@ -6,10 +6,12 @@
 #include "WiFi.h"
 #include "wifi_funcs.h"
 
+Networking networking;
+
 void setup() {
   Serial.begin(115200);
   delay(10);
-  __default_connect_to_wifi();
+  networking.start_networking();
 }
 
 void loop() {}

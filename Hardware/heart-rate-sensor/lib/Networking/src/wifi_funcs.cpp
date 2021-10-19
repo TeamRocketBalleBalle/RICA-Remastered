@@ -8,24 +8,41 @@ const char *DEFAULT_WIFI_PASS = "YOUR PASSWORD";
 #endif
 ```
 */
-#include "PINS.h"
-#include "default_wifi_creds.h"
-#include "led_functions.h"
 #include "wifi_funcs.h"
 
+#include "default_wifi_creds.h"
+#include "led_functions.h"
+
 #include <Arduino.h>
+#include <PINS.h>
 #include <WiFi.h>
 
+/*
+ * general function that will be called from main to start all wifi
+ * functionalities like AP + STA functions
+ *
+ * blocking
+ */
+bool Networking::start_networking() {
+  WiFi.mode(WIFI_MODE_APSTA);
+  __default_connect_to_wifi();
+
+  return true;
+}
 // demo function to check connection wifi network
-bool __default_connect_to_wifi() {
+bool Networking::__default_connect_to_wifi() {
+  return __connect_to_wifi(DEFAULT_WIFI_SSID, DEFAULT_WIFI_PASS);
+}
+// TODO: return false if credentials are wrong
+bool Networking::__connect_to_wifi(const char *SSID, const char *PASSWORD) {
 
   Serial.println();
   Serial.println();
   Serial.print("Connecting to ");
-  Serial.println(DEFAULT_WIFI_SSID);
+  Serial.println(SSID);
   pinMode(PIN_INBUILT_LED, OUTPUT);
 
-  WiFi.begin(DEFAULT_WIFI_SSID, DEFAULT_WIFI_PASS);
+  WiFi.begin(SSID, PASSWORD);
 
   while (WiFi.status() != WL_CONNECTED) { // give loading like look with the LED
                                           // blink when connecting
