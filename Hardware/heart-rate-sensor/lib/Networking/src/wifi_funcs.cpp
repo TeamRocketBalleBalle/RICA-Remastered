@@ -10,23 +10,25 @@ const char *DEFAULT_WIFI_PASS = "YOUR PASSWORD";
 */
 #include "wifi_funcs.h"
 
+#include "CONFIG.h"
+#include "PINS.h"
 #include "default_wifi_creds.h"
 #include "led_functions.h"
 
 #include <Arduino.h>
-#include <PINS.h>
 #include <WiFi.h>
 
-/*
+/**
  * general function that will be called from main to start all wifi
  * functionalities like AP + STA functions
  *
- * blocking
+ * blocking method
  */
 bool Networking::start_networking() {
   WiFi.mode(WIFI_MODE_APSTA);
   __default_connect_to_wifi();
-
+  // start the hotspot
+  WiFi.softAP(DEFAULT_HOTSPOT_SSID, NULL);
   return true;
 }
 // demo function to check connection wifi network
