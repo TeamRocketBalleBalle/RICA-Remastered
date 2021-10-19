@@ -20,9 +20,6 @@ bool run_test() {
 
   return 0;
 }
-int main(int argc, char **argv) {
-  run_test();
-  return 0;
-}
+
 void setup() { run_test(); }
 void loop() {}
