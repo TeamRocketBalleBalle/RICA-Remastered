@@ -11,6 +11,7 @@ const char *DEFAULT_WIFI_PASS = "YOUR PASSWORD";
 #include "wifi_funcs.h"
 
 #include "CONFIG.h"
+#include "LOG.h"
 #include "PINS.h"
 #include "default_wifi_creds.h"
 #include "led_functions.h"
@@ -67,6 +68,7 @@ bool Networking::__connect_to_wifi(const char *SSID, const char *PASSWORD) {
     Serial.println("WiFi connected");
     Serial.println("IP address: ");
     Serial.println(WiFi.localIP());
+    log_info("Wifi connected and IP address is: %p", WiFi.localIP());
 
     return true;
 }
