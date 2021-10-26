@@ -87,7 +87,6 @@ bool Networking::__start_web_server() {
     server_wrapper.register_default_API();
     server.begin();
     log_trace("Server started...");
-    blinkLed(PIN_INBUILT_LED, 10, 5);
 
     return true;
 }
