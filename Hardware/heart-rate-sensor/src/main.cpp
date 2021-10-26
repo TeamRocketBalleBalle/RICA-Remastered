@@ -5,12 +5,15 @@
  *  - Websocket support: instead of having RESTful API to send biometric values,
  *    use websockets instead
  */
+#include "CONFIG.h"
+#include "GLOBALS.h"
 #include "LOG.h"
 #include "wifi_funcs.h"
 
 #include <Arduino.h>
 
-Networking networking;
+Networking     networking;
+AsyncWebServer server = AsyncWebServer(HTTP_PORT);
 
 void setup() {
     Serial.begin(115200);

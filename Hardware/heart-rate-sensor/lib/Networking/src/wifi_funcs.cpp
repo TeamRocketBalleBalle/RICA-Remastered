@@ -11,8 +11,10 @@ const char *DEFAULT_WIFI_PASS = "YOUR PASSWORD";
 #include "wifi_funcs.h"
 
 #include "CONFIG.h"
+#include "GLOBALS.h"
 #include "LOG.h"
 #include "PINS.h"
+#include "Wrapper/AsyncWebServerWrapper.h"
 #include "default_wifi_creds.h"
 #include "led_functions.h"
 
@@ -28,8 +30,12 @@ const char *DEFAULT_WIFI_PASS = "YOUR PASSWORD";
 bool Networking::start_networking() {
     WiFi.mode(WIFI_MODE_APSTA);
     __default_connect_to_wifi();
+    log_trace("Connected to wifi");
     // start the hotspot
     WiFi.softAP(DEFAULT_HOTSPOT_SSID, NULL);
+    log_trace("Hotspot started");
+    // start the webserver
+    __start_web_server();
     return true;
 }
 // demo function to check connection wifi network
@@ -69,6 +75,19 @@ bool Networking::__connect_to_wifi(const char *SSID, const char *PASSWORD) {
     Serial.println("IP address: ");
     Serial.println(WiFi.localIP());
     log_info("Wifi connected and IP address is: %p", WiFi.localIP());
+
+    return true;
+}
+
+bool Networking::__start_web_server() {
+    AsyncWebServerWrapper server_wrapper(&server);
+
+    log_trace("Configuring Server");
+    server_wrapper.default_config();
+    server_wrapper.register_default_API();
+    server.begin();
+    log_trace("Server started...");
+    blinkLed(PIN_INBUILT_LED, 10, 5);
 
     return true;
 }

@@ -14,5 +14,6 @@ class Networking {
     bool __default_connect_to_wifi();
     // connects to wifi using provided credentials
     bool __connect_to_wifi(const char *SSID, const char *PASSWORD);
+    bool __start_web_server();
 };
 #endif
