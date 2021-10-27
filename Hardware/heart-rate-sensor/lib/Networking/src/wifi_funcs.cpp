@@ -85,6 +85,7 @@ bool Networking::__start_web_server() {
     log_trace("Configuring Server");
     server_wrapper.default_config();
     server_wrapper.register_default_API();
+    server_wrapper.regiser_credential_only_API();
     server.begin();
     log_trace("Server started...");
 

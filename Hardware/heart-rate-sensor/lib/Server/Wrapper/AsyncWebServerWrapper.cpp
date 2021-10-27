@@ -31,3 +31,10 @@ void AsyncWebServerWrapper::register_default_API() {
     __server->on("/ping", HTTP_GET,
                  [](AsyncWebServerRequest *request) { ping(request); });
 }
+
+/**
+ * Registers credentials only API  in the API/API_list
+ */
+void AsyncWebServerWrapper::regiser_credential_only_API() {
+    __server->on("/scan_wifi", HTTP_GET, scan_wifi);
+}
