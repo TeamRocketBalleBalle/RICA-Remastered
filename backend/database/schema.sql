@@ -1,6 +1,9 @@
 CREATE DATABASE IF NOT EXISTS rica;
 
-CREATE TABLE IF NOT EXISTS user (
+-- If, above syntax does not which will most likely be, just make a database in your sql server/ or whatever
+-- MySQL client you are using
+
+CREATE TABLE IF NOT EXISTS users (
     UserID varchar(10) NOT NULL PRIMARY KEY,
     Name varchar(30) NOT NULL,
     Email varchar(50) NOT NULL,
@@ -17,9 +20,10 @@ CREATE TABLE IF NOT EXISTS doctor(
     DoctorID varchar(10) NOT NULL,
     Name varchar(30) NOT NULL,
     Degree varchar(15) NOT NULL,
-    Bio JSON NOT NULL,
+--    Bio JSON NOT NULL,
+    Bio TEXT NOT NULL,  -- No word Limit on TEXT datatype
     slot JSON NOT NULL,
-    appointment JSON NOT NULL,
+--    appointment JSON NOT NULL, -- No need of it
     FOREIGN KEY (DoctorID) REFERENCES user(UserID)
 );
 
@@ -39,7 +43,8 @@ CREATE TABLE IF NOT EXISTS orders(
 );
 
 CREATE TABLE IF NOT EXISTS appointments(
-    BookingID JSON NOT NULL,
+--    BookingID JSON NOT NULL, -- No need for it be in JSON
+    BookingID varchar(10) NOT NULL,
     DiD varchar(10) NOT NULL,
     PiD varchar(10) NOT NULL,
     Timings TIMESTAMP NOT NULL,
