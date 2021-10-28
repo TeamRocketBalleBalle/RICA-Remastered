@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS patient (
     PatientID varchar(10) NOT NULL,
     Name varchar(30) NOT NULL,
-    FOREIGN KEY (PatientID) REFERENCES user(UserID)
+    FOREIGN KEY (PatientID) REFERENCES users(UserID)
 );
 
 CREATE TABLE IF NOT EXISTS doctor(
@@ -24,14 +24,14 @@ CREATE TABLE IF NOT EXISTS doctor(
     Bio TEXT NOT NULL,  -- No word Limit on TEXT datatype
     slot JSON NOT NULL,
 --    appointment JSON NOT NULL, -- No need of it
-    FOREIGN KEY (DoctorID) REFERENCES user(UserID)
+    FOREIGN KEY (DoctorID) REFERENCES users(UserID)
 );
 
 CREATE TABLE IF NOT EXISTS chemist(
     ChemistID varchar(10) NOT NULL,
     Name varchar(30) NOT NULL,
     location varchar(30) NOT NULL,
-    FOREIGN KEY (ChemistID) REFERENCES user(UserID)
+    FOREIGN KEY (ChemistID) REFERENCES users(UserID)
 );
 
 CREATE TABLE IF NOT EXISTS orders(
@@ -49,5 +49,5 @@ CREATE TABLE IF NOT EXISTS appointments(
     PiD varchar(10) NOT NULL,
     Timings TIMESTAMP NOT NULL,
     FOREIGN KEY (PiD) REFERENCES patient(PatientID),
-    FOREIGN KEY (PiD) REFERENCES doctor(DoctorID)
+    FOREIGN KEY (DiD) REFERENCES doctor(DoctorID)
 );
