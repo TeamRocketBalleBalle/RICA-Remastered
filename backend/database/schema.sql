@@ -5,6 +5,7 @@ CREATE DATABASE IF NOT EXISTS rica;
 
 CREATE TABLE IF NOT EXISTS users (
     UserID varchar(10) NOT NULL PRIMARY KEY,
+    userrole varchar(10) NOT NULL,
     Name varchar(30) NOT NULL,
     Email varchar(50) NOT NULL,
     Phone int NOT NULL
