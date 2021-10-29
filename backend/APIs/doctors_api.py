@@ -1,10 +1,11 @@
-# Importing stiff required for this task...
+# Importing stuff required for this task...
 import flask
 from flask_mysqldb import MySQL
 
 # Initializing app
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
+app.config["MYSQL_HOST"] = 'localhost'
 app.config["MYSQL_DB"] = 'rica'
 app.config['MYSQL_USER'] = 'root'
 mysql = MySQL(app)
@@ -14,32 +15,45 @@ with app.app_context():
     conn = mysql.connect
 
 
-@app.route('/doctor/appointment', methods=['GET'])
-def get_list_of_bookings(DoctorId):
+def detailed_appointment_info(BookingId):
     """
-    :param DoctorId:
-    :return: JSON Object of the appointment for the respective DoctorId
+    :param BookingId:
+    :return: List of Booking ids
     """
     cursor = conn.cursor()
     appointment = dict()
 
-    cursor.execute(
-        f"SELECT BookingID FROM appointments WHERE DiD = {DoctorId}")
-    for bookingId in cursor.fetchall():
-        appointment["BookingID"] = bookingId
+    query = "SELECT DATE_FORMAT(Timings, '%%Y-%%m-%%dT%%TZ') FROM appointments WHERE BookingID = %s "
+    cursor.execute(query, (BookingId,))
+    appointment["Timing"] = cursor.fetchall()[0]
 
-    cursor.execute(f"SELECT Timings FROM appointments WHERE DiD = {DoctorId}")
-    for time in cursor.fetchall():
-        appointment["Timing"] = time
-
-    cursor.execute(
-        f" select name from patient where PatientID in (SELECT PiD from appointments where DiD = {DoctorId})")
-    for patientName in cursor.fetchall():
-        appointment["PatientName"] = patientName
+    query = "SELECT name FROM patient WHERE PatientID IN (SELECT PiD FROM appointments WHERE BookingID = %s)"
+    cursor.execute(query, (BookingId,))
+    appointment["PatientName"] = cursor.fetchall()[0]
 
     cursor.close()
-    return flask.jsonify(appointment)
+    return appointment
+
+
+def get_booking_info(ID):
+    cursor = conn.cursor()
+    query = " select userrole from users where UserID = %s"
+    cursor.execute(query, (ID,))
+    userType = cursor.fetchone()
+    # print(userType)
+    if userType[0] == "doctor":
+        temp = "DiD"
+    elif userType[0] == "patient":
+        temp = "PiD"
+    else:
+        return None
+    # print(temp)
+    query = f"SELECT BookingID FROM appointments WHERE {temp} = %s"
+
+    cursor.execute(query, (ID,))
+    return cursor.fetchall()[0]
 
 
 if __name__ == '__main__':
-    app.run()
+    BookingID = get_booking_info(1)
+    print(detailed_appointment_info(BookingID))
