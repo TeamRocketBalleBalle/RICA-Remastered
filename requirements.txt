@@ -1,2 +1,4 @@
-Flask
+colorama~=0.4.4
+Flask~=2.0.2
 Flask-MySQLdb
+python-dotenv~=0.17.0
