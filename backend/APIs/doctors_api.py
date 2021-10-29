@@ -1,27 +1,21 @@
 # Importing stiff required for this task...
 import flask
-from flask_mysqldb import MySQL
+from flask import current_app, request
 
-# Initializing app
-app = flask.Flask(__name__)
-app.config["DEBUG"] = True
-app.config["MYSQL_DB"] = 'rica'
-app.config['MYSQL_USER'] = 'root'
-mysql = MySQL(app)
+from backend.utility.db_wrapper import get_cursor
 
-# Done to avoid MySQL.OperationalError(2006, '') and one more error too...(forget which one)
-with app.app_context():
-    conn = mysql.connect
+bp = flask.Blueprint("doctors_api", __name__, url_prefix="/api/v1/doctors")
 
 
-@app.route('/doctor/appointment', methods=['GET'])
+@bp.route('/appointment', methods=['GET'])
 def get_list_of_bookings(DoctorId):
     """
     :param DoctorId:
     :return: JSON Object of the appointment for the respective DoctorId
     """
-    cursor = conn.cursor()
+    cursor = current_app.mysql.connection.cursor()
     appointment = dict()
+    DoctorId = request.args.get("doctorID")
 
     cursor.execute(
         f"SELECT BookingID FROM appointments WHERE DiD = {DoctorId}")
@@ -39,7 +33,3 @@ def get_list_of_bookings(DoctorId):
 
     cursor.close()
     return flask.jsonify(appointment)
-
-
-if __name__ == '__main__':
-    app.run()
