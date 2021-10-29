@@ -1,0 +1,46 @@
+.body {
+    background-color: aliceblue;
+    overflow-x: hidden;
+}
+.heading {
+    position: relative;
+    left: 33%;
+    top: 13%;
+}
+
+.custom-select {
+    position: relative;
+    left: 43%;
+    top: 15%;
+    height: 600px;
+    border-radius: 5%;
+}
+.doctor {
+    position: absolute;
+    top: 30%;
+    left: 35%;
+}
+.heading1 {
+    position: absolute;
+    left: 33%;
+    top: 30%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.Doctor1 {
+    position: absolute;
+    top: 55%;
+    left: 10%;
+    background-color: red;
+    border-radius: 13%;
+    box-shadow: 1px 1px;
+}
+.Doctor2 {
+    position: absolute;
+    top: 55%;
+    left: 45%;
+}
+.Doctor3 {
+    position: absolute;
+    top: 55%;
+    left: 75%;
+}
