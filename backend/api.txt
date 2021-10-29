@@ -26,9 +26,9 @@
             - [API] date time book appointment, symptoms message; return -> confirmation success? [TBD]
 
 ## Doctor's page
-    - [API] get list of bookings
+    - [API] get list of bookings   [Done]
     - [API] update slots                            [TBD]
-    - [API] detailed appointment info
+    - [API] detailed appointment info  [Done]
     - [API] [PATCH] accept/decline appointment
 
 
