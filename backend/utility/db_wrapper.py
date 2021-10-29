@@ -1,4 +1,4 @@
-from flask import current_app
+from flask import current_app, g
 
 
 def get_cursor(func):
@@ -9,8 +9,10 @@ def get_cursor(func):
     """
 
     def wrap(*args, **kwargs):
-        cursor = current_app.mysql.connection.cursor()
-        args += (cursor,)  # give the cursor argument to the func
+        if 'cursor' not in g:
+            g.cursor = current_app.mysql.connection.cursor()
+
+        args += (g.cursor,)  # give the cursor argument to the func
         # call the function
         result = func(*args, **kwargs)
         return result
