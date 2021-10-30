@@ -6,13 +6,11 @@ from dotenv import load_dotenv
 from flask import Flask, request, session
 from flask_mysqldb import MySQL
 
-from backend.database.app import init_db_command
-
 load_dotenv()
 
 
 def config_app(app: Flask):
-    # app.config["MYSQL_DB"] = os.getenv("RICA_MYSQL_DB", 'rica')
+    app.config["MYSQL_DB"] = os.getenv("RICA_MYSQL_DB", 'rica')
     app.config["MYSQL_HOST"] = os.getenv("RICA_MYSQL_HOST", "localhost")
     app.config['MYSQL_USER'] = os.getenv("RICA_MYSQL_USER", 'root')
     app.config["SECRET_KEY"] = 'dev' if os.getenv(
@@ -61,7 +59,6 @@ def create_app():
     # create and configure the app
     app = Flask(__name__)
     config_app(app)
-    app.cli.add_command(init_db_command)
     register_blueprints(app)
 
     return app
