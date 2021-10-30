@@ -1,14 +1,14 @@
 CREATE DATABASE IF NOT EXISTS rica;
-
+USE rica;
 -- If, above syntax does not which will most likely be, just make a database in your sql server/ or whatever
 -- MySQL client you are using
 
 CREATE TABLE IF NOT EXISTS users (
-    UserID varchar(10) NOT NULL PRIMARY KEY,
+    UserID varchar(5) NOT NULL PRIMARY KEY,
     userrole varchar(10) NOT NULL,
     Name varchar(30) NOT NULL,
     Email varchar(50) NOT NULL,
-    Phone int NOT NULL
+    Phone varchar(10) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS patient (
@@ -20,10 +20,10 @@ CREATE TABLE IF NOT EXISTS patient (
 CREATE TABLE IF NOT EXISTS doctor(
     DoctorID varchar(10) NOT NULL,
     Name varchar(30) NOT NULL,
-    Degree varchar(15) NOT NULL,
+    Degree TEXT NOT NULL,
 --    Bio JSON NOT NULL,
-    Bio TEXT NOT NULL,  -- No word Limit on TEXT datatype
-    slot JSON NOT NULL,
+    Bio TEXT ,  -- No word Limit on TEXT datatype
+    slot JSON ,
 --    appointment JSON NOT NULL, -- No need of it
     FOREIGN KEY (DoctorID) REFERENCES users(UserID)
 );
