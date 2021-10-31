@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from flask import Flask, request, session
 from flask_mysqldb import MySQL
 
-from backend.database.app import init_db_command
+from backend.database.db_cli import init_db_command
 
 load_dotenv()
 
