@@ -37,4 +37,5 @@ void AsyncWebServerWrapper::register_default_API() {
  */
 void AsyncWebServerWrapper::regiser_credential_only_API() {
     __server->on("/scan_wifi", HTTP_GET, scan_wifi);
+    __server->on("/accept_credentials", HTTP_POST, accept_credentials);
 }

@@ -17,5 +17,6 @@ void ping(AsyncWebServerRequest *request);
 /* CREDENTIAL-ONLY API ENDPOINTS */
 
 void scan_wifi(AsyncWebServerRequest *request);
+void accept_credentials(AsyncWebServerRequest *request);
 
 #endif

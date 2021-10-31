@@ -61,3 +61,39 @@ String __encryption_type(uint8_t type) {
 
     return String(result);
 }
+
+void accept_credentials(AsyncWebServerRequest *request) {
+
+    int         params = request->params();
+    bool        valid  = true;
+    const char *reason;
+    log_trace("len of params: %d", params);
+
+    if (params != 2) {
+        valid  = false;
+        reason = "request parameters should only be 2";
+    }
+    log_trace("len check success");
+    if (valid && !request->hasParam("SSID")) {
+        valid  = false;
+        reason = "required parameter 'SSID' not present";
+    }
+    log_trace("SSID check success");
+    if (valid && !request->hasParam("PASS")) {
+        valid  = false;
+        reason = "required parameter 'PASS' not present";
+    }
+    log_trace("PASS check success");
+
+    if (!valid) {
+        log_info("client sent bad request: %s", reason);
+        request->send(400, "text/plain", String(reason));
+        return;
+    }
+
+    log_info("Received credentials: \"%s\"/\"%s\"",
+             request->getParam("SSID")->value().c_str(),
+             request->getParam("PASS")->value().c_str());
+
+    request->send(200, "application/plain", "OK");
+}
