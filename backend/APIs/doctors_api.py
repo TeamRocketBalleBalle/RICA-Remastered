@@ -41,7 +41,7 @@ def get_booking_info(cursor):
     elif userType[0] == "patient":
         temp = "PiD"
     else:
-        return None
+        return "Chemist user type has no appointments", 403
     # print(temp)
     query = f"SELECT BookingID FROM appointments WHERE {temp} = %s"
 
