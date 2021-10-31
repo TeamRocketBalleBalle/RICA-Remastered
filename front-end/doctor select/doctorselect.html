@@ -8,35 +8,37 @@
   <body class="body">
     <h1 class="heading">Please select your doctor from here</h1>
     <div class="custom-select">
-      <select>
-        <option value="0">General Practitioner</option>
-        <option value="1">Surgeon</option>
-        <option value="2">Gynecologist</option>
-        <option value="3">Dentist</option>
-        <option value="4">Dermatologists</option>
-        <option value="5">ENT Specialist</option>
-        <option value="6">General Physicians</option>
-        <option value="7">Pediatricians</option>
-        <option value="8">Neurologist</option>
-        <option value="9">Rheumatologist</option>
-        <option value="10">Allergist/Immunologist</option>
-        <option value="11">Psychiatrist</option>
-        <option value="12">Endocrinologist</option>
-      </select>
+      <form>
+        <select id="country" name="country">
+          <option value="0">General Practitioner</option>
+          <option value="1">Surgeon</option>
+          <option value="2">Gynecologist</option>
+          <option value="3">Dentist</option>
+          <option value="4">Dermatologists</option>
+          <option value="5">ENT Specialist</option>
+          <option value="6">General Physicians</option>
+          <option value="7">Pediatricians</option>
+          <option value="8">Neurologist</option>
+          <option value="9">Rheumatologist</option>
+          <option value="10">Allergist/Immunologist</option>
+          <option value="11">Psychiatrist</option>
+          <option value="12">Endocrinologist</option>
+        </select>
+      </form>
     </div>
     <div>
       <form>
-        <label class="heading1">
-          <h3>Doctors according to your selection</h3>
-        </label>
+        <h3 class="heading1">Doctors according to your selection</h3>
         <br />
         <div class="Doctor1">
           <input
+            class="op"
             type="radio"
             id="doctor"
             name="select doctor"
             value="Doctor1"
-          />Doctor 1
+          />
+          <div class="Text">Dr Yash Aggarwal</div>
         </div>
         <div class="Doctor2">
           <input
@@ -44,7 +46,8 @@
             id="doctor"
             name="select doctor"
             value="Doctor2"
-          />Doctor 2
+          />
+          <div class="Text">Dr Jayant Sharma</div>
         </div>
         <div class="Doctor3">
           <input
@@ -52,7 +55,8 @@
             id="doctor"
             name="select doctor"
             value="Doctor2"
-          />Doctor 3
+          />
+          <div class="Text">Dr Akshat Kumar</div>
         </div>
       </form>
     </div>
