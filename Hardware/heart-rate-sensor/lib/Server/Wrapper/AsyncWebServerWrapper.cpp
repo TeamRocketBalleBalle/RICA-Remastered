@@ -3,6 +3,10 @@
 #include "../API/API_list.h"
 #include "CONFIG.h"
 
+#if RICA_SENSOR_DEBUG
+#include <Preferences.h>
+#endif
+
 AsyncWebServerWrapper::AsyncWebServerWrapper(AsyncWebServer *server)
     : __server(server) {}
 
@@ -38,4 +42,17 @@ void AsyncWebServerWrapper::register_default_API() {
 void AsyncWebServerWrapper::regiser_credential_only_API() {
     __server->on("/scan_wifi", HTTP_GET, scan_wifi);
     __server->on("/accept_credentials", HTTP_POST, accept_credentials);
+
+// debug methods
+#if RICA_SENSOR_DEBUG
+
+    __server->on("/show_credentials", HTTP_GET, show_credentials);
+    __server->on("/wipe", HTTP_DELETE, [](AsyncWebServerRequest *request) {
+        Preferences preferences;
+        preferences.begin("config");
+        bool done = preferences.clear();
+        preferences.end();
+        request->send(200, "text/plain", done ? "ok" : "fail");
+    });
+#endif
 }

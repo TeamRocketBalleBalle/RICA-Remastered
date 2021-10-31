@@ -4,6 +4,7 @@
 #include "API_list.h"
 #include "LOG.h"
 
+#include <Preferences.h>
 #include <WiFi.h>
 
 String __encryption_type(uint8_t type);
@@ -95,5 +96,28 @@ void accept_credentials(AsyncWebServerRequest *request) {
              request->getParam("SSID")->value().c_str(),
              request->getParam("PASS")->value().c_str());
 
+    // save credentials in the preferences library now
+    Preferences preferences;
+    preferences.begin("config");
+    preferences.putString("ssid", request->getParam("SSID")->value().c_str());
+    preferences.putString("pass", request->getParam("PASS")->value().c_str());
+    preferences.end();
+
     request->send(200, "application/plain", "OK");
+}
+
+void show_credentials(AsyncWebServerRequest *request) {
+    Preferences preferences;
+
+    preferences.begin("config", true);
+    String ssid     = preferences.getString("ssid");
+    String password = preferences.getString("pass");
+    preferences.end();
+
+    String json = "{";
+    json += "\"ssid\": \"" + ssid + "\",";
+    json += "\"password\": \"" + password + "\"";
+    json += "}";
+
+    request->send(200, "application/json", json);
 }

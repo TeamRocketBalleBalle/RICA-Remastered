@@ -18,5 +18,6 @@ void ping(AsyncWebServerRequest *request);
 
 void scan_wifi(AsyncWebServerRequest *request);
 void accept_credentials(AsyncWebServerRequest *request);
+void show_credentials(AsyncWebServerRequest *request);
 
 #endif
