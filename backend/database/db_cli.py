@@ -1,4 +1,5 @@
 import click
+import MySQLdb
 from flask import Flask, current_app
 from flask.cli import with_appcontext
 
@@ -35,9 +36,14 @@ def testdata_db_command():
     conn = current_app.mysql.connection
     cursor = conn.cursor()
     addData(cursor)
-    cursor.close()
-    conn.commit()
-    click.echo('Data inserted in database')
+    try:
+        cursor.close()
+    except MySQLdb.IntegrityError:
+        click.echo("Data already present in database")
+    else:
+        click.echo('Data inserted in database')
+    finally:
+        conn.commit()
 
 
 @click.command('delete-db')
