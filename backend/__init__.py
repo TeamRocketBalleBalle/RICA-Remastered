@@ -14,6 +14,7 @@ def config_app(app: Flask):
     app.config["MYSQL_HOST"] = os.getenv("RICA_MYSQL_HOST", "localhost")
     app.config['MYSQL_USER'] = os.getenv("RICA_MYSQL_USER", 'root')
     app.config["MYSQL_PASSWORD"] = os.getenv("RICA_MYSQL_PASSWORD", "")
+    app.config["MYSQL_DB"] = os.getenv("RICA_MYSQL_DB", "rica")
     app.config["SECRET_KEY"] = 'dev' if os.getenv(
         "FLASK_ENV", "development") == "development" else os.urandom(16)
     app.mysql = MySQL(app)

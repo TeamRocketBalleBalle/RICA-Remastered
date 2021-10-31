@@ -52,6 +52,7 @@ def delete_db_command():
     conn = current_app.mysql.connection
     cursor = conn.cursor()
     cursor.execute("drop database rica;")
+    cursor.execute("CREATE DATABASE rica;")
     cursor.close()
     conn.commit()
     click.echo("Database deleted")
