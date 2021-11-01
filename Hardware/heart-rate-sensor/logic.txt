@@ -1,0 +1,39 @@
+EVENT:
+	- connected to wifi
+	- no SSID available
+	- connect failed (assuming this means that credentials are wrong)
+	- disconnected
+
+
+logic overview:
+	- wifi check?
+		- credentials exist?
+		- wifi connect? {what if wifi is off}
+		- credentials valid?
+
+
+	- start hotspot [if wifi check failed]
+		- hotspot start
+		- server registers credential only api
+
+	- wifi check = true and hotspot on every 5 seconds
+		- [api] status
+		- [api] close/ok/ack
+			- close hotspot
+			- restart the server with default api
+
+	- in 5s 3 times button then cCOIMEPTLEPTLE reset ezp
+
+CASES:
+	- credential invalid? (wipe the storage? global var?)
+	- wifi is off
+		- start hotspot,
+		- ready to accept new credentials
+
+GLOBAL VARIALBE:
+	- status
+		- connecting
+		- invalid_credentials
+		- client_close_ack
+permanent:
+	- cred_valid
