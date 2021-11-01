@@ -1,1 +1,2 @@
 mos->most
+IST->IST
