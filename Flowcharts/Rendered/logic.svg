@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="678px" preserveAspectRatio="none" style="width:1683px;height:678px;background:#FFFFFF;" version="1.1" viewBox="0 0 1683 678" width="1683px" zoomAndPan="magnify"><defs><filter height="300%" id="f13tumi5d4m28z" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><ellipse cx="798.0591" cy="117.1118" fill="#FEFECE" filter="url(#f13tumi5d4m28z)" rx="78.5591" ry="18.1118" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115" x="738.3328" y="120.6525">WiFi Check loop</text><ellipse cx="829.8073" cy="552.8615" fill="#FEFECE" filter="url(#f13tumi5d4m28z)" rx="72.3073" ry="16.8615" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="99" x="777.3073" y="556.609">Start hotspot</text><ellipse cx="622.813" cy="116.7771" fill="#FEFECE" filter="url(#f13tumi5d4m28z)" rx="60.813" ry="14.7771" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="585.813" y="120.5247">ESP Start</text><ellipse cx="798.1379" cy="308.0276" fill="#FEFECE" filter="url(#f13tumi5d4m28z)" rx="83.1379" ry="19.0276" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="734.5914" y="311.0594">credentials exist?</text><ellipse cx="579.7754" cy="424.0551" fill="#FEFECE" filter="url(#f13tumi5d4m28z)" rx="75.7754" ry="17.5551" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="108" x="522.7754" y="427.8026">connect to wifi</text><ellipse cx="484.0233" cy="552.9047" fill="#FEFECE" filter="url(#f13tumi5d4m28z)" rx="67.5233" ry="15.9047" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="86" x="438.0233" y="556.6522">special case</text><ellipse cx="283.9563" cy="423.7913" fill="#FEFECE" filter="url(#f13tumi5d4m28z)" rx="76.9563" ry="17.7913" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="225.5675" y="427.5101">stop the server</text><ellipse cx="167.1379" cy="308.0276" fill="#FEFECE" filter="url(#f13tumi5d4m28z)" rx="83.1379" ry="19.0276" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="103.5914" y="311.0594">Stop the hotspot</text><ellipse cx="89.1379" cy="424.0276" fill="#FEFECE" filter="url(#f13tumi5d4m28z)" rx="83.1379" ry="19.0276" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="25.5914" y="427.0594">start server &amp; WS</text><ellipse cx="1152.8142" cy="552.7628" fill="#FEFECE" filter="url(#f13tumi5d4m28z)" rx="66.8142" ry="15.7628" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="1107.8142" y="556.5104">start server</text><ellipse cx="1152.9128" cy="423.9826" fill="#FEFECE" filter="url(#f13tumi5d4m28z)" rx="87.9128" ry="19.9826" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="137" x="1084.4128" y="426.8292">accept_credentials</text><ellipse cx="1320.7655" cy="553.0531" fill="#FEFECE" filter="url(#f13tumi5d4m28z)" rx="65.7655" ry="15.5531" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="1277.2655" y="556.8007">[API] status</text><ellipse cx="1153.0612" cy="648.7122" fill="#FEFECE" filter="url(#f13tumi5d4m28z)" rx="76.5612" ry="17.7122" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="1095.0612" y="652.4598">[API] client_ack</text><path d="M916,295.5 L916,304 L881.246,308 L916,312 L916,320.6328 A0,0 0 0 0 916,320.6328 L1102,320.6328 A0,0 0 0 0 1102,320.6328 L1102,305.5 L1092,295.5 L916,295.5 A0,0 0 0 0 916,295.5 " fill="#FBFB77" filter="url(#f13tumi5d4m28z)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M1092,295.5 L1092,305.5 L1102,305.5 L1092,295.5 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="165" x="922" y="312.5669">if checkCredentials is true</text><path d="M491.5,295.5 L491.5,320.6328 A0,0 0 0 0 491.5,320.6328 L576,320.6328 L580,406.345 L584,320.6328 L668.5,320.6328 A0,0 0 0 0 668.5,320.6328 L668.5,305.5 L658.5,295.5 L491.5,295.5 A0,0 0 0 0 491.5,295.5 " fill="#FBFB77" filter="url(#f13tumi5d4m28z)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M658.5,295.5 L658.5,305.5 L668.5,305.5 L658.5,295.5 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="156" x="497.5" y="312.5669">if connect_to_wifi is true</text><path d="M1276.5,411.5 L1276.5,420 L1241.14,424 L1276.5,428 L1276.5,436.6328 A0,0 0 0 0 1276.5,436.6328 L1465.5,436.6328 A0,0 0 0 0 1465.5,436.6328 L1465.5,421.5 L1455.5,411.5 L1276.5,411.5 A0,0 0 0 0 1276.5,411.5 " fill="#FBFB77" filter="url(#f13tumi5d4m28z)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M1455.5,411.5 L1455.5,421.5 L1465.5,421.5 L1455.5,411.5 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="168" x="1282.5" y="428.5669">set connect_to_wifi is true</text><path d="M1422,540.5 L1422,549 L1387.06,553 L1422,557 L1422,565.6328 A0,0 0 0 0 1422,565.6328 L1674,565.6328 A0,0 0 0 0 1674,565.6328 L1674,550.5 L1664,540.5 L1422,540.5 A0,0 0 0 0 1422,540.5 " fill="#FBFB77" filter="url(#f13tumi5d4m28z)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M1664,540.5 L1664,550.5 L1674,550.5 L1664,540.5 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="231" x="1428" y="557.5669">fetch "STATUS" variable and send it.</text><path d="M1265,636 L1265,644.5 L1229.78,648.5 L1265,652.5 L1265,661.1328 A0,0 0 0 0 1265,661.1328 L1457,661.1328 A0,0 0 0 0 1457,661.1328 L1457,646 L1447,636 L1265,636 A0,0 0 0 0 1265,636 " fill="#FBFB77" filter="url(#f13tumi5d4m28z)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M1447,636 L1447,646 L1457,646 L1447,636 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="171" x="1271" y="653.0669">set CLOSE_SERVER to true</text><path d="M181,540.5 L181,565.6328 A0,0 0 0 0 181,565.6328 L381,565.6328 A0,0 0 0 0 381,565.6328 L381,550.5 L371,540.5 L285.274,540.5 L283.595,442.128 L277.274,540.5 L181,540.5 A0,0 0 0 0 181,540.5 " fill="#FBFB77" filter="url(#f13tumi5d4m28z)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M371,540.5 L371,550.5 L381,550.5 L371,540.5 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="179" x="187" y="557.5669">after CLOSE_SERVER is true</text><path d="M912,6 L912,227.8594 L1190,227.8594 L1190,16 L1180,6 L912,6 " fill="#FBFB77" filter="url(#f13tumi5d4m28z)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M1180,6 L1180,16 L1190,16 L1180,6 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="241" x="918" y="23.0669">Some things loop has to take care of:</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="257" x="918" y="38.1997">- which API to register based on STATUS</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111" x="918" y="53.3325">- valid STATUS: {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="70" x="934" y="68.4653">NO_CREDS</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="90" x="934" y="83.5981">INVALID_PASS</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="55" x="934" y="98.731">NO_SSID</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="84" x="934" y="113.8638">CONNECTING</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="80" x="934" y="128.9966">CONNECTED</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="9" x="926" y="144.1294">}</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="167" x="918" y="159.2622">- other status variables: {</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="138" x="934" y="174.395">CHECK_CREDENTIALS</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="120" x="934" y="189.5278">CONNECT_TO_WIFI</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="100" x="934" y="204.6606">CLOST_SERVER</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="9" x="926" y="219.7935">}</text><!--MD5=[0191433fe2be8f722fd5eb2e79f8eebf]
+link ESP Start to wificheck--><path d="M684.182,117 C694.152,117 704.122,117 714.092,117 " fill="none" id="ESP Start-to-wificheck" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="719.305,117,710.305,113,714.305,117,710.305,121,719.305,117" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[a251461770b1016a4508f231243da7d5]
+link wificheck to credentials exist?--><path d="M798,135.106 C798,169.056 798,244.993 798,283.559 " fill="none" id="wificheck-to-credentials exist?" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="798,288.969,802,279.969,798,283.969,794,279.969,798,288.969" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5d433ac21485509f0ea592dd0564342a]
+link credentials exist? to starthotspot--><path d="M800.405,327.264 C806.213,371.371 820.982,483.523 827.187,530.64 " fill="none" id="credentials exist?-to-starthotspot" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="827.865,535.79,830.6556,526.3448,827.2121,530.8328,822.7241,527.3893,827.865,535.79" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="16" x="816" y="428.5669">no</text><!--MD5=[285f78184c2d140d467ff1641b2f4014]
+link credentials exist? to connect to wifi--><path d="M766.301,325.577 C725.625,346.847 655.36,383.592 613.727,405.363 " fill="none" id="credentials exist?-to-connect to wifi" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="609.293,407.681,619.1219,407.0541,613.7235,405.3636,615.414,399.9652,609.293,407.681" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="23" x="703" y="370.0669">yes</text><!--MD5=[c73d5e35231c00b88dd24ddb21e26aca]
+link connect to wifi to special case--><path d="M542.766,439.312 C526.942,447.227 509.708,458.625 499,474 C487.246,490.876 484.096,514.562 483.515,531.396 " fill="none" id="connect to wifi-to-special case" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="483.407,536.822,487.5837,527.9026,483.5056,531.823,479.5852,527.7449,483.407,536.822" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="115" x="500" y="487.0669">SSID not available</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="69" x="525" y="502.1997">(error 201)</text><!--MD5=[86f3fd1272835c12caee0b2b68674399]
+link connect to wifi to starthotspot--><path d="M593.343,441.437 C609.091,459.782 636.962,489.104 667,506 C697.895,523.378 735.838,534.589 767.34,541.589 " fill="none" id="connect to wifi-to-starthotspot" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="772.338,542.676,764.394,536.8543,767.4523,541.6131,762.6934,544.6714,772.338,542.676" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="115" x="674" y="487.0669">credentials invalid</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="131" x="668" y="502.1997">[error (15-24/202/)?]</text><!--MD5=[7ac84961c26b15b2bbe8d96a99a665a8]
+link special case to starthotspot--><path d="M551.534,553 C609.111,553 691.892,553 752.227,553 " fill="none" id="special case-to-starthotspot" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#A80036" points="757.261,553,748.261,549,752.261,553,748.261,557,757.261,553" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="65" x="622" y="531.0669">not sure if</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="165" x="574" y="546.1997">hotspot should be started</text><!--MD5=[99007070c6f2aa5b947e5106c2c130cb]
+reverse link stop the server to connect to wifi--><path d="M366.581,424 C409.584,424 461.811,424 503.836,424 " fill="none" id="stop the server-backto-connect to wifi" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="361.384,424,370.384,428,366.384,424,370.384,420,361.384,424" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="100" x="382.5" y="417.0669">on CONNECTED</text><!--MD5=[f9ee5e7d48e13e9bf3f5e1a86d7f6804]
+reverse link Stop the hotspot to stop the server--><path d="M203.862,328.202 C216.828,336.04 230.917,345.888 242,357 C256.387,371.424 268.334,391.604 275.761,405.843 " fill="none" id="Stop the hotspot-backto-stop the server" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="199.514,325.622,205.2129,333.6546,203.814,328.1734,209.2952,326.7746,199.514,325.622" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[19a771b9d8b7dd48336143ceb3890a76]
+link Stop the hotspot to start server & WS--><path d="M138.574,326.061 C127.266,334.148 115.056,344.735 107,357 C98.596,369.795 94.0917,386.436 91.6905,399.808 " fill="none" id="Stop the hotspot-to-start server &amp; WS" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="90.8413,404.943,96.256,396.7162,91.657,400.01,88.3632,395.411,90.8413,404.943" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="129" x="108" y="370.0669">register default APIs</text><!--MD5=[c2c4326f92b9a189a3f01a69cabaa7c2]
+link starthotspot to start server--><path d="M902.89,553 C956.064,553 1027.8,553 1080.81,553 " fill="none" id="starthotspot-to-start server" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1085.88,553,1076.88,549,1080.88,553,1076.88,557,1085.88,553" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="147" x="920.75" y="546.0669">register credential APIs</text><!--MD5=[6f31ae3559dac5f154152abef833d9c3]
+reverse link accept_credentials to start server--><path d="M1153,449.298 C1153,475.13 1153,515.179 1153,536.843 " fill="none" id="accept_credentials-backto-start server" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1153,444.013,1149,453.013,1153,449.013,1157,453.013,1153,444.013" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="123" x="1154" y="494.5669">wait for credentials</text><!--MD5=[63505aac74bc579133b1cb7acd8e42ef]
+link start server to [API] status--><path d="M1220.27,553 C1230.09,553 1239.92,553 1249.75,553 " fill="none" id="start server-to-[API] status" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1254.89,553,1245.89,549,1249.89,553,1245.89,557,1254.89,553" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[646e348efb6b992cf4db0666b3bfacac]
+link start server to [API] client_ack--><path d="M1153,569.0224 C1153,584.3669 1153,608.3459 1153,625.7615 " fill="none" id="start server-to-[API] client_ack" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="1153,630.9389,1157,621.9389,1153,625.9389,1149,621.9389,1153,630.9389" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[d7ea189a54d811f510f00330ad165a4a]
+@startuml
+usecase (WiFi Check loop) as wificheck
+usecase (Start hotspot) as starthotspot
+(ESP Start)->wificheck
+wificheck- ->(credentials exist?)
+
+' start chain reaction tests
+
+(credentials exist?)->starthotspot : no
+(credentials exist?)- ->(connect to wifi) : yes
+(connect to wifi)- ->(special case) : SSID not available \n(error 201)
+(connect to wifi)->starthotspot : credentials invalid \n[error (15-24/202/)?]
+(special case).>starthotspot : not sure if\n hotspot should be started
+
+' on wifi connect success
+(connect to wifi)-left->(stop the server) : on CONNECTED
+(Stop the hotspot)<- -(stop the server)
+(Stop the hotspot)- ->(start server & WS) : register default APIs
+
+' hotspot routine?
+starthotspot->(start server) : register credential APIs
+(accept_credentials)<- -(start server) : wait for credentials
+' (accept_credentials)->(set recheck flag to true) : option 2 set a flag to true \nwhich the other loop will \nlook for constantly
+(start server) -right-> ([API] status)
+(start server) -down-> ([API] client_ack)
+
+note right of (credentials exist?): if checkCredentials is true
+note top of (connect to wifi): if connect_to_wifi is true
+note right of (accept_credentials): set connect_to_wifi is true
+note right of ([API] status): fetch "STATUS" variable and send it.
+note right of ([API] client_ack): set CLOSE_SERVER to true
+note bottom of (stop the server): after CLOSE_SERVER is true
+
+note as n1
+    Some things loop has to take care of:
+    - which API to register based on STATUS
+    - valid STATUS: {
+        NO_CREDS
+        INVALID_PASS
+        NO_SSID
+        CONNECTING
+        CONNECTED
+      }
+    - other status variables: {
+        CHECK_CREDENTIALS
+        CONNECT_TO_WIFI
+        CLOST_SERVER
+      }
+end note
+' note "connect_to_wifi is true" as connect_note
+' connect_note - (connect to wifi)
+@enduml
+
+@startuml
+usecase (WiFi Check loop) as wificheck
+usecase (Start hotspot) as starthotspot
+(ESP Start)->wificheck
+wificheck- ->(credentials exist?)
+
+
+(credentials exist?)->starthotspot : no
+(credentials exist?)- ->(connect to wifi) : yes
+(connect to wifi)- ->(special case) : SSID not available \n(error 201)
+(connect to wifi)->starthotspot : credentials invalid \n[error (15-24/202/)?]
+(special case).>starthotspot : not sure if\n hotspot should be started
+
+(connect to wifi)-left->(stop the server) : on CONNECTED
+(Stop the hotspot)<- -(stop the server)
+(Stop the hotspot)- ->(start server & WS) : register default APIs
+
+starthotspot->(start server) : register credential APIs
+(accept_credentials)<- -(start server) : wait for credentials
+(start server) -right-> ([API] status)
+(start server) -down-> ([API] client_ack)
+
+note right of (credentials exist?): if checkCredentials is true
+note top of (connect to wifi): if connect_to_wifi is true
+note right of (accept_credentials): set connect_to_wifi is true
+note right of ([API] status): fetch "STATUS" variable and send it.
+note right of ([API] client_ack): set CLOSE_SERVER to true
+note bottom of (stop the server): after CLOSE_SERVER is true
+
+note as n1
+    Some things loop has to take care of:
+    - which API to register based on STATUS
+    - valid STATUS: {
+        NO_CREDS
+        INVALID_PASS
+        NO_SSID
+        CONNECTING
+        CONNECTED
+      }
+    - other status variables: {
+        CHECK_CREDENTIALS
+        CONNECT_TO_WIFI
+        CLOST_SERVER
+      }
+end note
+@enduml
+
+PlantUML version 1.2021.13beta8(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
