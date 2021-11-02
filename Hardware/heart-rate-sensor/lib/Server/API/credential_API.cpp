@@ -8,6 +8,8 @@
 #include <Preferences.h>
 #include <WiFi.h>
 
+networking_state_t NETWORKING_STATE;
+
 String __encryption_type(uint8_t type);
 /**
  * Scan wifi networks and reply with json results of scan
@@ -126,4 +128,13 @@ void show_credentials(AsyncWebServerRequest *request) {
 void client_ack(AsyncWebServerRequest *request) {
     CLOSE_SERVER = true;
     request->send(200, "text/plain", "OK");
+}
+
+void networking_state(AsyncWebServerRequest *request) {
+    String json = "{\"status\":";
+    json += String(NETWORKING_STATE);
+    json += "}";
+
+    request->send(200, "application/json", json);
+    json = String();
 }
