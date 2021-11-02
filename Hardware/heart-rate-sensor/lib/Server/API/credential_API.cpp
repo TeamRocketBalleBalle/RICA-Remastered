@@ -135,6 +135,9 @@ void client_ack(AsyncWebServerRequest *request) {
 void networking_state(AsyncWebServerRequest *request) {
     String json = "{\"status\":";
     json += String(NETWORKING_STATE);
+    json += ",\"code\":";
+    json +=
+        SENSOR_AUTH_FAIL_REASON == 0 ? "null" : String(SENSOR_AUTH_FAIL_REASON);
     json += "}";
 
     request->send(200, "application/json", json);
