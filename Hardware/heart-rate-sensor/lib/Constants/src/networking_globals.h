@@ -1,9 +1,9 @@
 #ifndef __server_global_vars_h
 #define __server_global_vars_h
 
-extern uint8_t SENSOR_AUTH_FAIL_REASON;
+extern unsigned short SENSOR_AUTH_FAIL_REASON;
 
-typedef enum {
+typedef enum networking_state_t {
     NONE     = -1,
     NO_CREDS = 0,
     INVALID_PASS,
