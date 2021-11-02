@@ -101,9 +101,11 @@ void accept_credentials(AsyncWebServerRequest *request) {
 
     // save credentials in the preferences library now
     Preferences preferences;
-    preferences.begin("config");
-    preferences.putString("ssid", request->getParam("SSID")->value().c_str());
-    preferences.putString("pass", request->getParam("PASS")->value().c_str());
+    preferences.begin(RICA_PREF_NAMESPACE);
+    preferences.putString(RICA_PREF_SSID_KEY,
+                          request->getParam("SSID")->value().c_str());
+    preferences.putString(RICA_PREF_PASS_KEY,
+                          request->getParam("PASS")->value().c_str());
     preferences.end();
 
     request->send(200, "application/plain", "OK");
@@ -112,9 +114,9 @@ void accept_credentials(AsyncWebServerRequest *request) {
 void show_credentials(AsyncWebServerRequest *request) {
     Preferences preferences;
 
-    preferences.begin("config", true);
-    String ssid     = preferences.getString("ssid");
-    String password = preferences.getString("pass");
+    preferences.begin(RICA_PREF_NAMESPACE, true);
+    String ssid     = preferences.getString(RICA_PREF_SSID_KEY);
+    String password = preferences.getString(RICA_PREF_PASS_KEY);
     preferences.end();
 
     String json = "{";
