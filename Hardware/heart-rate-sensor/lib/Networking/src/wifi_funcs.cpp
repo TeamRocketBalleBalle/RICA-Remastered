@@ -17,9 +17,20 @@ const char *DEFAULT_WIFI_PASS = "YOUR PASSWORD";
 #include "Wrapper/AsyncWebServerWrapper.h"
 #include "default_wifi_creds.h"
 #include "led_functions.h"
+#include "networking_globals.h"
 
 #include <Arduino.h>
 #include <WiFi.h>
+
+// Define global variables here
+uint8_t SENSOR_AUTH_FAIL_REASON;
+
+bool CHECK_CREDENTIALS = true;
+bool CONNECT_TO_WIFI   = true;
+bool CLOSE_SERVER      = false;
+#define START_HOTSPOT() !CLOSE_SERVER
+
+// end global variable definitions
 
 /**
  * general function that will be called from main to start all wifi

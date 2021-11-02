@@ -7,5 +7,6 @@
  */
 
 // Server config
+#include "networking_globals.h"
 #include "server_global_vars.h"
 #endif
