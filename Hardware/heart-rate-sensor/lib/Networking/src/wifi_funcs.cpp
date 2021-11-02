@@ -18,6 +18,7 @@ const char *DEFAULT_WIFI_PASS = "YOUR PASSWORD";
 #include "default_wifi_creds.h"
 #include "led_functions.h"
 #include "networking_globals.h"
+#include "utilities.h"
 
 #include <Arduino.h>
 #include <WiFi.h>
@@ -30,6 +31,8 @@ bool CHECK_CREDENTIALS = true;
 bool CONNECT_TO_WIFI   = true;
 bool CLOSE_SERVER      = false;
 #define START_HOTSPOT() !CLOSE_SERVER
+
+unsigned long __last_disconnected_millis = 0;
 
 // end global variable definitions
 
@@ -101,5 +104,20 @@ bool Networking::__start_web_server() {
     server.begin();
     log_trace("Server started...");
 
+    return true;
+}
+
+bool Networking::__register_auth_events() {
+    WiFi.onEvent(
+        [](WiFiEvent_t event, WiFiEventInfo_t info) {
+            sta_disconnect_handler(&event, &info);
+        },
+        SYSTEM_EVENT_STA_DISCONNECTED);
+
+    WiFi.onEvent(
+        [](WiFiEvent_t event, WiFiEventInfo_t info) {
+            sta_connect_handler(&event, &info);
+        },
+        SYSTEM_EVENT_STA_CONNECTED);
     return true;
 }

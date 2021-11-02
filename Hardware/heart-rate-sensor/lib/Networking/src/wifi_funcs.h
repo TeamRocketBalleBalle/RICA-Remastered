@@ -4,6 +4,9 @@
 #include <led_functions.h>
 
 class Networking {
+  private:
+    bool __register_auth_events();
+
   public:
     Networking() {}
     // the abstract function to start all networking

@@ -9,7 +9,8 @@ typedef enum networking_state_t {
     INVALID_PASS,
     NO_SSID,
     CONNECTING,
-    CONNECTED
+    CONNECTED,
+    UNKNOWN_ERROR
 } networking_state_t;
 
 extern networking_state_t NETWORKING_STATE;
@@ -17,5 +18,7 @@ extern networking_state_t NETWORKING_STATE;
 extern bool CHECK_CREDENTIALS;
 extern bool CONNECT_TO_WIFI;
 extern bool CLOSE_SERVER;
+
+extern unsigned long __last_disconnected_millis;
 
 #endif

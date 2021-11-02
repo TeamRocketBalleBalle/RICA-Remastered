@@ -40,6 +40,7 @@ note as n1
         NO_SSID
         CONNECTING
         CONNECTED
+        UNKNOWN_ERROR
       }
     - other status variables: {
         CHECK_CREDENTIALS
