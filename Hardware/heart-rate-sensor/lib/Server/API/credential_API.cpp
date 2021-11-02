@@ -2,6 +2,7 @@
   Code for the credential-only API endpoints
 */
 #include "API_list.h"
+#include "GLOBALS.h"
 #include "LOG.h"
 
 #include <Preferences.h>
@@ -120,4 +121,9 @@ void show_credentials(AsyncWebServerRequest *request) {
     json += "}";
 
     request->send(200, "application/json", json);
+}
+
+void client_ack(AsyncWebServerRequest *request) {
+    CLOSE_SERVER = true;
+    request->send(200, "text/plain", "OK");
 }

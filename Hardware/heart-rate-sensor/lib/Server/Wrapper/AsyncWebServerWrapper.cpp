@@ -42,6 +42,7 @@ void AsyncWebServerWrapper::register_default_API() {
 void AsyncWebServerWrapper::regiser_credential_only_API() {
     __server->on("/scan_wifi", HTTP_GET, scan_wifi);
     __server->on("/accept_credentials", HTTP_POST, accept_credentials);
+    __server->on("/client_ack", HTTP_POST, client_ack);
 
 // debug methods
 #if RICA_SENSOR_DEBUG
