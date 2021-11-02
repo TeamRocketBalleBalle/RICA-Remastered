@@ -23,7 +23,8 @@ const char *DEFAULT_WIFI_PASS = "YOUR PASSWORD";
 #include <WiFi.h>
 
 // Define global variables here
-uint8_t SENSOR_AUTH_FAIL_REASON;
+unsigned short     SENSOR_AUTH_FAIL_REASON = 0;
+networking_state_t NETWORKING_STATE        = NONE;
 
 bool CHECK_CREDENTIALS = true;
 bool CONNECT_TO_WIFI   = true;

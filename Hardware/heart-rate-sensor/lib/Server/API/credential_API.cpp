@@ -8,8 +8,6 @@
 #include <Preferences.h>
 #include <WiFi.h>
 
-networking_state_t NETWORKING_STATE;
-
 String __encryption_type(uint8_t type);
 /**
  * Scan wifi networks and reply with json results of scan
