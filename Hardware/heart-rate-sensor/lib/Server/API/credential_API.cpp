@@ -106,7 +106,9 @@ void accept_credentials(AsyncWebServerRequest *request) {
                           request->getParam("PASS")->value().c_str());
     preferences.end();
 
-    request->send(200, "application/plain", "OK");
+    CONNECT_TO_WIFI = true;
+
+    request->send(200, "text/plain", "OK");
 }
 
 void show_credentials(AsyncWebServerRequest *request) {
