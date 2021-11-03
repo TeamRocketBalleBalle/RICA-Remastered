@@ -44,8 +44,10 @@ unsigned long __last_disconnected_millis = 0;
  */
 bool Networking::start_networking() {
     WiFi.mode(WIFI_MODE_APSTA);
+#if RICA_SENSOR_DEBUG
     __default_connect_to_wifi();
     log_trace("Connected to wifi");
+#endif
     // start the hotspot
     WiFi.softAP(DEFAULT_HOTSPOT_SSID, NULL);
     log_trace("Hotspot started");
@@ -53,10 +55,14 @@ bool Networking::start_networking() {
     __start_web_server();
     return true;
 }
+
+#if RICA_SENSOR_DEBUG
 // demo function to check connection wifi network
 bool Networking::__default_connect_to_wifi() {
     return __connect_to_wifi(DEFAULT_WIFI_SSID, DEFAULT_WIFI_PASS);
 }
+#endif
+
 // TODO: return false if credentials are wrong
 /**
  * Connects to wifi
