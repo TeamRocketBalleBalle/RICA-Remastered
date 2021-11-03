@@ -37,3 +37,6 @@ GLOBAL VARIALBE:
 		- client_close_ack
 permanent:
 	- cred_valid
+
+TODO:
+    - instead of WiFi.status(), register event handlers

@@ -28,9 +28,12 @@ unsigned short     SENSOR_AUTH_FAIL_REASON = 0;
 networking_state_t NETWORKING_STATE        = NONE;
 
 bool CHECK_CREDENTIALS = true;
-bool CONNECT_TO_WIFI   = true;
+bool CONNECT_TO_WIFI   = false;
 bool CLOSE_SERVER      = false;
-#define START_HOTSPOT() !CLOSE_SERVER
+bool START_HOTSPOT     = false;
+bool HOTSPOT_STARTED   = false;
+
+bool __WIFI_EVENT_HANDLER_REGISTERED = false;
 
 unsigned long __last_disconnected_millis = 0;
 
@@ -44,15 +47,8 @@ unsigned long __last_disconnected_millis = 0;
  */
 bool Networking::start_networking() {
     WiFi.mode(WIFI_MODE_APSTA);
-#if RICA_SENSOR_DEBUG
-    __default_connect_to_wifi();
-    log_trace("Connected to wifi");
-#endif
-    // start the hotspot
-    WiFi.softAP(DEFAULT_HOTSPOT_SSID, NULL);
-    log_trace("Hotspot started");
-    // start the webserver
-    __start_web_server();
+
+    __handle_networking();
     return true;
 }
 
@@ -74,18 +70,27 @@ bool Networking::__connect_to_wifi(const char *SSID, const char *PASSWORD) {
     log_info("Connecting to \"%s\"", SSID);
 
     WiFi.setHostname(RICA_SENSOR_HOSTNAME);
-    WiFi.begin(SSID, PASSWORD);
-
+    wl_status_t return_code = WiFi.begin(SSID, PASSWORD);
+    if (return_code == WL_CONNECT_FAILED) {
+        START_HOTSPOT    = true;
+        NETWORKING_STATE = UNKNOWN_ERROR;
+        log_error("wifi connection failed");
+    }
     return true;
 }
 
-bool Networking::__start_web_server() {
+bool Networking::__start_web_server(bool register_creds_API) {
     AsyncWebServerWrapper server_wrapper(&server);
 
     log_trace("Configuring Server");
     server_wrapper.default_config();
     server_wrapper.register_default_API();
-    server_wrapper.regiser_credential_only_API();
+
+    if (register_creds_API) {
+        server_wrapper.regiser_credential_only_API();
+        log_trace("registering credential API");
+    }
+
     server.begin();
     log_trace("Server started...");
 
@@ -105,4 +110,114 @@ bool Networking::__register_auth_events() {
         },
         SYSTEM_EVENT_STA_CONNECTED);
     return true;
+}
+
+/**
+ * Blocking method that decides based on credentials the sensor has and their
+ * validity, should hotspot be started or resume normal server operations with
+ * websockets
+ */
+void Networking::__handle_networking() {
+    unsigned long prev_time = millis();
+
+    uint8_t variable_state = CHECK_CREDENTIALS + CLOSE_SERVER + CONNECT_TO_WIFI;
+    uint8_t prev_var_state = variable_state;
+    while (true) {
+        // run loop every NETWORKING_LOOP_DELAY milliseconds
+        while (NETWORKING_LOOP_DELAY < millis() - prev_time) {
+            prev_time = millis();
+
+            variable_state = CHECK_CREDENTIALS + CLOSE_SERVER +
+                             CONNECT_TO_WIFI + START_HOTSPOT + HOTSPOT_STARTED;
+            if (prev_var_state != variable_state) {
+                log_debug(
+                    "Variable state changed! CHECK_CREDENTIALS: %d | "
+                    "CLOSE_SERVER: %d | CONNECT_TO_WIFI: %d | START_HOTSPOT: "
+                    "%d | HOTSPOT_STARTED: %d",
+                    CHECK_CREDENTIALS, CLOSE_SERVER, CONNECT_TO_WIFI,
+                    START_HOTSPOT, HOTSPOT_STARTED);
+                prev_var_state = variable_state;
+            }
+
+            if (CHECK_CREDENTIALS) {
+                CHECK_CREDENTIALS = false;
+                bool creds_exist  = credentials_exist();
+
+                log_trace("checking credentials.... they%s exist",
+                          creds_exist ? "" : " do not");
+
+                if (creds_exist) {
+                    CONNECT_TO_WIFI = true;
+                } else {
+                    NETWORKING_STATE = NO_CREDS;
+                }
+            }
+
+            if (CONNECT_TO_WIFI) {
+                log_trace("connecting to wifi");
+                CONNECT_TO_WIFI  = false;
+                NETWORKING_STATE = CONNECTING;
+                // TODO: add stuff
+                /* Pseudocode:
+                   - register event handlers in connect to wifi
+                   - set status to connecting
+                   - load creds from preferences
+                   - pass those creds to __connect_to_wifi
+                */
+                if (!__WIFI_EVENT_HANDLER_REGISTERED) {
+                    __WIFI_EVENT_HANDLER_REGISTERED = true;
+                    __register_auth_events();
+                }
+                log_trace("registered auth events");
+
+                // load creds
+                String SSID, PASS;
+                load_credentials(&SSID, &PASS);
+                __connect_to_wifi(SSID.c_str(), PASS.c_str());
+            }
+
+            // if hotspot is not started and we are connected, we dont need user
+            // confirmation to close the hotspot
+            CLOSE_SERVER = !HOTSPOT_STARTED && NETWORKING_STATE == CONNECTED;
+            if (CLOSE_SERVER) {
+                START_HOTSPOT   = false;
+                HOTSPOT_STARTED = false;
+                // TODO: add stuff
+
+                server.end();
+                log_trace("served end");
+                WiFi.mode(WIFI_MODE_STA);
+                log_trace("AP disconnect");
+
+                // register new server and start it
+                // server = AsyncWebServer(HTTP_PORT);
+                __start_web_server(true); // TODO: true for debugging purpose,
+                                          // set it to false later
+
+                return; // <----- this is where this method exits
+            }
+
+            START_HOTSPOT = should_i_start_hotspot(START_HOTSPOT);
+            if (START_HOTSPOT && !HOTSPOT_STARTED) {
+                HOTSPOT_STARTED = true;
+                WiFi.softAP(DEFAULT_HOTSPOT_SSID, NULL);
+                log_trace("Hotspot started");
+                __start_web_server(true);
+            }
+
+            // micro managing stuff
+
+            // turn off wifi if timeout ms have passed
+            // TODO: check if this thing works
+            if (NETWORKING_STATE == NO_SSID &&
+                RICA_WIFI_OFF_TIMEOUT_ms <=
+                    prev_time - __last_disconnected_millis) {
+                log_trace("on error 201, wifi disconnected");
+                WiFi.disconnect();
+            }
+
+            // TODO: add LED managing code
+            // if, CONNECTING then blink led using reference from arduino sketch
+        }
+    }
 }

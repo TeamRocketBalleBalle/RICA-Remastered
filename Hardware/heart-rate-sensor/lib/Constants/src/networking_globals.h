@@ -18,7 +18,10 @@ extern networking_state_t NETWORKING_STATE;
 extern bool CHECK_CREDENTIALS;
 extern bool CONNECT_TO_WIFI;
 extern bool CLOSE_SERVER;
+extern bool START_HOTSPOT;
+extern bool HOTSPOT_STARTED;
 
+extern bool          __WIFI_EVENT_HANDLER_REGISTERED;
 extern unsigned long __last_disconnected_millis;
 
 #endif
