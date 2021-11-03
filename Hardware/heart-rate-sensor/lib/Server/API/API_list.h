@@ -21,5 +21,6 @@ void accept_credentials(AsyncWebServerRequest *request);
 void show_credentials(AsyncWebServerRequest *request);
 void client_ack(AsyncWebServerRequest *request);
 void networking_state(AsyncWebServerRequest *request);
+void get_ip(AsyncWebServerRequest *request);
 
 #endif

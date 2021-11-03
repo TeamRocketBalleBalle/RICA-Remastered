@@ -157,3 +157,10 @@ void networking_state(AsyncWebServerRequest *request) {
     request->send(200, "application/json", json);
     json = String();
 }
+
+void get_ip(AsyncWebServerRequest *request) {
+    char IP_add[16];
+    sprintf(IP_add, "%d.%d.%d.%d", WiFi.localIP()[0], WiFi.localIP()[1],
+            WiFi.localIP()[2], WiFi.localIP()[3]);
+    request->send(200, "text/plain", IP_add);
+}
