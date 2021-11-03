@@ -65,31 +65,10 @@ bool Networking::__default_connect_to_wifi() {
  * @return true if connection was successful
  */
 bool Networking::__connect_to_wifi(const char *SSID, const char *PASSWORD) {
+    log_info("Connecting to \"%s\"", SSID);
 
-    Serial.println();
-    Serial.println();
-    Serial.print("Connecting to ");
-    Serial.println(SSID);
-    pinMode(PIN_INBUILT_LED, OUTPUT);
-
+    WiFi.setHostname(RICA_SENSOR_HOSTNAME);
     WiFi.begin(SSID, PASSWORD);
-
-    while (WiFi.status() != WL_CONNECTED) { // give loading like look with the
-                                            // LED blink when connecting
-        digitalWrite(PIN_INBUILT_LED, HIGH);
-        delay(500);
-        digitalWrite(PIN_INBUILT_LED, LOW);
-        delay(50);
-        Serial.print(".");
-    }
-    // give a visual cue with short blinks that esp has connected
-    blinkLed(PIN_INBUILT_LED, 100, 3);
-
-    Serial.println("");
-    Serial.println("WiFi connected");
-    Serial.println("IP address: ");
-    Serial.println(WiFi.localIP());
-    log_info("Wifi connected and IP address is: %p", WiFi.localIP());
 
     return true;
 }
