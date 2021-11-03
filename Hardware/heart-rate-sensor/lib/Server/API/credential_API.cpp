@@ -87,6 +87,20 @@ void accept_credentials(AsyncWebServerRequest *request) {
     }
     log_trace("PASS check success");
 
+    bool ssid_len_big =
+        valid && strlen(request->getParam("SSID")->value().c_str()) > 32;
+    if (ssid_len_big) {
+        valid  = false;
+        reason = "SSID greater than 32chars";
+    }
+    bool pass_len_big =
+        valid && strlen(request->getParam("PASS")->value().c_str()) > 64;
+    if (pass_len_big) {
+        valid  = false;
+        reason = "PASS greater than 64chars";
+    }
+    log_trace("SSID & Password len check success");
+
     if (!valid) {
         log_info("client sent bad request: %s", reason);
         request->send(400, "text/plain", String(reason));
