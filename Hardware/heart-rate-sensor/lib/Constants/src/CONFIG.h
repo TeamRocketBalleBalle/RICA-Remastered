@@ -7,7 +7,6 @@
 #define RICA_SENSOR_HOSTNAME "RICA<3Sensor"
 
 #define NETWORKING_LOOP_DELAY    50
-#define RICA_WIFI_OFF_TIMEOUT_ms 120 * 1000 // turn off wifi after 2 min
-#define RICA_LED_DELAY_ms        400
+#define RICA_LED_DELAY_ms        500
 
 #endif

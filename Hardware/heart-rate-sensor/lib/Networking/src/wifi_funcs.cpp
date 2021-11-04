@@ -32,6 +32,7 @@ bool CONNECT_TO_WIFI   = false;
 bool CLOSE_SERVER      = false;
 bool START_HOTSPOT     = false;
 bool HOTSPOT_STARTED   = false;
+bool BLINK_LED         = false;
 
 bool __WIFI_EVENT_HANDLER_REGISTERED = false;
 bool __LED_CUE_STATE                 = LOW;
@@ -159,6 +160,7 @@ void Networking::__handle_networking() {
                 log_trace("connecting to wifi");
                 CONNECT_TO_WIFI  = false;
                 NETWORKING_STATE = CONNECTING;
+                BLINK_LED        = true;
                 // TODO: add stuff
                 /* Pseudocode:
                    - register event handlers in connect to wifi
@@ -214,6 +216,7 @@ void Networking::__handle_networking() {
             if (NETWORKING_STATE == NO_SSID &&
                 RICA_WIFI_OFF_TIMEOUT_ms <=
                     prev_time - __last_disconnected_millis) {
+                BLINK_LED  = false;
                 log_trace("on error 201, wifi disconnected");
                 WiFi.disconnect();
             }
@@ -221,8 +224,7 @@ void Networking::__handle_networking() {
             // TODO: add LED managing code
             // if, CONNECTING then blink led using reference from arduino sketch
             bool toggle_led =
-                NETWORKING_STATE == CONNECTING &&
-                prev_time - __PREV_LED_MILLIS >= RICA_LED_DELAY_ms;
+                BLINK_LED && prev_time - __PREV_LED_MILLIS >= RICA_LED_DELAY_ms;
 
             if (toggle_led) {
                 __PREV_LED_MILLIS = prev_time;

@@ -79,6 +79,7 @@ void sta_disconnect_handler(WiFiEvent_t *event, WiFiEventInfo_t *info) {
 void sta_connect_handler(WiFiEvent_t *event, WiFiEventInfo_t *info) {
     log_debug("wifi connected");
     NETWORKING_STATE = CONNECTED;
+    BLINK_LED        = false;
     // give a visual cue with short blinks that esp has connected
     blinkLed(PIN_INBUILT_LED, 100, 3);
 }
