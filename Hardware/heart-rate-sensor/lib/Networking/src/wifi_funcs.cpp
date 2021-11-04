@@ -36,6 +36,7 @@ bool BLINK_LED         = false;
 
 bool __WIFI_EVENT_HANDLER_REGISTERED = false;
 bool __LED_CUE_STATE                 = LOW;
+bool __wifi_off                      = false;
 
 unsigned long __PREV_LED_MILLIS          = 0;
 unsigned long __last_disconnected_millis = 0;
@@ -161,6 +162,7 @@ void Networking::__handle_networking() {
                 CONNECT_TO_WIFI  = false;
                 NETWORKING_STATE = CONNECTING;
                 BLINK_LED        = true;
+                __wifi_off       = false;
                 // TODO: add stuff
                 /* Pseudocode:
                    - register event handlers in connect to wifi
@@ -190,6 +192,7 @@ void Networking::__handle_networking() {
 
                 server.end();
                 log_trace("served end");
+                WiFi.enableAP(false);
                 WiFi.mode(WIFI_MODE_STA);
                 log_trace("AP disconnect");
 
@@ -213,10 +216,11 @@ void Networking::__handle_networking() {
 
             // turn off wifi if timeout ms have passed
             // TODO: check if this thing works
-            if (NETWORKING_STATE == NO_SSID &&
+            if (!__wifi_off && NETWORKING_STATE == NO_SSID &&
                 RICA_WIFI_OFF_TIMEOUT_ms <=
                     prev_time - __last_disconnected_millis) {
                 BLINK_LED  = false;
+                __wifi_off = true;
                 log_trace("on error 201, wifi disconnected");
                 WiFi.disconnect();
             }
