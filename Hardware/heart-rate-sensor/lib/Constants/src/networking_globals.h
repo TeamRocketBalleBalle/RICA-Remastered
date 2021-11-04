@@ -23,5 +23,7 @@ extern bool HOTSPOT_STARTED;
 
 extern bool          __WIFI_EVENT_HANDLER_REGISTERED;
 extern unsigned long __last_disconnected_millis;
+extern bool          __LED_CUE_STATE;
+extern unsigned long __PREV_LED_MILLIS;
 
 #endif

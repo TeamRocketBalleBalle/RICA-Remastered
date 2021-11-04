@@ -34,7 +34,9 @@ bool START_HOTSPOT     = false;
 bool HOTSPOT_STARTED   = false;
 
 bool __WIFI_EVENT_HANDLER_REGISTERED = false;
+bool __LED_CUE_STATE                 = LOW;
 
+unsigned long __PREV_LED_MILLIS          = 0;
 unsigned long __last_disconnected_millis = 0;
 
 // end global variable definitions
@@ -218,6 +220,15 @@ void Networking::__handle_networking() {
 
             // TODO: add LED managing code
             // if, CONNECTING then blink led using reference from arduino sketch
+            bool toggle_led =
+                NETWORKING_STATE == CONNECTING &&
+                prev_time - __PREV_LED_MILLIS >= RICA_LED_DELAY_ms;
+
+            if (toggle_led) {
+                __PREV_LED_MILLIS = prev_time;
+                __LED_CUE_STATE   = !__LED_CUE_STATE;
+                digitalWrite(PIN_INBUILT_LED, __LED_CUE_STATE);
+            }
         }
     }
 }
