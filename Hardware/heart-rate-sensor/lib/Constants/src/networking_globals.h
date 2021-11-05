@@ -21,6 +21,7 @@ extern bool CLOSE_SERVER;
 extern bool START_HOTSPOT;
 extern bool HOTSPOT_STARTED;
 extern bool BLINK_LED;
+extern bool CLIENT_ACK_RECIEVED;
 
 extern bool          __WIFI_EVENT_HANDLER_REGISTERED;
 extern unsigned long __last_disconnected_millis;

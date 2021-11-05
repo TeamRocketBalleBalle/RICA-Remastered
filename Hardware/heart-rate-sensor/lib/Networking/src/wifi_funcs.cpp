@@ -34,6 +34,8 @@ bool START_HOTSPOT     = false;
 bool HOTSPOT_STARTED   = false;
 bool BLINK_LED         = false;
 
+bool CLIENT_ACK_RECIEVED = false;
+
 bool __WIFI_EVENT_HANDLER_REGISTERED = false;
 bool __LED_CUE_STATE                 = LOW;
 bool __wifi_off                      = false;
@@ -132,14 +134,15 @@ void Networking::__handle_networking() {
             prev_time = millis();
 
             variable_state = CHECK_CREDENTIALS + CLOSE_SERVER +
-                             CONNECT_TO_WIFI + START_HOTSPOT + HOTSPOT_STARTED;
+                             CONNECT_TO_WIFI + START_HOTSPOT + HOTSPOT_STARTED +
+                             CLIENT_ACK_RECIEVED;
             if (prev_var_state != variable_state) {
                 log_debug(
                     "Variable state changed! CHECK_CREDENTIALS: %d | "
                     "CLOSE_SERVER: %d | CONNECT_TO_WIFI: %d | START_HOTSPOT: "
-                    "%d | HOTSPOT_STARTED: %d",
+                    "%d | HOTSPOT_STARTED: %d | CLIENT_ACK_RECEIVED: %d",
                     CHECK_CREDENTIALS, CLOSE_SERVER, CONNECT_TO_WIFI,
-                    START_HOTSPOT, HOTSPOT_STARTED);
+                    START_HOTSPOT, HOTSPOT_STARTED, CLIENT_ACK_RECIEVED);
                 prev_var_state = variable_state;
             }
 
@@ -184,7 +187,13 @@ void Networking::__handle_networking() {
 
             // if hotspot is not started and we are connected, we dont need user
             // confirmation to close the hotspot
-            CLOSE_SERVER = !HOTSPOT_STARTED && NETWORKING_STATE == CONNECTED;
+            if (HOTSPOT_STARTED) {
+                CLOSE_SERVER =
+                    CLIENT_ACK_RECIEVED && NETWORKING_STATE == CONNECTED;
+            } else {
+                CLOSE_SERVER =
+                    !HOTSPOT_STARTED && NETWORKING_STATE == CONNECTED;
+            }
             if (CLOSE_SERVER) {
                 START_HOTSPOT   = false;
                 HOTSPOT_STARTED = false;

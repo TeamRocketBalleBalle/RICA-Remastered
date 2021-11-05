@@ -142,7 +142,7 @@ void show_credentials(AsyncWebServerRequest *request) {
 }
 
 void client_ack(AsyncWebServerRequest *request) {
-    CLOSE_SERVER = true;
+    CLIENT_ACK_RECIEVED = true;
     request->send(200, "text/plain", "OK");
 }
 
