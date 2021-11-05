@@ -1,0 +1,26 @@
+combinations:
+    - Credential not exist
+        - Hotspot start
+        - Accept credentials
+        - Connect to wifi
+            - SSID not available
+                - Server should be running
+            - Is connected
+                - stop the server (client_ack)
+                - hotspot should be disconnected
+                - API thingy starts
+            - Credentials invalid
+                - Accept credentials
+                - server still running
+    - Credential exist
+        - Connect to wifi
+            - SSID not available
+                - Hotspot start
+                - Accept credentials
+                    - Same as above
+            - Credentials invalid
+                - Accept credentials
+                - Server still running
+            - Is connected
+                - Start server w/o user input (if ideal)
+                                        (else wait for client_ack)
