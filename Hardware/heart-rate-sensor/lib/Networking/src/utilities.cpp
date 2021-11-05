@@ -1,5 +1,6 @@
 #include "utilities.h"
 
+#include "CONFIG.h"
 #include "GLOBALS.h"
 #include "LOG.h"
 #include "PINS.h"
@@ -50,6 +51,10 @@ bool should_i_start_hotspot(bool start_hotspot_val) {
     bool hotspot_should_be_started =
         NO_CREDS <= NETWORKING_STATE && NETWORKING_STATE < NO_SSID;
     if (hotspot_should_be_started || unknown_error) {
+        return true;
+    } else if (NETWORKING_STATE == NO_SSID &&
+               millis() - __last_disconnected_millis >=
+                   RICA_WIFI_OFF_TIMEOUT_ms) {
         return true;
     } else {
         return false;
