@@ -65,7 +65,6 @@ bool Networking::__default_connect_to_wifi() {
 }
 #endif
 
-// TODO: return false if credentials are wrong
 /**
  * Connects to wifi
  * @param SSID the SSID of the wifi network
@@ -166,7 +165,6 @@ void Networking::__handle_networking() {
                 NETWORKING_STATE = CONNECTING;
                 BLINK_LED        = true;
                 __wifi_off       = false;
-                // TODO: add stuff
                 /* Pseudocode:
                    - register event handlers in connect to wifi
                    - set status to connecting
@@ -197,7 +195,6 @@ void Networking::__handle_networking() {
             if (CLOSE_SERVER) {
                 START_HOTSPOT   = false;
                 HOTSPOT_STARTED = false;
-                // TODO: add stuff
 
                 server.end();
                 log_trace("served end");
@@ -207,8 +204,8 @@ void Networking::__handle_networking() {
 
                 // register new server and start it
                 // server = AsyncWebServer(HTTP_PORT);
-                __start_web_server(true); // TODO: true for debugging purpose,
-                                          // set it to false later
+                __start_web_server(false); // NOTE: true for debugging purpose,
+                                           // set it to false otherwise
 
                 return; // <----- this is where this method exits
             }
@@ -224,7 +221,6 @@ void Networking::__handle_networking() {
             // micro managing stuff
 
             // turn off wifi if timeout ms have passed
-            // TODO: check if this thing works
             if (!__wifi_off && NETWORKING_STATE == NO_SSID &&
                 RICA_WIFI_OFF_TIMEOUT_ms <=
                     prev_time - __last_disconnected_millis) {
@@ -234,7 +230,6 @@ void Networking::__handle_networking() {
                 WiFi.disconnect();
             }
 
-            // TODO: add LED managing code
             // if, CONNECTING then blink led using reference from arduino sketch
             bool toggle_led =
                 BLINK_LED && prev_time - __PREV_LED_MILLIS >= RICA_LED_DELAY_ms;

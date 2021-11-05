@@ -43,9 +43,6 @@ bool should_i_start_hotspot(bool start_hotspot_val) {
         - when INVALID_PASS is detected
         - *(opt) when NO_SSID is detected
 
-    TODO: When hotspot should NOT be started:
-        - when
-    TODO: When no change should be made:
     */
     bool unknown_error = NETWORKING_STATE == UNKNOWN_ERROR;
     bool hotspot_should_be_started =
