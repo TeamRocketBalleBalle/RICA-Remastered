@@ -20,9 +20,9 @@
         - link -> book appointment page
 
         - ## book appointment page
-            - [API] get doctor,  inputs: city + specialisation
-            - [API] search doctors using name
-            - [API] get doctor bio
+            - [API] get doctor,  inputs: city + specialisation [Testing required]
+            - [API] search doctors using name                  [Testing required]
+            - [API] get doctor bio                             [Info Required]
             - [API] date time book appointment, symptoms message; return -> confirmation success? [TBD]
 
 ## Doctor's page
