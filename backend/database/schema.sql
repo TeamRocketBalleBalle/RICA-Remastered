@@ -21,6 +21,8 @@ CREATE TABLE IF NOT EXISTS doctor(
     DoctorID varchar(10) NOT NULL,
     Name varchar(30) NOT NULL,
     Degree TEXT NOT NULL,
+    City varchar(30) NOT NULL,
+    Specialization varchar(30) NOT NULL,
 --    Bio JSON NOT NULL,
     Bio TEXT ,  -- No word Limit on TEXT datatype
     slot JSON ,
