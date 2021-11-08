@@ -1,4 +1,3 @@
-import backend.tests
 from backend import create_app
 
 app = create_app()

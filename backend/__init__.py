@@ -3,14 +3,14 @@ import os
 
 from colorama import Fore, init
 from dotenv import load_dotenv
-from flask import Flask, request, session
+from flask import Flask, request
 from flask_mysqldb import MySQL
 
 load_dotenv()
 
 
 def config_app(app: Flask):
-    # app.config["MYSQL_DB"] = os.getenv("RICA_MYSQL_DB", 'rica')
+    app.config["MYSQL_DB"] = os.getenv("RICA_MYSQL_DB", 'rica')
     app.config["MYSQL_HOST"] = os.getenv("RICA_MYSQL_HOST", "localhost")
     app.config['MYSQL_USER'] = os.getenv("RICA_MYSQL_USER", 'root')
     app.config["MYSQL_PASSWORD"] = os.getenv("RICA_MYSQL_PASSWORD", "")
