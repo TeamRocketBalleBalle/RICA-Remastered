@@ -12,7 +12,7 @@ def get_cursor(func):
         if 'cursor' not in g:
             g.cursor = current_app.mysql.connection.cursor()
 
-        args += (g.cursor,)  # give the cursor argument to the func
+        kwargs["cursor"] = g.cursor  # give the cursor argument to the func
         # call the function
         result = func(*args, **kwargs)
         return result
