@@ -4,6 +4,7 @@ on:
   push:
     paths:
         - "**.py"
+        - .github/workflows/run-pytest.yml
   pull_request:
     paths:
         - "**.py"
