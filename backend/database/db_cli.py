@@ -1,9 +1,7 @@
 import click
 import MySQLdb
-from flask import Flask, current_app
+from flask import current_app
 from flask.cli import with_appcontext
-
-from backend.utility.db_wrapper import get_cursor
 
 
 def makeDb(cursor):

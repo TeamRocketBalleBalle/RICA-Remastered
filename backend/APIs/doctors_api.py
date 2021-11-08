@@ -1,6 +1,6 @@
 # Importing stiff required for this task...
 import flask
-from flask import current_app, jsonify, request
+from flask import jsonify, request
 
 from backend.utility.db_wrapper import get_cursor
 
