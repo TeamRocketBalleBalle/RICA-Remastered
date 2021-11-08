@@ -10,7 +10,7 @@ on:
         - "**.py"
 
 jobs:
-  build:
+  pytest:
 
     runs-on: ubuntu-latest
 
@@ -24,8 +24,8 @@ jobs:
     - name: Start MySQL
       run: |
           sudo systemctl start mysql.service
-          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
-          mysql -e 'SHOW DATABASES;' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+          mysql -e 'CREATE DATABASE ${{ env.RICA_MYSQL_DB }};' -u${{ env.RICA_MYSQL_USER }} -p${{ env.RICA_MYSQL_PASSWORD }}
+          mysql -e 'SHOW DATABASES;' -u${{ env.RICA_MYSQL_USER }} -p${{ env.RICA_MYSQL_PASSWORD }}
 
     - uses: actions/checkout@v2
 
