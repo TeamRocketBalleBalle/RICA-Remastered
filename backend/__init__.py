@@ -42,14 +42,16 @@ class IPFilter(logging.Filter):
 
 def setup_logger(app: Flask):
     # Configure logging for app.logger
-    app.logger.handlers[0].setFormatter(
-        logging.Formatter("%(ip_address)s - [%(asctime)s] %(levelname)-6s [%(module)s.py -> %(funcName)s()]: "
-                          "\"%(message)s\"",
-                          datefmt="%d/%b/%Y %H:%M:%S"
-                          )
-    )
-    app.logger.setLevel(20)  # set logger to debug
-    app.logger.addFilter(IPFilter())
+    # TODO: fix this
+    # app.logger.handlers[0].setFormatter(
+    #     logging.Formatter("%(ip_address)s - [%(asctime)s] %(levelname)-6s [%(module)s.py -> %(funcName)s()]: "
+    #                       "\"%(message)s\"",
+    #                       datefmt="%d/%b/%Y %H:%M:%S"
+    #                       )
+    # )
+    # app.logger.setLevel(20)  # set logger to debug
+    # app.logger.addFilter(IPFilter())
+    pass
 
 
 # ==============================================================
