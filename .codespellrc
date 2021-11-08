@@ -1,0 +1,3 @@
+[codespell]
+ignore-words = .github/codespell/allow-words.txt
+dictionary = .github/codespell/custom-dictionary.txt
