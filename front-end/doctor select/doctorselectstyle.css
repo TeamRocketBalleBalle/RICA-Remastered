@@ -148,7 +148,7 @@ button:focus {
 }
 .namenoselect {
     position: absolute;
-    left: 85%;
+    left: 95%;
 }
 .SUBMIT {
     position: absolute;
@@ -175,4 +175,10 @@ body {
     100% {
         background-position: 0% 50%;
     }
+}
+.Home {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    left: 90%;
 }
