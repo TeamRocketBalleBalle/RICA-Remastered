@@ -132,7 +132,7 @@ button {
     font-size: 20px;
     font-weight: bold;
     color: black;
-    background: white;
+    background: transparent;
     border: 2px solid black;
     box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black,
         5px -5px 0 black;
@@ -158,4 +158,21 @@ button:focus {
 .op {
     height: 16%;
     width: 13%;
+}
+body {
+    background: linear-gradient(-35deg, #ee7752, #6be2c8, #23a6d5, #23d5ab);
+    background-size: 350% 350%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
