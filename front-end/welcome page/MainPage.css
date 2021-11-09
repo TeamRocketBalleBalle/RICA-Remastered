@@ -1,3 +1,43 @@
+body {
+    background: linear-gradient(-35deg, #ee7752, #6be2c8, #23a6d5, #23d5ab);
+    background-size: 5000% 5000%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.part1 {
+    position: absolute;
+    font-size: 60px;
+    top: 300px;
+    left: 55px;
+    color: white;
+    border-color: black;
+}
+.part2 {
+    position: absolute;
+    font-size: 35px;
+    top: 375px;
+    left: 140px;
+}
+.maintenance {
+    position: absolute;
+    font-size: 35px;
+    top: 800px;
+    left: 900px;
+    color: Yellow;
+    border-color: black;
+    border-width: 10px;
+}
 .logo {
     position: absolute;
     top: 1000px;
@@ -52,6 +92,7 @@ button.noselect:focus {
     outline: none;
 }
 .button_2 {
+    color: transparent;
     height: 100vh;
     overflow: hidden;
     display: flex;
@@ -111,4 +152,9 @@ button.Sign_Up:focus {
     bottom: 100px;
     left: 100px;
     marquee-loop: infinite;
+}
+.hazard {
+    position: absolute;
+    height: 50px;
+    width: 60px;
 }
