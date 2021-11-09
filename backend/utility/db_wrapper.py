@@ -25,6 +25,8 @@ def get_cursor(func):
             # this important line does not ending up CORRUPTING the database leading to its deletion in the db
             current_app.mysql.connection.rollback()
             raise e
+        else:
+            current_app.mysql.connection.commit()
 
         return result
     wrap.__name__ = func.__name__
