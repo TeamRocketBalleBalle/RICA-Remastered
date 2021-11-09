@@ -14,7 +14,18 @@ def get_cursor(func):
 
         kwargs["cursor"] = g.cursor  # give the cursor argument to the func
         # call the function
-        result = func(*args, **kwargs)
+        try:
+            # print("before wrapper")
+            result = func(*args, **kwargs)
+        except Exception as e:
+            # print("EXCEPTION HANDLED")
+            g.cursor.close()
+            g.pop("cursor")
+
+            # this important line does not ending up CORRUPTING the database leading to its deletion in the db
+            current_app.mysql.connection.rollback()
+            raise e
+
         return result
     wrap.__name__ = func.__name__
     return wrap
