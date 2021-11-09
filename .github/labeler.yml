@@ -7,4 +7,7 @@ Flowcharts:
 
 Backend:
   - "**.py"
-# more to be added later
+  - "backend/**"
+
+Frontend:
+  - "front-end/**"
