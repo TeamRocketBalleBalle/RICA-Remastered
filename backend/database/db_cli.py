@@ -1,21 +1,22 @@
 import click
 import MySQLdb
-from flask import Flask, current_app
+from flask import current_app
 from flask.cli import with_appcontext
 
-from backend.utility.db_wrapper import get_cursor
 
-
-@with_appcontext
 def makeDb(cursor):
     with current_app.open_resource('database/schema.sql') as f:
         cursor.execute(f.read().decode('utf8'))
 
 
-@with_appcontext
 def addData(cursor):
     with current_app.open_resource('database/testdata.sql') as f:
         cursor.execute(f.read().decode('utf8'))
+
+
+def delete_db(cursor):
+    cursor.execute("drop database rica;")
+    cursor.execute("CREATE DATABASE rica;")
 
 
 @click.command('create-db')
@@ -51,8 +52,7 @@ def testdata_db_command():
 def delete_db_command():
     conn = current_app.mysql.connection
     cursor = conn.cursor()
-    cursor.execute("drop database rica;")
-    cursor.execute("CREATE DATABASE rica;")
+    delete_db(cursor)
     cursor.close()
     conn.commit()
     click.echo("Database deleted")

@@ -3,14 +3,14 @@ import os
 
 from colorama import Fore, init
 from dotenv import load_dotenv
-from flask import Flask, request, session
+from flask import Flask, request
 from flask_mysqldb import MySQL
 
 load_dotenv()
 
 
 def config_app(app: Flask):
-    # app.config["MYSQL_DB"] = os.getenv("RICA_MYSQL_DB", 'rica')
+    app.config["MYSQL_DB"] = os.getenv("RICA_MYSQL_DB", 'rica')
     app.config["MYSQL_HOST"] = os.getenv("RICA_MYSQL_HOST", "localhost")
     app.config['MYSQL_USER'] = os.getenv("RICA_MYSQL_USER", 'root')
     app.config["MYSQL_PASSWORD"] = os.getenv("RICA_MYSQL_PASSWORD", "")
@@ -42,14 +42,16 @@ class IPFilter(logging.Filter):
 
 def setup_logger(app: Flask):
     # Configure logging for app.logger
-    app.logger.handlers[0].setFormatter(
-        logging.Formatter("%(ip_address)s - [%(asctime)s] %(levelname)-6s [%(module)s.py -> %(funcName)s()]: "
-                          "\"%(message)s\"",
-                          datefmt="%d/%b/%Y %H:%M:%S"
-                          )
-    )
-    app.logger.setLevel(20)  # set logger to debug
-    app.logger.addFilter(IPFilter())
+    # TODO: fix this
+    # app.logger.handlers[0].setFormatter(
+    #     logging.Formatter("%(ip_address)s - [%(asctime)s] %(levelname)-6s [%(module)s.py -> %(funcName)s()]: "
+    #                       "\"%(message)s\"",
+    #                       datefmt="%d/%b/%Y %H:%M:%S"
+    #                       )
+    # )
+    # app.logger.setLevel(20)  # set logger to debug
+    # app.logger.addFilter(IPFilter())
+    pass
 
 
 # ==============================================================

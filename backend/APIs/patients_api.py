@@ -1,5 +1,5 @@
 import flask
-from flask import current_app, jsonify, request
+from flask import jsonify
 
 from backend.APIs.doctors_api import get_booking_info
 from backend.utility.db_wrapper import get_cursor
