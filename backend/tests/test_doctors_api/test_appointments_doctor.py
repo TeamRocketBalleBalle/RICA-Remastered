@@ -33,6 +33,8 @@ class TestDoctors_get_booking:
                                  pytest.param("OneTwoThree", 400,
                                               id="id is string"),
                                  pytest.param("120.0", 400),
+                                 # non existing id
+                                 pytest.param(12096240, 400),
                                  pytest.param(2, 200),  # patient with id 2
                                  pytest.param(3, 200),  # doc with id 3
                                  # forbidden for chemist utype
