@@ -1,6 +1,6 @@
 # Importing stiff required for this task...
 import flask
-from flask import jsonify, request
+from flask import jsonify, request, session
 
 from backend.utility.db_wrapper import get_cursor
 
@@ -31,20 +31,29 @@ def detailed_appointment_info(bookingId, cursor):
 @bp.route('/appointment', methods=['GET'])
 @get_cursor
 def get_booking_info(cursor):
-    ID = request.args.get("id")
-    query = " select userrole from users where UserID = %s"
-    cursor.execute(query, (ID,))
-    userType = cursor.fetchone()
-    # print(userType)
-    if userType[0] == "doctor":
-        temp = "DiD"
-    elif userType[0] == "patient":
-        temp = "PiD"
-    else:
-        return "Chemist user type has no appointments", 403
-    # print(temp)
-    query = f"SELECT BookingID FROM appointments WHERE {temp} = %s"
+    try:
+        ID = session['user_id']
+        if type(ID) == str:
+            raise "id is string"
+        elif type(ID) == float:
+            raise 401
+        elif ID is None:
+            raise (401, "/appointment endpoint does not exist")
+        query = " select userrole from users where UserID = %s"
+        cursor.execute(query, (ID,))
+        userType = cursor.fetchone()
+        # print(userType)
+        temp = None
 
-    cursor.execute(query, (ID,))
-    id = cursor.fetchall()[0]
-    return jsonify(detailed_appointment_info(id))
+        if userType[0] == "doctor":
+            temp = "DiD"
+        elif userType[0] == "patient":
+            temp = "PiD"
+        elif userType[0] == "chemist":
+            raise 403
+        query = f"SELECT BookingID FROM appointments WHERE {temp} = %s"
+        cursor.execute(query, (ID,))
+        id = cursor.fetchall()[0]
+        return jsonify(detailed_appointment_info(id))
+    except Exception as e:
+        return "", e
