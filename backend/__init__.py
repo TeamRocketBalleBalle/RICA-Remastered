@@ -70,10 +70,11 @@ def create_app():
 
 
 def register_blueprints(app: Flask):
-    from backend.APIs import doctors_api, patients_api
+    from backend.APIs import common, doctors_api, patients_api
 
     app.register_blueprint(doctors_api.bp)
     app.register_blueprint(patients_api.bp)
+    app.register_blueprint(common.bp)
 
 
 def register_cli_commands(app: Flask):
