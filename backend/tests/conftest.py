@@ -4,7 +4,7 @@ from flask import current_app
 from backend import create_app
 from backend.database.db_cli import addData, delete_db, makeDb
 
-SECRET_KEY = "testing"
+SECRET_KEY = "dev"
 
 
 @pytest.fixture
