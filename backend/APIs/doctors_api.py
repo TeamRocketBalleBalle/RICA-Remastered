@@ -7,7 +7,6 @@ from backend.utility.db_wrapper import get_cursor
 bp = flask.Blueprint("doctors_api", __name__, url_prefix="/api/v1/doctors")
 
 
-@get_cursor
 def detailed_appointment_info(bookingId, cursor):
     """
     :param bookingId:
@@ -20,7 +19,7 @@ def detailed_appointment_info(bookingId, cursor):
     cursor.execute(query, (bookingId,))
     appointment["Timing"] = cursor.fetchall()[0]
 
-    query = "SELECT name FROM patient WHERE PatientID IN (SELECT PiD FROM appointments WHERE BookingID = %s)"
+    query = "SELECT name FROM users WHERE PatientID IN (SELECT PatientID FROM appointments WHERE BookingID = %s)"
     cursor.execute(query, (bookingId,))
     appointment["PatientName"] = cursor.fetchall()[0]
 
@@ -31,29 +30,38 @@ def detailed_appointment_info(bookingId, cursor):
 @bp.route('/appointment', methods=['GET'])
 @get_cursor
 def get_booking_info(cursor):
-    try:
-        ID = session['user_id']
-        if type(ID) == str:
-            raise "id is string"
-        elif type(ID) == float:
-            raise 401
-        elif ID is None:
-            raise (401, "/appointment endpoint does not exist")
-        query = " select userrole from users where UserID = %s"
-        cursor.execute(query, (ID,))
-        userType = cursor.fetchone()
-        # print(userType)
-        temp = None
+    user_id = session.get("id", "")
 
-        if userType[0] == "doctor":
-            temp = "DiD"
-        elif userType[0] == "patient":
-            temp = "PiD"
-        elif userType[0] == "chemist":
-            raise 403
-        query = f"SELECT BookingID FROM appointments WHERE {temp} = %s"
-        cursor.execute(query, (ID,))
-        id = cursor.fetchall()[0]
-        return jsonify(detailed_appointment_info(id))
-    except Exception as e:
-        return "", e
+    # not possible since user input is never involved. aka set by the server, but still checking for "oddities
+    if not isinstance(user_id, int):
+        reason = {
+            "status": "BAD REQUEST",
+            "reason": f"\"{user_id}\" is not a valid user_id"
+        }
+        return jsonify(reason), 400
+
+    query = " select userrole from users where UserID = %s"
+    cursor.execute(query, (user_id,))
+    userType = cursor.fetchone()
+    # print(userType)
+    temp = None
+
+    # if somehow we have non-existent user id in the cookie
+    if userType is None:
+        reason = {"status": "BAD REQUEST",
+                  "reason": f"\"{user_id}\" is not a valid user_id"
+                  }
+        return jsonify(reason), 400
+    elif userType[0] == "doctor":
+        temp = "DoctorID"   # about time DiD becomes DoctorID
+    elif userType[0] == "patient":
+        temp = "PatientID"  # about time PiD becomes PatientID
+    elif userType[0] == "chemist":
+        reason = {"status": "FORBIDDEN",
+                  "reason": f"Chemists do not have appointments"
+                  }
+        return jsonify(reason), 403
+    query = f"SELECT BookingID FROM appointments WHERE {temp} = %s"
+    cursor.execute(query, (user_id,))
+    id = cursor.fetchall()[0][0]
+    return jsonify(detailed_appointment_info(id, cursor))
