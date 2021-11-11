@@ -4,11 +4,14 @@ from flask import current_app
 from backend import create_app
 from backend.database.db_cli import addData, delete_db, makeDb
 
+SECRET_KEY = "testing"
+
 
 @pytest.fixture
 def client():
     app = create_app()
     app.testing = True
+    app.secret_key = SECRET_KEY
 
     with app.test_client() as client:
         # setup db
