@@ -63,6 +63,7 @@ class TestDoctors_get_booking:
         client.set_cookie("localhost", "session", cookie)
 
         response = client.get(url)
-        actual_no_of_appointments = len(json.loads(response.data.decode()))
+        actual_no_of_appointments = len(json.loads(
+            response.data.decode())["appointments"])
         print(response.data.decode())
         assert actual_no_of_appointments == expected_no_of_bookings
