@@ -26,13 +26,13 @@ class TestDoctors_get_booking:
     def test_get_booking_missing_arg(self, client):
         response = client.get(self.base_url + "/appointment")
 
-        assert response.status_code == 401, "/appointment endpoint does not exist"
+        assert response.status_code == 400, "/appointment endpoint does not exist"
 
     @pytest.mark.parametrize("id_value, expected_error",
                              [
-                                 pytest.param("OneTwoThree", 401,
+                                 pytest.param("OneTwoThree", 400,
                                               id="id is string"),
-                                 pytest.param("120.0", 401),
+                                 pytest.param("120.0", 400),
                                  pytest.param(2, 200),  # patient with id 2
                                  pytest.param(3, 200),  # doc with id 3
                                  # forbidden for chemist utype
