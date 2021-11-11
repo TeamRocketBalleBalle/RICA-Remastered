@@ -14,10 +14,18 @@
     </div>
     <h1 id="order">ORDER YOUR MEDICINES</h1>
 
-    <p id="uploadText">UPLOAD PRESCRIPTION RECEIVED FROM DOCTOR :</p>
-    <form action="/action_page.php" id="form">
-      <input type="file" id="myFile" name="filename" />
-      <input type="submit" />
+    <p id="uploadText">ORDER YOUR MEDICINES PRESCRIBED BY YOUR DOCTOR :</p>
+
+    <form action="/action_page.php">
+      <label for="med" id="medText">MEDICINE NAME</label>
+      <input type="text" id="med" />
+
+      <label for="num" id="numText">DOSAGE PER DAY</label>
+      <input type="text" id="num" />
+
+      <label for="days" id="daysText">FOR HOW MANY DAYS</label>
+      <input type="days" id="days" />
+      <input type="submit" value="ORDER" id="orderButton" />
     </form>
 
     <img

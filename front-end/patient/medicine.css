@@ -83,3 +83,66 @@ body {
         opacity: 0;
     }
 }
+
+#med {
+    position: absolute;
+    left: 22%;
+    top: 60%;
+    background-color: rgb(156, 239, 245);
+    border: white;
+    border-radius: 10%;
+    width: 150px;
+    height: 30px;
+}
+#medText {
+    position: absolute;
+    left: 22%;
+    top: 55%;
+    font-family: poppins;
+    user-select: none;
+}
+#days {
+    position: absolute;
+    left: 45%;
+    top: 60%;
+    background-color: rgb(156, 239, 245);
+    border: white;
+    border-radius: 10%;
+    width: 150px;
+    height: 30px;
+}
+#daysText {
+    position: absolute;
+    left: 45%;
+    top: 55%;
+    font-family: poppins;
+    user-select: none;
+}
+#num {
+    position: absolute;
+    left: 70%;
+    top: 60%;
+    background-color: rgb(156, 239, 245);
+    border: white;
+    border-radius: 10%;
+    width: 150px;
+    height: 30px;
+}
+#numText {
+    position: absolute;
+    left: 70%;
+    top: 55%;
+    font-family: poppins;
+    user-select: none;
+}
+#orderButton {
+    position: absolute;
+    left: 47%;
+    top: 80%;
+    background-color: rgb(156, 239, 245);
+    border: white;
+    width: 100px;
+    height: 60px;
+    border-radius: 10%;
+    font-family: poppins;
+}
