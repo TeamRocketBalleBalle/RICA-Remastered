@@ -2,7 +2,7 @@
 from datetime import timezone
 
 import flask
-from flask import jsonify, request, session
+from flask import jsonify, session
 
 from backend.utility.db_wrapper import get_cursor
 
@@ -26,7 +26,6 @@ def get_booking_info(cursor):
     cursor.execute(query, (user_id,))
     userType = cursor.fetchone()
     # print(userType)
-    temp = None
 
     # if somehow we have non-existent user id in the cookie
     if userType is None:
@@ -37,7 +36,7 @@ def get_booking_info(cursor):
     # for chemists, unauthorised for them since they dont have bookings
     elif userType[0] == "chemist":
         reason = {"status": "FORBIDDEN",
-                  "reason": f"Chemists do not have appointments"
+                  "reason": "Chemists do not have appointments"
                   }
         return jsonify(reason), 403
 

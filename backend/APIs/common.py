@@ -2,7 +2,7 @@ import os
 from hashlib import sha1
 
 import flask
-from flask import Response, make_response, session
+from flask import session
 from flask.sessions import session_json_serializer
 from itsdangerous import URLSafeTimedSerializer
 
