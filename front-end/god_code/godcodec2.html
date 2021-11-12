@@ -1,0 +1,35 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Title</title>
+</head>
+<body>
+  <div class="gg" id="hi"></div>
+</body>
+<script>
+  $.ajax({
+    method: "GET",
+    url: "https://reqres.in/api/users",
+    success: function (response) {
+      myArray = response.data;
+      buildTable(myArray);
+      console.log(myArray);
+    },
+  });
+  function buildTable(data) {
+    var table = document.getElementById("hi");
+
+    for (var i = 0; i < data.length; i++) {
+      var name = `${data[i].id}`;
+      table.innerHTML += name;
+    }
+  }
+</script>
