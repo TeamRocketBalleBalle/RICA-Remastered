@@ -10,4 +10,7 @@
 #define RICA_WIFI_OFF_TIMEOUT_ms 120 * 1000 // turn off wifi after 2 min
 #define RICA_LED_DELAY_ms        500
 
+#define SCREEN_WIDTH  128
+#define SCREEN_HEIGHT 64
+
 #endif
