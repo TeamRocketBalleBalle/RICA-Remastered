@@ -34,23 +34,6 @@ body {
     top: 25%;
     left: 10%;
 }
-/* .f1{
-    position: absolute;
-    top: 10%;
-    left: 30%;
-    transform: rotate(-90deg);
-     color: rgb(7, 6, 6);
-     user-select: none;
-}
-.f2{
-    position: absolute;
-    top: 80%;
-    left: 30%;
-    transform: rotate(90deg);
-    color: rgb(5, 4, 4);
-    user-select: none;
-
-} */
 .f3 {
     position: absolute;
     top: 45%;
@@ -68,14 +51,6 @@ body {
     color: white;
     user-select: none;
 }
-/* .arrow {
-    position: absolute;
-    left: 70%;
-    top: 40%;
-
-
-
-} */
 #upButton {
     position: absolute;
     left: 90%;
@@ -87,7 +62,6 @@ body {
     top: 52%;
     transform: scaleY(-1);
 }
-
 #logOut {
     position: absolute;
     left: 95%;
@@ -113,7 +87,7 @@ body {
 .features {
     position: absolute;
     left: 89.5%;
-    top: 48%;
+    top: 50%;
     font-family: Georgia, "Times New Roman", Times, serif;
     user-select: none;
 }
