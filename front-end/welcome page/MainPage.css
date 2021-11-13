@@ -165,3 +165,25 @@ button.Sign_Up:focus {
     left: 6%;
     top: 5%;
 }
+
+.box {
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    border-radius: 5%;
+    box-shadow: 1px 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-size: 550px;
+    width: 550px;
+    height: 375px;
+    background-color: rgb(164, 220, 212);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    transition: box-shadow 0.3s;
+}
+.box:hover {
+    /* background-color: #30af9e; */
+    background-image: linear-gradient(315deg, #30af9e 0%, #9af1e6 74%);
+    box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
