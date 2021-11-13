@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS appointments(
     PatientID INTEGER NOT NULL,
     Timings TIMESTAMP NOT NULL,
     Confirmed boolean NOT NULL,
+    symptoms TEXT,
     FOREIGN KEY (PatientID) REFERENCES patient(PatientID),
     FOREIGN KEY (DoctorID) REFERENCES doctor(DoctorID)
 );
