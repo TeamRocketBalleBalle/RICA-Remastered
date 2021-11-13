@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script src="jquery-1.8.3.min.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="plotly.js"></script>
+    <!--    <link rel="stylesheet" type="text/css" href="plot.css" />-->
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="yes" id="chart"></div>
+      <script>
+        let ydata = [];
+        var is_fetched = false;
+        $.ajax({
+          method: "GET",
+          url: "https://reqres.in/api/users",
+          success: function (response) {
+            ydata = response.data.map((data) => data.id);
+            is_fetched = true;
+          },
+        });
+
+        // function buildTable() {
+        //     return Math.random();
+        // }
+
+        Plotly.plot("chart", [
+          {
+            y: [],
+            type: "line",
+          },
+        ]);
+
+        var cnt = 0;
+
+        setInterval(function () {
+          if (is_fetched) {
+            Plotly.extendTraces(
+              "chart",
+              {
+                y: [ydata],
+              },
+              [0]
+            );
+            cnt++;
+            if (cnt > 500) {
+              Plotly.relayout("chart", {
+                xaxis: {
+                  range: [cnt - 500, cnt],
+                },
+              });
+            }
+          }
+        }, 200);
+      </script>
+    </div>
+  </body>
+</html>

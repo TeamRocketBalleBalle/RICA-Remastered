@@ -1,4 +1,4 @@
 [codespell]
 ignore-words = .github/codespell/allow-words.txt
 dictionary = .github/codespell/custom-dictionary.txt
-skip = front-end/heart rate/jquery-1.8.3.min.js,front-end/heart rate/plotly.js
+skip = front-end/heart_rate/jquery-1.8.3.min.js,front-end/heart_rate/plotly.js,front-end/heart_rate/plotly.min.js
