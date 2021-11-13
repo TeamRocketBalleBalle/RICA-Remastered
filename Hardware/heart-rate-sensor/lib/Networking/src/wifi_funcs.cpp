@@ -45,6 +45,17 @@ unsigned long __last_disconnected_millis = 0;
 
 // end global variable definitions
 
+// networking task
+void networking_task(void *param) {
+    log_info("running on core: %d", xPortGetCoreID());
+
+    log_debug("Starting networking...");
+    networking.start_networking();
+    log_trace("done networking");
+
+    vTaskDelete(NULL);
+}
+
 /**
  * general function that will be called from main to start all wifi
  * functionalities like AP + STA functions

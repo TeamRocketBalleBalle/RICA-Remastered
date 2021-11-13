@@ -14,15 +14,6 @@ int        beatAvg;
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 MAX30105         particleSensor;
 
-void sensor_task(void *param) {
-    log_info("running on core: %d", xPortGetCoreID());
-    // TODO: add display setup code here
-    __setup_display();
-    __setup_sensor();
-    heart_sensor.start_sensing();
-    vTaskDelete(NULL); // TODO: temporary fix, remove when hr loop is added
-}
-
 bool __setup_display() {
     display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
     log_trace("display begined");

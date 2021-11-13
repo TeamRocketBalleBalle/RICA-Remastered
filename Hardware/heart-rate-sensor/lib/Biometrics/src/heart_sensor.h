@@ -10,7 +10,7 @@ class HeartSensor {
   public:
     void start_sensing();
 };
-void sensor_task(void *param);
+
 bool __setup_display();
 bool __setup_sensor();
 

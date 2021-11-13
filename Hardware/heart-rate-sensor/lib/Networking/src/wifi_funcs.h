@@ -3,6 +3,8 @@
 
 #include <led_functions.h>
 
+void networking_task(void *param);
+
 class Networking {
   private:
     bool __register_auth_events();
@@ -20,4 +22,6 @@ class Networking {
     bool __connect_to_wifi(const char *SSID, const char *PASSWORD);
     bool __start_web_server(bool register_creds_API = true);
 };
+
+extern Networking networking;
 #endif
