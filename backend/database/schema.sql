@@ -38,10 +38,11 @@ CREATE TABLE IF NOT EXISTS orders(
 );
 
 CREATE TABLE IF NOT EXISTS appointments(
-    BookingID varchar(10) NOT NULL,
+    BookingID INTEGER NOT NULL,
     DoctorID INTEGER NOT NULL,
     PatientID INTEGER NOT NULL,
     Timings TIMESTAMP NOT NULL,
+    Confirmed boolean NOT NULL,
     FOREIGN KEY (PatientID) REFERENCES patient(PatientID),
     FOREIGN KEY (DoctorID) REFERENCES doctor(DoctorID)
 );
