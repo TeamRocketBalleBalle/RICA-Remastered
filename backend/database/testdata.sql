@@ -35,7 +35,7 @@ insert into orders(PatientID, ChemistID, prescription) values
 
 
 insert into appointments(BookingID, PatientID, DoctorID, Timings) values
-("B01nov03", 1, 3, "2021-11-03 11:30:00"),
-("B02nov01", 1, 4, "2021-11-01 10:00:00"),
-("B03nov05", 1, 4, "2021-11-05 05:30:00")
+("B01nov03", 2, 3, "2021-11-03 11:30:00"),
+("B02nov01", 2, 4, "2021-11-01 10:00:00"),
+("B03nov05", 7, 4, "2021-11-05 05:30:00")
 ;

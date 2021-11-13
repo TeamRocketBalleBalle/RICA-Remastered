@@ -46,16 +46,16 @@ CREATE TABLE IF NOT EXISTS appointments(
     FOREIGN KEY (DoctorID) REFERENCES doctor(DoctorID)
 );
 
---DELIMITER $$
+-- DELIMITER $$
 --
---CREATE TRIGGER after_patient_data_insert
---AFTER INSERT
---ON users FOR EACH ROW
---BEGIN
---    IF NEW.userrole = 'patient' THEN
---        INSERT INTO patient(PatientID)
---        VALUE(NEW.UserID);
---    END IF;
---END$$
+-- CREATE TRIGGER after_patient_data_insert
+-- AFTER INSERT
+-- ON users FOR EACH ROW
+-- BEGIN
+--     IF NEW.userrole = 'patient' THEN
+--         INSERT INTO patient(PatientID)
+--         VALUE(NEW.UserID);
+--     END IF;
+-- END$$
 --
---DELIMITER ;
+-- DELIMITER ;

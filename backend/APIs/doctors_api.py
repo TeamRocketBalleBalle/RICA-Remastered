@@ -1,59 +1,59 @@
 # Importing stiff required for this task...
+from datetime import timezone
+
 import flask
-from flask import jsonify, request, session
+from flask import jsonify, session
 
 from backend.utility.db_wrapper import get_cursor
 
 bp = flask.Blueprint("doctors_api", __name__, url_prefix="/api/v1/doctors")
 
 
-@get_cursor
-def detailed_appointment_info(bookingId, cursor):
-    """
-    :param bookingId:
-    :param cursor:
-    :return: List of Booking ids
-    """
-    appointment = dict()
-
-    query = "SELECT DATE_FORMAT(Timings, '%%Y-%%m-%%dT%%TZ') FROM appointments WHERE BookingID = %s "
-    cursor.execute(query, (bookingId,))
-    appointment["Timing"] = cursor.fetchall()[0]
-
-    query = "SELECT name FROM patient WHERE PatientID IN (SELECT PiD FROM appointments WHERE BookingID = %s)"
-    cursor.execute(query, (bookingId,))
-    appointment["PatientName"] = cursor.fetchall()[0]
-
-    cursor.close()
-    return appointment
-
-
 @bp.route('/appointment', methods=['GET'])
 @get_cursor
 def get_booking_info(cursor):
-    try:
-        ID = session['user_id']
-        if type(ID) == str:
-            raise "id is string"
-        elif type(ID) == float:
-            raise 401
-        elif ID is None:
-            raise (401, "/appointment endpoint does not exist")
-        query = " select userrole from users where UserID = %s"
-        cursor.execute(query, (ID,))
-        userType = cursor.fetchone()
-        # print(userType)
-        temp = None
+    user_id = session.get("id", "")
 
-        if userType[0] == "doctor":
-            temp = "DiD"
-        elif userType[0] == "patient":
-            temp = "PiD"
-        elif userType[0] == "chemist":
-            raise 403
-        query = f"SELECT BookingID FROM appointments WHERE {temp} = %s"
-        cursor.execute(query, (ID,))
-        id = cursor.fetchall()[0]
-        return jsonify(detailed_appointment_info(id))
-    except Exception as e:
-        return "", e
+    # not possible since user input is never involved. aka set by the server, but still checking for "oddities
+    if not isinstance(user_id, int):
+        reason = {
+            "status": "BAD REQUEST",
+            "reason": f"\"{user_id}\" is not a valid user_id"
+        }
+        return jsonify(reason), 400
+
+    query = " select userrole from users where UserID = %s"
+    cursor.execute(query, (user_id,))
+    userType = cursor.fetchone()
+    # print(userType)
+
+    # if somehow we have non-existent user id in the cookie
+    if userType is None:
+        reason = {"status": "BAD REQUEST",
+                  "reason": f"\"{user_id}\" is not a valid user_id"
+                  }
+        return jsonify(reason), 400
+    # for chemists, unauthorised for them since they dont have bookings
+    elif userType[0] == "chemist":
+        reason = {"status": "FORBIDDEN",
+                  "reason": "Chemists do not have appointments"
+                  }
+        return jsonify(reason), 403
+
+    # TODO: limit appointments by result
+
+    response = {"appointments": []}
+
+    query = "SELECT * FROM appointments WHERE %s IN (DoctorID, PatientID);"
+    cursor.execute(query, (user_id, ))
+    for row in cursor:
+        appointment = {
+            "doctor_id": row[1],
+            "patient_id": row[2],
+            # assuming db timestamp is in utc
+            "time": row[3].astimezone(timezone.utc).isoformat()
+        }
+        # print(row[3].isoformat())
+        response["appointments"].append(appointment)
+
+    return jsonify(response), 200
