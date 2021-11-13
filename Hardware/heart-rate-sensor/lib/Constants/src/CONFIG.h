@@ -13,4 +13,7 @@
 #define SCREEN_WIDTH  128
 #define SCREEN_HEIGHT 64
 
+#define RICA_SENSOR_SLEEP_TIMEOUT_ms 60 * 1000
+#define RICA_DO_NOT_SLEEP_DEBUG      false
+
 #endif

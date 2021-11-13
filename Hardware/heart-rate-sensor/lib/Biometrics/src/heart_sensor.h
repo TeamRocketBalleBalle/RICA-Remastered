@@ -13,6 +13,7 @@ class HeartSensor {
 
 bool __setup_display();
 bool __setup_sensor();
+void __sleep_esp();
 
 extern HeartSensor      heart_sensor;
 extern Adafruit_SSD1306 display;

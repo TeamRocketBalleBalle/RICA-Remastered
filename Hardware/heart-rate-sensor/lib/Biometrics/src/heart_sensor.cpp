@@ -11,6 +11,9 @@ long       lastBeat = 0;     // Time at which the last beat occurred
 float      beatsPerMinute;
 int        beatAvg;
 
+unsigned long last_active_time     = 0;
+bool          NO_HUMAN_INTERACTING = false;
+
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 MAX30105         particleSensor;
 
@@ -31,6 +34,23 @@ bool __setup_sensor() {
     return true;
 }
 
+void __sleep_esp() {
+#if !RICA_DO_NOT_SLEEP_DEBUG
+    // shutdown sensor and display
+    particleSensor.shutDown();
+    display.clearDisplay();
+    display.display();
+
+    // reference: https://esp32.com/viewtopic.php?t=3083
+    esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_SLOW_MEM, ESP_PD_OPTION_OFF);
+    esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_FAST_MEM, ESP_PD_OPTION_OFF);
+    esp_sleep_pd_config(ESP_PD_DOMAIN_RTC_PERIPH, ESP_PD_OPTION_OFF);
+    esp_deep_sleep_start();
+#else
+    log_info("not going to sleep as debug flag on");
+#endif
+}
+
 void HeartSensor::start_sensing() {
     while (true) {
         long irValue =
@@ -38,6 +58,10 @@ void HeartSensor::start_sensing() {
                                     // know if there's a finger on the sensor or
                                     // not Also detecting a heartbeat
         if (irValue > 7000) {       // If a finger is detected
+            if (NO_HUMAN_INTERACTING) {
+                NO_HUMAN_INTERACTING = false;
+            }
+
             display.clearDisplay(); // Clear the display
             display.drawBitmap(
                 5, 5, logo2_bmp, 24, 21,
@@ -49,7 +73,6 @@ void HeartSensor::start_sensing() {
             display.println("BPM");
             display.setCursor(50, 18);
             display.println(beatAvg);
-            display.display();
 
             if (checkForBeat(irValue) == true) // If a heart beat is detected
             {
@@ -97,6 +120,12 @@ void HeartSensor::start_sensing() {
         if (irValue < 7000) { // If no finger is detected it inform the user and
                               // put the average BPM to 0 or it will be stored
                               // for the next measure
+
+            if (!NO_HUMAN_INTERACTING) {
+                NO_HUMAN_INTERACTING = true;
+                last_active_time     = millis();
+            }
+
             beatAvg = 0;
             display.clearDisplay();
             display.setTextSize(1);
@@ -105,7 +134,22 @@ void HeartSensor::start_sensing() {
             display.println("Please Place ");
             display.setCursor(30, 15);
             display.println("your finger ");
-            display.display();
         }
+
+        bool go_to_sleep =
+            NO_HUMAN_INTERACTING &&
+            millis() - last_active_time >= RICA_SENSOR_SLEEP_TIMEOUT_ms;
+        if (go_to_sleep) {
+            log_info("going to sleep after inactivity");
+            __sleep_esp();
+        }
+        if (NO_HUMAN_INTERACTING) {
+            int countdown =
+                (RICA_SENSOR_SLEEP_TIMEOUT_ms - (millis() - last_active_time)) /
+                1000;
+            display.setCursor(0, SCREEN_HEIGHT - 20);
+            display.printf("sleeping in %ds", countdown);
+        }
+        display.display();
     }
 }
