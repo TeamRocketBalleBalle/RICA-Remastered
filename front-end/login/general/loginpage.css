@@ -1,3 +1,6 @@
+body {
+    background-color: #25b6e0;
+}
 .box {
     transition: box-shadow 0.3s;
     position: relative;
@@ -112,4 +115,8 @@ input:not(:focus):valid ~ .U2 {
     width: 150px;
     left: 1060px;
     top: 521px;
+}
+.loginGif {
+    position: absolute;
+    top: 10%;
 }
