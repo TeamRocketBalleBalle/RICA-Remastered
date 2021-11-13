@@ -80,9 +80,9 @@ button.noselect {
     font-weight: bold;
     color: black;
     background: transparent;
-    border: 2px solid black;
-    box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black,
-        5px -5px 0 black;
+    border: 2px solid white;
+    box-shadow: 5px 5px 0 white, -5px -5px 0 white, -5px 5px 0 white,
+        5px -5px 0 white;
     transition: 500ms ease-in-out;
 }
 
@@ -123,9 +123,9 @@ button.Sign_Up {
     font-weight: bold;
     color: black;
     background: transparent;
-    border: 2px solid black;
-    box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black,
-        5px -5px 0 black;
+    border: 2px solid white;
+    box-shadow: 5px 5px 0 white, -5px -5px 0 white, -5px 5px 0 white,
+        5px -5px 0 white;
     transition: 500ms ease-in-out;
 }
 
