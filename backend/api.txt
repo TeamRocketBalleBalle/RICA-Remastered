@@ -29,13 +29,14 @@
     - [API] get list of bookings   [Done]
     - [API] update slots                            [TBD]
     - [API] detailed appointment info  [Done]
-    - [API] [PATCH] accept/decline appointment
+    - [API] [PATCH] accept/decline appointment      [Testing required]
 
 
 next discussion:
     - chemist side page discussion
     - doctor side prescription generation by clicking on appointment
         - prescription specifics, description, PGP signature
+    - prescription can be viewed by patient
     - prescription can be viewed by patient
     - while contacting chemist patient can select prescription from list
     - patient can assign or view nicknames/summary to prescriptions
