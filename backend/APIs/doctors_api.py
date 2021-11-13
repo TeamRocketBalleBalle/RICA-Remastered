@@ -46,7 +46,7 @@ def get_booking_info(cursor):
 
     response = {"appointments": []}
 
-    query = "SELECT * FROM appointments WHERE %s IN (DoctorID, PatientID);"
+    query = "SELECT * FROM appointments WHERE %s IN (DoctorID, PatientID) and Confirmed = true;"
     cursor.execute(query, (user_id,))
     for row in cursor:
         appointment = {
@@ -103,4 +103,117 @@ def get_new_appointment_details(cursor):
             'patient_name': row[2]
         }
         response['booking_info'].append(booking_details)
+    return jsonify(response), 200
+
+
+# TODO: How to send confirmation to patient about their appointment status? And Should we send them?
+@bp.route("/confirm_appointment/<int:booking_id>")
+@get_cursor
+def confirm_appointment(booking_id, cursor):
+    doctor_id = session.get("id", "")
+
+    if not isinstance(doctor_id, int):
+        reason = {
+            "status": "BAD REQUEST",
+            "reason": f"{doctor_id} is not a valid doctor ID "
+        }
+        return jsonify(reason), 400
+
+    if not isinstance(booking_id, int):
+        reason = {
+            "status": "BAD REQUEST",
+            "reason": f"{booking_id} is not a valid booking ID "
+        }
+        return jsonify(reason), 400
+
+    query = " select userrole from users where UserID = %s"
+    cursor.execute(query, (doctor_id,))
+    userType = cursor.fetchone()
+
+    # if somehow we have non-existent user id in the cookie
+    if userType is None:
+        reason = {
+            "status": "BAD REQUEST",
+            "reason": f"\"{doctor_id}\" is not a valid doctor_id"
+        }
+        return jsonify(reason), 400
+
+    # for chemists, unauthorised for them since they dont have bookings
+    elif userType[0] == "chemist":
+        reason = {
+            "status": "FORBIDDEN",
+            "reason": "Chemists do not have appointments"
+        }
+        return jsonify(reason), 403
+
+    query = " select BookingID from appointments where BookingID = %s"
+    cursor.execute(query, (booking_id,))
+    id = cursor.fetchone()
+
+    if id is None:
+        reason = {
+            "status": "BAD REQUEST",
+            "reason": f"No record of given {booking_id} exists"
+        }
+        return jsonify(reason), 400
+
+    query = "update appointments set Confirmed = true where BookingID = %s"
+    cursor.execute(query, (booking_id,))
+    response = {"response": "Appointment confirmed!"}
+    return jsonify(response), 200
+
+
+@bp.route("/delete_appointment/<int:booking_id>")
+@get_cursor
+def delete_appointment(booking_id, cursor):
+    doctor_id = session.get("id", "")
+
+    if not isinstance(doctor_id, int):
+        reason = {
+            "status": "BAD REQUEST",
+            "reason": f"{doctor_id} is not a valid doctor ID "
+        }
+        return jsonify(reason), 400
+
+    if not isinstance(booking_id, int):
+        reason = {
+            "status": "BAD REQUEST",
+            "reason": f"{booking_id} is not a valid booking ID "
+        }
+        return jsonify(reason), 400
+
+    query = " select userrole from users where UserID = %s"
+    cursor.execute(query, (doctor_id,))
+    userType = cursor.fetchone()
+
+    # if somehow we have non-existent user id in the cookie
+    if userType is None:
+        reason = {
+            "status": "BAD REQUEST",
+            "reason": f"\"{doctor_id}\" is not a valid doctor_id"
+        }
+        return jsonify(reason), 400
+
+    # for chemists, unauthorised for them since they dont have bookings
+    elif userType[0] == "chemist":
+        reason = {
+            "status": "FORBIDDEN",
+            "reason": "Chemists do not have appointments"
+        }
+        return jsonify(reason), 403
+
+    query = " select BookingID from appointments where BookingID = %s and Confirmed = false;"
+    cursor.execute(query, (booking_id,))
+    id = cursor.fetchone()
+
+    if id is None:
+        reason = {
+            "status": "BAD REQUEST",
+            "reason": f"No record of given {booking_id} exists"
+        }
+        return jsonify(reason), 400
+
+    query = "delete from appointments where BookingID = %s"
+    cursor.execute(query, (booking_id,))
+    response = {"response": "Appointment declined!"}
     return jsonify(response), 200
