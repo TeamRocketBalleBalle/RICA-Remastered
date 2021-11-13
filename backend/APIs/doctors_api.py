@@ -46,7 +46,7 @@ def get_booking_info(cursor):
 
     response = {"appointments": []}
 
-    query = "SELECT * FROM appointments WHERE %s IN (DoctorID, PatientID) and Confirmed = true;"
+    query = "SELECT * FROM appointments WHERE %s IN (DoctorID, PatientID);"
     cursor.execute(query, (user_id,))
     for row in cursor:
         appointment = {
