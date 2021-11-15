@@ -34,7 +34,14 @@ function onClose(event) {
 
 function onMessage(event) {
   console.log(event.data);
-  div = document.getElementById("log");
-  div.textContent += "\n" + event.data;
-  div.scrollIntoView(false);
+  data = JSON.parse(event.data);
+  if ("ir_val" in data) {
+    div = document.getElementById("log");
+    div.textContent += "\n" + event.data;
+    div.scrollIntoView(false);
+  }
+  if ("bpm" in data) {
+    bpm = document.getElementById("bpm");
+    bpm.textContent = "BPM: " + JSON.stringify(data);
+  }
 }
