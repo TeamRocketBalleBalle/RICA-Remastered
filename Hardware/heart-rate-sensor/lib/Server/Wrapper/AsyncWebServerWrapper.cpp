@@ -1,6 +1,7 @@
 #include "AsyncWebServerWrapper.h"
 
 #include "../API/API_list.h"
+#include "../Websocket/websocket_methods.h"
 #include "CONFIG.h"
 
 #if RICA_SENSOR_DEBUG
@@ -34,6 +35,7 @@ void AsyncWebServerWrapper::register_default_API() {
     __server->on("/help", HTTP_ANY, help);
     __server->on("/ping", HTTP_GET,
                  [](AsyncWebServerRequest *request) { ping(request); });
+    init_websocket(__server);
 }
 
 /**

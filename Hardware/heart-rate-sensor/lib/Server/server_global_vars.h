@@ -5,4 +5,6 @@
 
 // The GLOBAL server variable.
 extern AsyncWebServer server;
+
+#include "Websocket/websocket_methods.h"
 #endif
