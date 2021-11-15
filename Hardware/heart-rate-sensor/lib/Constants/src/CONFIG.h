@@ -15,5 +15,6 @@
 
 #define RICA_SENSOR_SLEEP_TIMEOUT_ms 60 * 1000
 #define RICA_DO_NOT_SLEEP_DEBUG      false
+#define RICA_WEBSOCKET_DELAY_ms      100
 
 #endif

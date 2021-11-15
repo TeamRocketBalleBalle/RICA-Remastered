@@ -1,8 +1,12 @@
-#include "websocket_methods.h"
-
+#include "CONFIG.h"
+#include "GLOBALS.h"
 #include "LOG.h"
 
+#include <Websocket/websocket_methods.h>
+
 AsyncWebSocket ws("/ws");
+
+unsigned long last_message_millis = 0;
 
 bool init_websocket(AsyncWebServer *server) {
     ws.onEvent(__onEvent);
@@ -28,5 +32,17 @@ void __onEvent(AsyncWebSocket *server, AsyncWebSocketClient *client,
     case WS_EVT_DATA:
     case WS_EVT_ERROR:
         break;
+    }
+}
+
+void text_all_IR_value(long irVal) {
+    if (NETWORKING_STATE == CONNECTED &&
+        millis() - last_message_millis >= RICA_WEBSOCKET_DELAY_ms) {
+        last_message_millis = millis();
+        String json         = String();
+        json += "{\"ir_val\":" + String(irVal);
+        json += "}";
+        ws.textAll(json);
+        json = String();
     }
 }

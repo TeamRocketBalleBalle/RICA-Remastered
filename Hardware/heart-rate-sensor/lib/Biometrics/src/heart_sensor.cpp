@@ -2,6 +2,7 @@
 
 #include "CONFIG.h"
 #include "LOG.h"
+#include "Websocket/websocket_methods.h"
 #include "biometric_vars.h"
 
 const byte RATE_SIZE = 4;    // Increase this for more averaging. 4 is good.
@@ -57,6 +58,7 @@ void HeartSensor::start_sensing() {
             particleSensor.getIR(); // Reading the IR value it will permit us to
                                     // know if there's a finger on the sensor or
                                     // not Also detecting a heartbeat
+        text_all_IR_value(irValue); // text all clients the IR value
         if (irValue > 7000) {       // If a finger is detected
             if (NO_HUMAN_INTERACTING) {
                 NO_HUMAN_INTERACTING = false;
