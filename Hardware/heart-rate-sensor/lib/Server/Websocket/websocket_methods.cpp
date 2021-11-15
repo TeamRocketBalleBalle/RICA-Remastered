@@ -46,3 +46,22 @@ void text_all_IR_value(long irVal) {
         json = String();
     }
 }
+
+void text_all_BPM(byte *rate_arr, const byte rate_len, float beatsPerMinute,
+                  int beatsAvg) {
+    if (NETWORKING_STATE == CONNECTED) {
+        String json = String();
+        json += "{";
+        json += "\"bpm\":" + String(beatsPerMinute) + ",";
+        json += "\"bpm_avg\":" + String(beatsAvg) + ",";
+        json += "\"rates\": [";
+        for (byte i = 0; i < rate_len - 1; i++) {
+            json += String(rate_arr[i]) + ",";
+        }
+        json += String(rate_arr[rate_len - 1]);
+        json += "]}";
+
+        ws.textAll(json);
+        json = String();
+    }
+}

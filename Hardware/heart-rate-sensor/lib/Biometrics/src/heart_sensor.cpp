@@ -117,6 +117,9 @@ void HeartSensor::start_sensing() {
                         beatAvg += rates[x];
                     beatAvg /= RATE_SIZE;
                 }
+
+                // text all clients the new values
+                text_all_BPM(rates, RATE_SIZE, beatsPerMinute, beatAvg);
             }
         }
         if (irValue < 7000) { // If no finger is detected it inform the user and
