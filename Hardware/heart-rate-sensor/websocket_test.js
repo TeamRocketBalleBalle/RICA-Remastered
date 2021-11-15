@@ -5,7 +5,7 @@ let websocket;
 // Initialization
 // ----------------------------------------------------------------------------
 
-window.addEventListener("load", onLoad);
+// window.addEventListener("load", onLoad);
 
 function onLoad(event) {
   initWebSocket();
@@ -19,6 +19,7 @@ function initWebSocket() {
   console.log("Trying to open a WebSocket connection...");
   websocket = new WebSocket(gateway);
   websocket.onopen = onOpen;
+  websocket.onmessage = onMessage;
   // websocket.onclose = onClose;
 }
 
@@ -29,4 +30,11 @@ function onOpen(event) {
 function onClose(event) {
   console.log("Connection closed");
   setTimeout(initWebSocket, 2000);
+}
+
+function onMessage(event) {
+  console.log(event.data);
+  div = document.getElementById("log");
+  div.textContent += "\n" + event.data;
+  div.scrollIntoView(false);
 }
