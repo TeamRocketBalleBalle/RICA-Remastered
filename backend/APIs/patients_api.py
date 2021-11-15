@@ -10,6 +10,15 @@ bp = flask.Blueprint("patients_api", __name__, url_prefix="/api/v1/patients")
 @bp.route("/get_doc_names/<string:city>/<string:specialization>", methods=['GET'])
 @get_cursor
 def get_doc_names(city, specialization, cursor):
+    """
+    Search the doctor names using city and specialization as its input...
+    :param city:
+    :param specialization:
+    If successful
+        :return JSON object containing [doctor_id, doctor_name, phone_number]:
+    else
+        :return JSON object having [status, reason]:
+    """
     if not isinstance(city, str):
         reason = {
             "status": "BAD REQUEST",
@@ -28,8 +37,8 @@ def get_doc_names(city, specialization, cursor):
     response = {'doctor_details': []}
     for row in cursor:
         doctor_detail = {
-            "doctor_name": row[0],
             "doctor_id": row[1],
+            "doctor_name": row[0],
             "phone_number": row[2]
         }
         response["doctor_details"].append(doctor_detail)
@@ -39,6 +48,14 @@ def get_doc_names(city, specialization, cursor):
 @bp.route("/search_doctor/<string:Name>", methods=['GET'])
 @get_cursor
 def search_doctors_using_name(Name, cursor):
+    """
+    Search doctor name using a sub-string of its Name
+    :param Name:
+    If successful
+        :return JSON object containing [doctor_id, doctor_name, phone_number]:
+    else
+        :return JSON object having [status, reason]:
+    """
     if not isinstance(Name, str):
         reason = {
             "status": "BAD REQUEST",
@@ -62,8 +79,8 @@ def search_doctors_using_name(Name, cursor):
     # give that function the doctor id
     for row in cursor:
         doctor_detail = {
-            "doctor_name": row[0],
             "doctor_id": row[1],
+            "doctor_name": row[0],
             "phone_Number": row[2]
         }
         response["doctor_details"].append(doctor_detail)
