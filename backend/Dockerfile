@@ -28,7 +28,7 @@ RUN python -m pip install gunicorn
 RUN apt-get clean
 
 WORKDIR /app
-COPY . /app
+COPY backend /app/backend
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 # For more info, please refer to https://aka.ms/vscode-docker-python-configure-containers
