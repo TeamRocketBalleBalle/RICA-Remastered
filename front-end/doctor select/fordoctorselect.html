@@ -5,8 +5,35 @@
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
   crossorigin="anonymous"
 />
+<link rel="stylesheet" href="docSelect.css" />
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
 
 <style>
+  #orderButton {
+    position: absolute;
+    left: 107%;
+    top: -47%;
+    background-color: rgb(156, 239, 245);
+    border: white;
+    width: 100px;
+    height: 60px;
+    border-radius: 10%;
+    font-family: poppins;
+  }
+  .table table-striped {
+    font-family: poppins;
+  }
+
+  #search-input {
+    font-family: poppins;
+  }
+  .timeSelect {
+    position: absolute;
+    left: 30%;
+    top: 90%;
+    font-family: "Poppins";
+  }
+
   th {
     color: #fff;
   }
@@ -15,7 +42,12 @@
 <div class="row">
   <div class="col">
     <div class="card card-body">
-      <input id="search-input" class="form-control" type="text" />
+      <input
+        id="search-input"
+        class="form-control"
+        type="text"
+        placeholder="Search Your Doctor"
+      />
     </div>
   </div>
 </div>
@@ -23,20 +55,29 @@
   <tr class="bg-info">
     <th class="bg-info" data-colname="name" data-order="desc">Name</th>
     <th data-colname="age" data-order="desc">profession</th>
-    <th data-colname="birthdate" data-order="desc">adress</th>
+    <th data-colname="birthdate" data-order="desc">address</th>
   </tr>
+
   <tbody id="myTable"></tbody>
 </table>
 
+<div class="timeSelect">
+  <label for="meeting-time">Choose a time for your appointment:</label>
+  <input type="submit" value="SUBMIT" id="orderButton" />
+  <input type="datetime-local" id="meeting-time" name="meeting-time"
+</div>
+
 <script>
-  var myArray = [
-    { name: "Michael", age: "30", birthdate: "11/10/1989" },
-    { name: "Mila", age: "32", birthdate: "10/1/1989" },
-    { name: "Paul", age: "29", birthdate: "10/14/1990" },
-    { name: "Dennis", age: "25", birthdate: "11/29/1993" },
-    { name: "Tim", age: "27", birthdate: "3/12/1991" },
-    { name: "Erik", age: "24", birthdate: "10/31/1995" },
-  ];
+  const myarray = [];
+  $.ajax({
+    method: "GET",
+    url: "https://reqres.in/api/users",
+    success: function (response) {
+      myArray = response.data;
+      buildTable(myArray);
+      console.log(myArray);
+    },
+  });
 
   $("#search-input").on("keyup", function () {
     var value = $(this).val();
@@ -51,7 +92,7 @@
     var filteredData = [];
     for (var i = 0; i < data.length; i++) {
       value = value.toLowerCase();
-      var name = data[i].name.toLowerCase();
+      var name = data[i].last_name.toLowerCase();
       if (name.includes(value)) {
         filteredData.push(data[i]);
       }
@@ -64,9 +105,9 @@
     table.innerHTML = "";
     for (var i = 0; i < data.length; i++) {
       var row = `<tr>
-                        <td>${data[i].name}</td>
-                        <td>${data[i].age}</td>
-                        <td>${data[i].birthdate}</td>
+                        <td>${data[i].id}</td>
+                        <td>${data[i].email}</td>
+                        <td>${data[i].last_name}</td>
                    </tr>`;
       table.innerHTML += row;
     }
