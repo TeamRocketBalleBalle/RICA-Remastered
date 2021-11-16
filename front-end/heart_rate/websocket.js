@@ -5,8 +5,22 @@ Plotly.plot("chart", [
   },
 ]);
 
-let gateway = "ws://192.168.1.38/ws";
+let gateway = "ws:/7fa4-112-196-163-170.ngrok.io/ws";
+
 let websocket;
+var cnt = 0;
+// setInterval();
+async function shift_plot_view() {
+  // Plotly.extendTraces('chart',{ y:[[]]}, [0]);
+  cnt++;
+  if (cnt > 100) {
+    Plotly.relayout("chart", {
+      xaxis: {
+        range: [cnt - 100, cnt],
+      },
+    });
+  }
+}
 
 // ----------------------------------------------------------------------------
 // Initialization
@@ -39,10 +53,12 @@ function onClose(event) {
   setTimeout(initWebSocket, 2000);
 }
 
-function onMessage(event) {
+async function onMessage(event) {
   console.log(event.data);
   data = JSON.parse(event.data);
   if ("ir_val" in data) {
     Plotly.extendTraces("chart", { y: [[data["ir_val"]]] }, [0]);
+
+    await shift_plot_view();
   }
 }
