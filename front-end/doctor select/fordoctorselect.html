@@ -20,8 +20,10 @@
     border-radius: 10%;
     font-family: poppins;
   }
-  .table table-striped {
+  .table {
     font-family: poppins;
+    position: relative;
+    top: 13%;
   }
 
   #search-input {
@@ -29,16 +31,46 @@
   }
   .timeSelect {
     position: absolute;
-    left: 30%;
-    top: 90%;
+    left: 25%;
+    top: 80%;
     font-family: "Poppins";
   }
 
   th {
     color: #fff;
   }
-</style>
+  .row{
+    position: relative;
+    top: 13%;
 
+  }
+.buttin1{
+  position: absolute;
+  left: 90%;
+  top: 5%;
+}
+.buttin2{
+  position: absolute;
+  left: 85%;
+  top: 5%;
+}
+</style>
+<div class="buttin1">
+   <img
+      src="../resource(images)/logout-20.svg"
+      height="35px"
+      width="35px"
+      id="logOut"
+    />
+    </div>
+<div class="buttin2">
+    <img
+      src="../resource(images)/iconmonstr-home-9.svg"
+      height="35px"
+      width="35px"
+      id="home"
+    />
+</div>
 <div class="row">
   <div class="col">
     <div class="card card-body">
@@ -64,7 +96,7 @@
 <div class="timeSelect">
   <label for="meeting-time">Choose a time for your appointment:</label>
   <input type="submit" value="SUBMIT" id="orderButton" />
-  <input type="datetime-local" id="meeting-time" name="meeting-time"
+  <input type="datetime-local" id="meeting-time" name="meeting-time">
 </div>
 
 <script>
