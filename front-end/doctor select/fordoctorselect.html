@@ -53,7 +53,21 @@
     left: 85%;
     top: 5%;
   }
+  .oval {
+    position: absolute;
+    text-align: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    height: 50px;
+    width: 300px;
+    background-color: rgb(156, 239, 245);
+    border-radius: 10%;
+    left: 40%;
+    top: 1%;
+  }
 </style>
+
+<div class="oval" id="lol"></div>
+
 <div class="buttin1">
   <img
     src="../resource(images)/logout-20.svg"
@@ -96,6 +110,9 @@
   <label for="meeting-time">Choose a time for your appointment:</label>
   <input type="submit" value="SUBMIT" id="orderButton" />
   <input type="datetime-local" id="meeting-time" name="meeting-time" />
+
+  <label for="sym">Any Symptoms: </label>
+  <input type="text" id="symptoms" name="symptoms" />
 </div>
 
 <script>
