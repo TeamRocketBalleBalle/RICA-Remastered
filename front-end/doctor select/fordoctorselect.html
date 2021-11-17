@@ -99,6 +99,7 @@
 <table class="table table-striped">
   <tr class="bg-info">
     <th class="bg-info" data-colname="name" data-order="desc">Name</th>
+
     <th data-colname="age" data-order="desc">profession</th>
     <th data-colname="birthdate" data-order="desc">address</th>
   </tr>
@@ -154,8 +155,11 @@
     for (var i = 0; i < data.length; i++) {
       var row = `<tr>
                         <td>${data[i].id}</td>
+                        <td><input type="radio" id="none" name="selectedDiabete1" value="no">Select</td>
                         <td>${data[i].email}</td>
+
                         <td>${data[i].last_name}</td>
+
                    </tr>`;
       table.innerHTML += row;
     }
