@@ -8,7 +8,7 @@ from itsdangerous import URLSafeTimedSerializer
 
 from backend.tests.utility import make_cookie
 
-bp = flask.Blueprint("common_api", __name__, url_prefix="/api/v1/")
+bp = flask.Blueprint("util_api", __name__, url_prefix="/api/v1/")
 
 
 @bp.get("/ping")
