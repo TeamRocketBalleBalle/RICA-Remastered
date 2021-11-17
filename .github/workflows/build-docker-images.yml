@@ -32,7 +32,7 @@ jobs:
         continue-on-error: true
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./back-end
           push: true
           tags: teamrocketballeballe/rica-backend:latest
       -
