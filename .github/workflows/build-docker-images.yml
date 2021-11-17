@@ -5,6 +5,8 @@ on:
     branches:
       - 'main'
       - 'rica-docker-deploy'
+      - 'backend-docker'
+      - 'front-end-docker'
 
 jobs:
   docker:
