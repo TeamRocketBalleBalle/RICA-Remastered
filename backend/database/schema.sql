@@ -4,7 +4,8 @@ CREATE TABLE IF NOT EXISTS users (
     Name varchar(30) NOT NULL,
     Email varchar(50) NOT NULL,
     Location varchar(30) NOT NULL,
-    Phone varchar(10) NOT NULL
+    Phone varchar(10) NOT NULL,
+    pwhash varchar(102) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS patient (
