@@ -9,6 +9,9 @@
 <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
 
 <style>
+  body {
+    overflow-x: hidden;
+  }
   #orderButton {
     position: absolute;
     left: 107%;
@@ -29,9 +32,9 @@
   #search-input {
     font-family: poppins;
   }
-  .timeSelect {
+  #timeSelect {
     position: absolute;
-    left: 25%;
+    left: 15%;
     top: 80%;
     font-family: "Poppins";
   }
@@ -107,14 +110,15 @@
   <tbody id="myTable"></tbody>
 </table>
 
-<div class="timeSelect">
+<form id="timeSelect">
   <label for="meeting-time">Choose a time for your appointment:</label>
-  <input type="submit" value="SUBMIT" id="orderButton" />
+
   <input type="datetime-local" id="meeting-time" name="meeting-time" />
 
   <label for="sym">Any Symptoms: </label>
   <input type="text" id="symptoms" name="symptoms" />
-</div>
+  <input type="submit" value="SUBMIT" id="orderButton" />
+</form>
 
 <script>
   const myarray = [];
