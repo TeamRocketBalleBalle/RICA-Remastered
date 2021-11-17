@@ -1,4 +1,4 @@
-USE rica;
+
 insert into users(UserID, userrole, Name, Email, Location,Phone) values
 (1,"patient", "Roguedbear", "gonerogued@gmail.com", "No Wi-Fi Zone","1234567899"),
 (2, "patient", "Codespicer", "codespicer@gmail.com", "Jeb mein","9876543211"),
