@@ -21,7 +21,7 @@ class TestDoctors_get_booking:
             - expired bookings
         - TODO: test actual appointment content returned
     """
-    base_url = "/api/v1/doctors"
+    base_url = "/api/v1/common"
 
     def test_get_booking_missing_arg(self, client):
         response = client.get(self.base_url + "/appointment")

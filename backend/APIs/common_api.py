@@ -1,7 +1,8 @@
 from datetime import timezone
 
 import flask
-from flask import jsonify, session
+from flask import jsonify, request, session
+from werkzeug.security import check_password_hash
 
 from backend.utility.db_wrapper import get_cursor
 
@@ -143,3 +144,80 @@ def view_order_details(cursor):
             }
             response["order_details"].append(order_detail)
     return jsonify(response), 200
+
+
+@bp.route("/login", methods=['GET', "POST"])
+@get_cursor
+def login(cursor):
+    """
+
+    - If 'id' is not in the session dictionary, then user is not logged in.
+        - Then login the user store their email in the session cookie
+    - If 'id' is in the sessions dictionary, and we're on login page:
+        - Log them out, clear the sessions dictionary
+
+    """
+    response = dict()
+    status_code = 200
+    if request.form and 'id' not in session:
+        email = request.form['email']
+        password = request.form['password']
+
+        query = "SELECT Email from users where Email = %s;"
+        cursor.execute(query, (email,))
+        user = cursor.fetchone()
+
+        # If email does not exists in database
+        if user is None:
+            response = {
+                "status": "NOT FOUND",
+                "reason": f"No account matches with this {email}"
+            }
+            # return jsonify(response), 404
+            status_code = 404
+
+        # Email exists
+        else:
+            query = "SELECT pwhash FROM users where Email = %s;"
+            cursor.execute(query, (email,))
+            hashed_password = cursor.fetchone()[0]
+
+            # Email exists in database and password is correct
+            if (check_password_hash(hashed_password, password)):
+                query = "SELECT UserID FROM users where Email = %s;"
+                cursor.execute(query, (email,))
+                session['id'] = cursor.fetchone()
+                response = {
+                    "status": "OK",
+                    "reason": "Login Successful"
+                }
+                status_code = 200
+                # return jsonify(response), 200
+            # Email exists in database but password is wrong
+            else:
+                response = {
+                    "status": "Unauthorized",
+                    "reason": "Wrong password"
+                }
+                # return jsonify(response), 401
+                status_code = 401
+
+    # User is already logged-in
+    elif 'id' in session:
+        session.clear()
+        response = {
+            "status": "Continue",
+            "reason": "You have been successfully logout... Try login again"
+        }
+        # return jsonify(response), 100
+        status_code = 100
+
+    # Form is empty
+    else:
+        response = {
+            "status": "BAD REQUEST",
+            "reason": "Enter username/password"
+        }
+        status_code = 400
+        # return jsonify(response), 400
+    return jsonify(response), status_code

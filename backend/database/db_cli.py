@@ -12,6 +12,7 @@ dbName = os.getenv("RICA_MYSQL_DB", 'rica')
 
 
 def makeDb(cursor):
+    cursor.execute(f"USE {dbName};")
     with current_app.open_resource('database/schema.sql') as f:
         cursor.execute(f.read().decode('utf8'))
 
