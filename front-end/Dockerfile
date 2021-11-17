@@ -14,4 +14,7 @@ COPY ["welcome page", "${nginx_path}/welcome-page"]
 # cope the nginx conf
 COPY ./nginx.conf ./etc/nginx/conf.d/default.conf
 
+# test if nginx config is valid
+RUN nginx -t
+
 EXPOSE 80
