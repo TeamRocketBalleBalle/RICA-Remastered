@@ -1,7 +1,14 @@
+import os
+
 import click
 import MySQLdb
+from dotenv import load_dotenv
 from flask import current_app
 from flask.cli import with_appcontext
+
+load_dotenv()
+
+dbName = os.getenv("RICA_MYSQL_DB", 'rica')
 
 
 def makeDb(cursor):
@@ -10,13 +17,17 @@ def makeDb(cursor):
 
 
 def addData(cursor):
+    query = "use %s;"
+    cursor.execute(query, (dbName,))
     with current_app.open_resource('database/testdata.sql') as f:
         cursor.execute(f.read().decode('utf8'))
 
 
 def delete_db(cursor):
-    cursor.execute("drop database rica;")
-    cursor.execute("CREATE DATABASE rica;")
+    query = "DROP DATABASE %s;"
+    cursor.execute(query, (dbName,))
+    query = "CREATE DATABASE IF NOT EXISTS %s;"
+    cursor.execute(query, (dbName,))
 
 
 @click.command('create-db')
