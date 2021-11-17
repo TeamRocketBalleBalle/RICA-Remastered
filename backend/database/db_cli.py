@@ -17,17 +17,17 @@ def makeDb(cursor):
 
 
 def addData(cursor):
-    query = "use %s;"
-    cursor.execute(query, (dbName,))
+    query = f"use {dbName};"
+    cursor.execute(query)
     with current_app.open_resource('database/testdata.sql') as f:
         cursor.execute(f.read().decode('utf8'))
 
 
 def delete_db(cursor):
-    query = "DROP DATABASE %s;"
-    cursor.execute(query, (dbName,))
-    query = "CREATE DATABASE IF NOT EXISTS %s;"
-    cursor.execute(query, (dbName,))
+    query = f"DROP DATABASE {dbName};"
+    cursor.execute(query)
+    query = f"CREATE DATABASE IF NOT EXISTS {dbName};"
+    cursor.execute(query)
 
 
 @click.command('create-db')
