@@ -6,10 +6,7 @@ from flask import session
 from flask.sessions import session_json_serializer
 from itsdangerous import URLSafeTimedSerializer
 
-from backend.tests.utility import make_cookie
-
 bp = flask.Blueprint("util_api", __name__, url_prefix="/api/v1/")
-
 
 @bp.get("/ping")
 def ping():
@@ -18,6 +15,8 @@ def ping():
 
 # development only methods
 if os.getenv("FLASK_ENV", "development") == "development":
+    from backend.tests.utility import make_cookie
+
     @bp.get("/gen_cookie/<int:user_id>")
     def gen_cookie(user_id: int):
         session["id"] = '1'
