@@ -75,7 +75,7 @@ def register_blueprints(app: Flask):
     app.register_blueprint(doctors_api.bp)
     app.register_blueprint(patients_api.bp)
     app.register_blueprint(common.bp)
-    app.register_blueprint(common_api)
+    app.register_blueprint(common_api.bp)
 
 
 def register_cli_commands(app: Flask):
