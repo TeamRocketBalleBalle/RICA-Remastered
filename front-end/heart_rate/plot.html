@@ -1,7 +1,8 @@
 <html>
+  <title>Heart Rate monitor</title>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="plotcss.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -13,8 +14,7 @@
     <script src="plotly.js"></script>
     <!--    <link rel="stylesheet" type="text/css" href="plot.css" />-->
   </head>
-
-  <body>
+  <body class="body">
     <div class="wrapper">
       <div class="yes" id="chart"></div>
       <script src="websocket.js"></script>
@@ -23,5 +23,44 @@
     <button type="submit" onclick="websocket.close()">
       close ws connection
     </button>
+    <div class="buttin1">
+      <img
+        src="../resource(images)/logout-20.svg"
+        height="35px"
+        width="35px"
+        id="logOut"
+      />
+    </div>
+    <div class="buttin2">
+      <img
+        src="../resource(images)/iconmonstr-home-9.svg"
+        height="35px"
+        width="35px"
+        id="home"
+      />
+    </div>
+    <div class="oval" id="lol"></div>
   </body>
+
 </html>
+<script>
+  $.ajax({
+method: "GET",
+url: "https://reqres.in/api/users",
+success: function (response) {
+  myArray = response.data;
+  buildTable(myArray);
+  console.log(myArray);
+},
+});
+
+function buildTable(data) {
+  var table = document.getElementById("lol");
+
+  for (var i = 0; i < data.length; i++) {
+    var name = `${data[i].id}`;
+    table.innerHTML += name;
+  }
+}
+
+</script>
