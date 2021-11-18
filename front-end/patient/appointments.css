@@ -1,0 +1,68 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(
+        to right,
+        rgba(161, 196, 253, 0.55),
+        rgba(194, 233, 251, 0.55)
+    );
+    font-family: Poppins;
+    font-weight: 100;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+table {
+    position: absolute;
+    width: 800px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    left: 25%;
+    top: 30%;
+}
+
+th,
+td {
+    padding: 15px;
+    /* background-color: rgba(255,255,255,0.2); */
+    color: rgb(5, 5, 5);
+    user-select: none;
+}
+
+th {
+    text-align: left;
+    user-select: none;
+}
+.oval {
+    position: absolute;
+    text-align: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    height: 50px;
+    width: 300px;
+    background-color: rgb(202, 242, 245);
+    border-radius: 10%;
+    font-weight: bold;
+    left: 40%;
+    top: 1%;
+    user-select: none;
+}
+#logOut {
+    position: absolute;
+    left: 95%;
+    top: 3%;
+}
+#home {
+    position: absolute;
+    left: 88%;
+    top: 3%;
+}

@@ -1,0 +1,37 @@
+button {
+    position: relative;
+    left: 39%;
+    top: 81%;
+    background-color: #01baef;
+}
+.wrapper {
+    position: absolute;
+    left: 25%;
+    top: 19%;
+}
+
+.body {
+    background-color: #ee5166;
+    opacity: 0.85;
+}
+.buttin1 {
+    position: absolute;
+    left: 90%;
+    top: 5%;
+}
+.buttin2 {
+    position: absolute;
+    left: 95%;
+    top: 5%;
+}
+.oval {
+    position: absolute;
+    text-align: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    height: 50px;
+    width: 300px;
+    background-color: #ffb6c1;
+    border-radius: 10%;
+    left: 39%;
+    top: 5%;
+}

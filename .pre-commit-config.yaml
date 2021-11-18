@@ -40,4 +40,4 @@ repos:
     rev: v2.1.0
     hooks:
       - id: codespell
-        args: ["--config", "pyproject.toml", "-D", "-"]
+        args: ["-D", "-"]

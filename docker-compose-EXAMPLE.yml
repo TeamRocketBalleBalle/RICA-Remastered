@@ -1,0 +1,70 @@
+version: "3.4"
+
+services:
+  rica-db:
+    image: mariadb:10
+    restart: unless-stopped
+    container_name: rica-db
+    environment:
+      MYSQL_ROOT_PASSWORD: supersecret
+      MYSQL_USER: rica
+      MYSQL_PASSWORD: rica_password
+      MYSQL_DATABASE: rica
+    volumes:
+      - ./data/rica_data/db:/var/lib/mysql
+
+  rica-backend:
+    image: teamrocketballeballe/rica-backend
+    restart: unless-stopped
+    container_name: rica-backend
+
+    ## if you want to build locally
+    # image: rica-backend
+    # build:
+    #   context: .
+    #   dockerfile: ./Dockerfile
+
+    environment: &backend_envvar
+      # to disable development API endpoints and generate a random
+      # cryptographic key used for signing session cookie
+      FLASK_ENV: production
+      # database host
+      RICA_MYSQL_HOST: rica-db
+      # database user & password
+      RICA_MYSQL_USER: rica
+      RICA_MYSQL_PASSWORD: rica_password
+      # database to use
+      RICA_MYSQL_DB: rica
+    ports:
+      - 5000:5000
+    depends_on:
+      - rica-db
+      - db-migration
+
+  db-migration:
+    image: teamrocketballeballe/rica-backend
+    container_name: rica-migration
+    ## ensure db has the right schema if not, create it
+    command: flask create-db
+
+    ## if you want to fill with testdata also
+    # command: bash -c "flask create-db && flask fill-testdata"
+    environment:
+      <<: *backend_envvar
+      FLASK_APP: backend/__init__
+    depends_on:
+      - rica-db
+
+  rica-frontend:
+    image: teamrocketballeballe/rica-frontend
+    restart: unless-stopped
+    container_name: rica-frontend
+
+    ## if you want to build locally
+    # image: rica-frontend
+    # build:
+    #   context: ./front-end
+    #   dockerfile: Dockerfile
+
+    ports:
+      - "5001:80"
