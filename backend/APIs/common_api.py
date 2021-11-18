@@ -48,7 +48,8 @@ def get_booking_info(cursor):
 
     # TODO: limit appointments by result
     elif userType[0] == "patient":
-        query = "SELECT u.Name, u.Location, u.Phone, ap.timings FROM appointments ap, users u WHERE ap.DoctorID = u.UserID and ap.PatientID = %s;"
+        query = "SELECT u.Name, u.Location, u.Phone, ap.timings FROM appointments ap, users u WHERE ap.DoctorID = " \
+                "u.UserID and ap.PatientID = %s;"
         cursor.execute(query, (user_id,))
         for row in cursor:
             appointment = {
@@ -59,7 +60,8 @@ def get_booking_info(cursor):
             }
             response["appointments"].append(appointment)
     elif userType[0] == "doctor":
-        query = "SELECT u.Name, u.Location, u.Phone, ap.timings FROM appointments ap, users u WHERE ap.PatientID = u.UserID and ap.DoctorID = %s;"
+        query = "SELECT u.Name, u.Location, u.Phone, ap.timings FROM appointments ap, users u WHERE ap.PatientID = " \
+                "u.UserID and ap.DoctorID = %s;"
         cursor.execute(query, (user_id,))
         for row in cursor:
             appointment = {
@@ -120,7 +122,8 @@ def view_order_details(cursor):
         return jsonify(reason), 403
 
     elif userType[0] == "chemist":
-        query = "SELECT u.Name, u.Location, u.Phone, ord.prescription FROM orders ord, users u WHERE ord.PatientID = u.UserID and ord.ChemistID = %s;"
+        query = "SELECT u.Name, u.Location, u.Phone, ord.prescription FROM orders ord, users u WHERE ord.PatientID = " \
+                "u.UserID and ord.ChemistID = %s;"
         cursor.execute(query, (user_id,))
 
         for row in cursor:
@@ -132,7 +135,8 @@ def view_order_details(cursor):
             }
             response["order_details"].append(order_detail)
     elif userType[0] == "patient":
-        query = "SELECT u.Name, u.Location, u.Phone, ord.prescription FROM orders ord, users u WHERE ord.ChemistID = u.UserID and ord.PatientID = %s;"
+        query = "SELECT u.Name, u.Location, u.Phone, ord.prescription FROM orders ord, users u WHERE ord.ChemistID = "\
+                "u.UserID and ord.PatientID = %s;"
         cursor.execute(query, (user_id,))
 
         for row in cursor:
