@@ -4,6 +4,7 @@ import os
 from colorama import Fore, init
 from dotenv import load_dotenv
 from flask import Flask, request
+from flask_cors import CORS
 from flask_mysqldb import MySQL
 
 load_dotenv()
@@ -18,6 +19,7 @@ def config_app(app: Flask):
     app.config["SECRET_KEY"] = 'dev' if os.getenv(
         "FLASK_ENV", "development") == "development" else os.urandom(16)
     app.mysql = MySQL(app)
+    CORS(app, withCredentials=True, supports_credentials=True)
     setup_logger(app)
 
 
@@ -62,9 +64,9 @@ def create_app():
     """
     # create and configure the app
     app = Flask(__name__)
-    config_app(app)
     register_cli_commands(app)
     register_blueprints(app)
+    config_app(app)
 
     return app
 
