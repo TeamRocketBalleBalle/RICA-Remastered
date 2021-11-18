@@ -14,11 +14,17 @@
     <div class="box"></div>
 
     <form action="/action_page.php" id="f1">
-      <input type="text" class="email" required />
-      <span class="U1">email</span>
+      <input type="email" name="email" class="email" id="email" required />
+      <label class="U1" for="email">email</label>
 
-      <input type="password" class="password" required />
-      <span class="U2">Password</span>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="password"
+        required
+      />
+      <label class="U2" for="password">Password</label>
 
       <button type="submit" class="login" form="f1">Login</button>
 
@@ -35,5 +41,41 @@
         style="height: 600px; width: 650px"
       />
     </div>
+
+    <script>
+      let form = document.getElementById("f1");
+      let json = {};
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        console.log(event);
+        form1_data = event;
+        for (form_data_arr of new FormData(document.getElementById("f1"))) {
+          json[form_data_arr[0]] = form_data_arr[1];
+        }
+        // TODO: debug print statement
+        console.log(json);
+        console.log(JSON.stringify(json));
+
+        // source of wizardary: https://gist.github.com/lastguest/1fd181a9c9db0550a847
+        const toUrlEncoded = (obj) =>
+          Object.keys(obj)
+            .map(
+              (k) => encodeURIComponent(k) + "=" + encodeURIComponent(obj[k])
+            )
+            .join("&");
+        fetch("https://rica-remastered.herokuapp.com/api/v1/common/login", {
+          method: "POST",
+          body: toUrlEncoded(json),
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        })
+          .then((res) => res.text())
+          .then((html) => console.log(html))
+          .catch((err) => console.error(err));
+      });
+      /* TODO: ideal function needed
+      backend_url("/path") ==> heroku/path; ngrok.io/path */
+    </script>
   </body>
 </html>
