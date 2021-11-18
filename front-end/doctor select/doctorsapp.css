@@ -1,4 +1,4 @@
-.t{
+.t {
     position: relative;
     top: 23%;
     width: 70%;
@@ -8,13 +8,13 @@
     position: absolute;
     left: 90%;
     top: 5%;
-  }
-  .buttin2 {
+}
+.buttin2 {
     position: absolute;
     left: 85%;
     top: 5%;
-  }
-  .oval {
+}
+.oval {
     position: absolute;
     text-align: center;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -24,18 +24,18 @@
     border-radius: 10%;
     left: 40%;
     top: 1%;
-  }
-body{
-    background-color: beige;
-    opacity: .95;
 }
-.goback{
+body {
+    background-color: beige;
+    opacity: 0.95;
+}
+.goback {
     position: relative;
     left: 80%;
     top: 30%;
     border-radius: 13%;
 }
-.hed{
+.hed {
     position: absolute;
     top: 11%;
     left: 35%;

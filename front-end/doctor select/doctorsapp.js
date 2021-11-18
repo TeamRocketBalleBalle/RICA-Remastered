@@ -10,7 +10,6 @@ $.ajax({
   },
 });
 
-
 function buildTable(data) {
   var table = document.getElementById("myTable");
 
@@ -23,4 +22,3 @@ function buildTable(data) {
     table.innerHTML += row;
   }
 }
-
