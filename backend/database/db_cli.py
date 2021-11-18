@@ -1,22 +1,34 @@
+import os
+
 import click
 import MySQLdb
+from dotenv import load_dotenv
 from flask import current_app
 from flask.cli import with_appcontext
 
+load_dotenv()
+
+dbName = os.getenv("RICA_MYSQL_DB", 'rica')
+
 
 def makeDb(cursor):
+    cursor.execute(f"USE {dbName};")
     with current_app.open_resource('database/schema.sql') as f:
         cursor.execute(f.read().decode('utf8'))
 
 
 def addData(cursor):
+    query = f"use {dbName};"
+    cursor.execute(query)
     with current_app.open_resource('database/testdata.sql') as f:
         cursor.execute(f.read().decode('utf8'))
 
 
 def delete_db(cursor):
-    cursor.execute("drop database rica;")
-    cursor.execute("CREATE DATABASE rica;")
+    query = f"DROP DATABASE {dbName};"
+    cursor.execute(query)
+    query = f"CREATE DATABASE IF NOT EXISTS {dbName};"
+    cursor.execute(query)
 
 
 @click.command('create-db')

@@ -1,5 +1,7 @@
 click~=7.1.2
 colorama~=0.4.4
 Flask~=2.0.2
+flask-cors
 Flask-MySQLdb
+gunicorn
 python-dotenv~=0.17.0

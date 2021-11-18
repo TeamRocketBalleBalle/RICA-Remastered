@@ -1,13 +1,11 @@
-CREATE DATABASE IF NOT EXISTS rica;
-USE rica;
-
 CREATE TABLE IF NOT EXISTS users (
     UserID INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
     userrole varchar(10) NOT NULL,
     Name varchar(30) NOT NULL,
     Email varchar(50) NOT NULL,
     Location varchar(30) NOT NULL,
-    Phone varchar(10) NOT NULL
+    Phone varchar(10) NOT NULL,
+    pwhash varchar(102) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS patient (
@@ -38,10 +36,12 @@ CREATE TABLE IF NOT EXISTS orders(
 );
 
 CREATE TABLE IF NOT EXISTS appointments(
-    BookingID varchar(10) NOT NULL,
+    BookingID INTEGER NOT NULL,
     DoctorID INTEGER NOT NULL,
     PatientID INTEGER NOT NULL,
     Timings TIMESTAMP NOT NULL,
+    Confirmed boolean NOT NULL,
+    symptoms TEXT,
     FOREIGN KEY (PatientID) REFERENCES patient(PatientID),
     FOREIGN KEY (DoctorID) REFERENCES doctor(DoctorID)
 );

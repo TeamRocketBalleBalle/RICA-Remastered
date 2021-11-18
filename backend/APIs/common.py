@@ -6,8 +6,7 @@ from flask import session
 from flask.sessions import session_json_serializer
 from itsdangerous import URLSafeTimedSerializer
 
-bp = flask.Blueprint("common_api", __name__, url_prefix="/api/v1/")
-
+bp = flask.Blueprint("util_api", __name__, url_prefix="/api/v1/")
 
 @bp.get("/ping")
 def ping():
