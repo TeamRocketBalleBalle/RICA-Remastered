@@ -41,6 +41,7 @@
 
   th {
     color: #fff;
+    width: 400px;
   }
   .row {
     position: relative;
@@ -104,7 +105,10 @@
     <th class="bg-info" data-colname="name" data-order="desc">Name</th>
 
     <th data-colname="age" data-order="desc">profession</th>
+
     <th data-colname="birthdate" data-order="desc">address</th>
+
+    <th data-colname="select" data-order="desc">select</th>
   </tr>
 
   <tbody id="myTable"></tbody>
@@ -159,10 +163,12 @@
     for (var i = 0; i < data.length; i++) {
       var row = `<tr>
                         <td>${data[i].id}</td>
-                        <td><input type="radio" id="none" name="selectedDiabete1" value="no">Select</td>
+
                         <td>${data[i].email}</td>
 
                         <td>${data[i].last_name}</td>
+
+                        <td><input type="radio" id="none" name="selectedDiabete1" value="no">Select</td>
 
                    </tr>`;
       table.innerHTML += row;
