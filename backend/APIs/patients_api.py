@@ -62,7 +62,8 @@ bp = flask.Blueprint("patients_api", __name__, url_prefix="/api/v1/patients")
 #             "reason": "Invalid name"
 #         }
 #         return jsonify(reason), 400
-#     # query = " SELECT u.Name, d.DoctorID from users u, doctor d where u.Name like %%s% and u.userrole = 'doctor' and u.UserID = d.DoctorID;"
+#     # query = " SELECT u.Name, d.DoctorID from users u, doctor d where u.Name like %%s% and u.userrole = 'doctor' \
+#               and u.UserID = d.DoctorID;"
 #     # cursor.execute(query, (Name,))
 #
 #     # Don't use 👆 commented syntax because we need: like '%<char>'
@@ -70,7 +71,8 @@ bp = flask.Blueprint("patients_api", __name__, url_prefix="/api/v1/patients")
 #     # I was not able to find a better way than the following method 👇
 #     # We are using like because if the input is `S` it can still give output as (S4DGE, 3)
 #     cursor.execute(
-#         "SELECT u.Name, d.DoctorID, u.Phone from users u, doctor d where u.Name like '%%s%' and u.userrole = 'doctor' and u.UserID = d.DoctorID;",
+#         "SELECT u.Name, d.DoctorID, u.Phone from users u, doctor d where u.Name like '%%s%' and u.userrole = 'doctor'"
+#         " and u.UserID = d.DoctorID;",
 #         Name)
 #     response = {'doctor_details': []}
 #
@@ -109,4 +111,5 @@ def get_doctors(cursor):
 @get_cursor
 def add_new_appointment(doctor_id, cursor):
     patient_id = session.get("id", "")
+    return patient_id  # iknow, its a joke return.
     # TODO: Ponder the question how will it receive time and Symptoms? Will it be a JSON?

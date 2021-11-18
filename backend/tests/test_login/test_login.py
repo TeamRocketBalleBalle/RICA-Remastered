@@ -1,7 +1,5 @@
 import pytest
 
-from backend.tests.utility import make_cookie
-
 
 class Test_common_login:
     base_url = '/api/v1/common'
