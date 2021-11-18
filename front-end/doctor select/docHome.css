@@ -1,0 +1,93 @@
+body {
+    background-color: teal;
+}
+.motivationalQuote {
+    position: absolute;
+
+    top: 150%;
+    left: 50%;
+}
+.oval {
+    position: absolute;
+    text-align: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    height: 50px;
+    width: 300px;
+    background-color: rgb(156, 239, 245);
+    border-radius: 10%;
+    left: 40%;
+    top: 1%;
+}
+.circle {
+    position: absolute;
+    height: 600px;
+    width: 600px;
+
+    border-radius: 70%;
+    top: 12%;
+    left: 10%;
+
+    transition: 1s;
+}
+.image {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+}
+.f3 {
+    position: absolute;
+    top: 45%;
+    left: 65%;
+    transform: rotate(360deg);
+    color: white;
+    user-select: none;
+}
+.f4 {
+    position: absolute;
+    top: 46%;
+    left: 0%;
+    transform: rotate(180deg);
+
+    color: white;
+    user-select: none;
+}
+#upButton {
+    position: absolute;
+    left: 90%;
+    top: 45%;
+}
+#downButton {
+    position: absolute;
+    left: 90%;
+    top: 52%;
+    transform: scaleY(-1);
+}
+#logOut {
+    position: absolute;
+    left: 95%;
+    top: 5%;
+}
+#home {
+    position: absolute;
+    left: 88%;
+    top: 5%;
+}
+.hide {
+    width: 0;
+
+    height: 0;
+    border-top: 500px solid rgb(255, 255, 255);
+    border-right: 500px solid transparent;
+    border-bottom: 500px solid rgb(255, 255, 255);
+    border-left: 500px solid rgb(255, 255, 255);
+    position: absolute;
+    top: -15%;
+    left: -1%;
+}
+.features {
+    position: absolute;
+    left: 89.5%;
+    top: 50%;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    user-select: none;
+}

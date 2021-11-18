@@ -1,0 +1,194 @@
+body {
+    background-color: rgb(164, 220, 212);
+    background-size: 350% 350%;
+    /* animation: gradient 15s ease infinite; */
+}
+
+/* @keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+} */
+.part1 {
+    position: absolute;
+    font-family: "poppins";
+    font-size: 50px;
+    top: 300px;
+    left: 60%;
+    color: white;
+    border-color: black;
+}
+.part2 {
+    position: absolute;
+    font-family: "poppins";
+    font-size: 25px;
+    top: 375px;
+    left: 60%;
+}
+/* .maintenance {
+    position: absolute;
+    font-size: 35px;
+    top: 800px;
+    left: 900px;
+    color: Yellow;
+    border-color: black;
+    border-width: 10px;
+} */
+.logo {
+    position: absolute;
+    top: 1000px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn-group {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 65%;
+    top: 25%;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button.noselect {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    background: transparent;
+    border: 2px solid white;
+    box-shadow: 5px 5px 0 white, -5px -5px 0 white, -5px 5px 0 white,
+        5px -5px 0 white;
+    transition: 500ms ease-in-out;
+}
+
+button.noselect:hover {
+    box-shadow: 20px 5px 0 black, -20px -5px 0 black;
+}
+
+button.noselect:focus {
+    outline: none;
+}
+.button_2 {
+    color: transparent;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 80%;
+    top: 25%;
+}
+
+.Sign_Up {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button.Sign_Up {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    background: transparent;
+    border: 2px solid white;
+    box-shadow: 5px 5px 0 white, -5px -5px 0 white, -5px 5px 0 white,
+        5px -5px 0 white;
+    transition: 500ms ease-in-out;
+}
+
+button.Sign_Up:hover {
+    box-shadow: 20px 5px 0 black, -20px -5px 0 black;
+}
+button.Sign_Up:focus {
+    outline: none;
+}
+.navigation_buttons {
+    position: absolute;
+    width: 200px;
+    height: 64px;
+    left: 1152px;
+    top: 151px;
+    background-color: transparent;
+}
+/* .plusLOGO {
+    position: absolute;
+    left: 850px;
+    top: 1050px;
+} */
+
+/* .video {
+    position: relative;
+    bottom: 100px;
+    left: 100px;
+     marquee-loop: infinite;
+}  */
+/* .hazard {
+    position: absolute;
+    height: 50px;
+    width: 60px;
+} */
+#DocGif {
+    position: absolute;
+    left: 6%;
+    top: 5%;
+}
+
+.box {
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    border-radius: 5%;
+    box-shadow: 1px 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-size: 550px;
+    width: 550px;
+    height: 375px;
+    background-color: rgb(164, 220, 212);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    transition: box-shadow 0.3s;
+}
+.box:hover {
+    /* background-color: #30af9e; */
+    background-image: linear-gradient(315deg, #30af9e 0%, #9af1e6 74%);
+    box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.meow {
+    text-align: center;
+    font-family: "poppins";
+}

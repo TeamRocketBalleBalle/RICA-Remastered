@@ -1,8 +1,10 @@
 name: Render Draw.io
 on:
+  workflow_dispatch:
   push:
     paths:
       - "**.drawio"
+      - "**.drawio.xml"
       - .github/workflows/render-drawio.yml
 
 jobs:
@@ -14,13 +16,25 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: "rename **.drawio.xml to **.drawio if exists"
+        continue-on-error: true
+        run: "mv **.drawio.xml **.drawio"
+
       - name: Export drawio files to svg
         uses: rlespinasse/drawio-export-action@v1.x
         with:
           path: Flowcharts/
           format: svg
-          output: Flowcharts/Rendered
-          transparent: true
+          output: Rendered
+          transparent:  true
+
+      - name: Export drawio files to png
+        uses: rlespinasse/drawio-export-action@v1.x
+        with:
+          path: Flowcharts/
+          format: png
+          output: Rendered/PNGs
+          transparent:  true
 
       - name: Git Auto Commit
         if: github.ref != 'refs/heads/main'
