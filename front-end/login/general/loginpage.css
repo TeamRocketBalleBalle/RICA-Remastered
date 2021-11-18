@@ -24,7 +24,7 @@ input:not(:focus):valid ~ .U1 {
     opacity: 1;
 }
 
-.username {
+.email {
     border-color: grey grey;
     border-radius: 5px;
     text-align: center;

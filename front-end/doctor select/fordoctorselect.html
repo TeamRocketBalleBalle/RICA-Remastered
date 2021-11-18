@@ -9,6 +9,9 @@
 <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
 
 <style>
+  body {
+    overflow-x: hidden;
+  }
   #orderButton {
     position: absolute;
     left: 107%;
@@ -29,15 +32,16 @@
   #search-input {
     font-family: poppins;
   }
-  .timeSelect {
+  #timeSelect {
     position: absolute;
-    left: 25%;
+    left: 15%;
     top: 80%;
     font-family: "Poppins";
   }
 
   th {
     color: #fff;
+    width: 400px;
   }
   .row {
     position: relative;
@@ -53,7 +57,21 @@
     left: 85%;
     top: 5%;
   }
+  .oval {
+    position: absolute;
+    text-align: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    height: 50px;
+    width: 300px;
+    background-color: rgb(156, 239, 245);
+    border-radius: 10%;
+    left: 40%;
+    top: 1%;
+  }
 </style>
+
+<div class="oval" id="lol"></div>
+
 <div class="buttin1">
   <img
     src="../resource(images)/logout-20.svg"
@@ -85,18 +103,26 @@
 <table class="table table-striped">
   <tr class="bg-info">
     <th class="bg-info" data-colname="name" data-order="desc">Name</th>
+
     <th data-colname="age" data-order="desc">profession</th>
+
     <th data-colname="birthdate" data-order="desc">address</th>
+
+    <th data-colname="select" data-order="desc">select</th>
   </tr>
 
   <tbody id="myTable"></tbody>
 </table>
 
-<div class="timeSelect">
+<form id="timeSelect">
   <label for="meeting-time">Choose a time for your appointment:</label>
-  <input type="submit" value="SUBMIT" id="orderButton" />
+
   <input type="datetime-local" id="meeting-time" name="meeting-time" />
-</div>
+
+  <label for="sym">Any Symptoms: </label>
+  <input type="text" id="symptoms" name="symptoms" />
+  <input type="submit" value="SUBMIT" id="orderButton" form="timeSelect" />
+</form>
 
 <script>
   const myarray = [];
@@ -137,8 +163,13 @@
     for (var i = 0; i < data.length; i++) {
       var row = `<tr>
                         <td>${data[i].id}</td>
+
                         <td>${data[i].email}</td>
+
                         <td>${data[i].last_name}</td>
+
+                        <td><input type="radio" id="none" name="selectedDiabete1" value="no">Select</td>
+
                    </tr>`;
       table.innerHTML += row;
     }
