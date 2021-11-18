@@ -4,7 +4,7 @@
 }
 
 body {
-    background: #2e3740;
+    background: #fff;
     color: #435160;
     font-family: "Open Sans", sans-serif;
 }
@@ -62,7 +62,7 @@ label {
 }
 
 #agree:checked ~ label[for="agree"] {
-    background: #435160;
+    background: #fff;
 }
 
 input[type="submit"] {
@@ -94,7 +94,7 @@ input[type="submit"]:hover {
     font-size: 11px;
     text-align: center;
     font-weight: bold;
-    color: #6d7781;
+    color: #fff;
 }
 
 .agree {
@@ -110,6 +110,9 @@ input[type="submit"]:hover {
 }
 
 .animated {
+    position: absolute;
+    top: 140%;
+    left: 0%;
     animation-fill-mode: both;
     animation-duration: 1s;
 }
@@ -132,4 +135,12 @@ input[type="submit"]:hover {
     80% {
         transform: translateX(10px);
     }
+}
+#userType {
+    height: 50px;
+    width: 190px;
+    background-color: transparent;
+    position: absolute;
+    left: 38.5%;
+    top: 68%;
 }
