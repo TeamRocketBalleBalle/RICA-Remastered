@@ -1,127 +1,26 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="chemistHome.css" />
-  </head>
-  <title>chemistHome</title>
-  <body class="body">
-    <section>
-      <!--for demo wrap-->
-      <h1>Orders</h1>
-      <div class="tbl-header">
-        <table cellpadding="0" cellspacing="0" border="0">
-          <thead>
-            <tr>
-              <th>S.No</th>
-              <th>Patient,s Name</th>
-              <th>Medicine</th>
-              <th>Delivery Status</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-      <div class="tbl-content">
-        <table cellpadding="0" cellspacing="0" border="0">
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Jana Kim</td>
-              <td>Advair Diskus</td>
-              <td>Pending</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Macy Dillard</td>
-              <td>Lantus Solostar</td>
-              <td>Delivered</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Joshua Sheridan</td>
-              <td>Vyvanse</td>
-              <td>Pending</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Jasmin House</td>
-              <td>Lyrica</td>
-              <td>Delivered</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Jennie Lugo</td>
-              <td>Spiriva Handihaler</td>
-              <td>Delivered</td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>Siobhan Piper</td>
-              <td>Januvia</td>
-              <td>Not confirmed</td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>Shazia Redmond</td>
-              <td>Humira</td>
-              <td>Delivered</td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>Collette Randall</td>
-              <td>Abilify</td>
-              <td>Pending</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td>Dave Patton</td>
-              <td>Sovaldi</td>
-              <td>Not confirmed</td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>Johnny Callahan</td>
-              <td>Crestor</td>
-              <td>Pending</td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td>Grant Hills</td>
-              <td>Enbrel</td>
-              <td>Delivered</td>
-            </tr>
-            <tr>
-              <td>12</td>
-              <td>Esha Hinton</td>
-              <td>Harvoni</td>
-              <td>Delivered</td>
-            </tr>
-            <tr>
-              <td>13</td>
-              <td>Maya Crowther</td>
-              <td>Nexium</td>
-              <td>Cancelled</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-    <button class="namenoselect">
-      <svg
-        class="svg-icon"
-        style="
-          width: 1em;
-          height: 1em;
-          vertical-align: middle;
-          fill: currentColor;
-          overflow: hidden;
-        "
-        viewBox="0 0 1024 1024"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M835.669333 554.666667h-473.173333A42.453333 42.453333 0 0 1 320 512a42.666667 42.666667 0 0 1 42.474667-42.666667h473.173333l-161.813333-161.834666a42.666667 42.666667 0 0 1 60.330666-60.330667l234.666667 234.666667a42.666667 42.666667 0 0 1 0 60.330666l-234.666667 234.666667a42.666667 42.666667 0 0 1-60.330666-60.330667L835.669333 554.666667zM554.666667 42.666667a42.666667 42.666667 0 1 1 0 85.333333H149.525333C137.578667 128 128 137.578667 128 149.482667v725.034666C128 886.4 137.6 896 149.525333 896H554.666667a42.666667 42.666667 0 1 1 0 85.333333H149.525333A106.816 106.816 0 0 1 42.666667 874.517333V149.482667A106.773333 106.773333 0 0 1 149.525333 42.666667H554.666667z"
-        />
-      </svg>
-    </button>
-  </body>
-</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
+<script src="chemisthome.js"></script>
+<link rel="stylesheet" href="hemlo.css" />
+
+<style>
+  th {
+    color: #fff;
+  }
+</style>
+
+<table class="tbl-header">
+  <tr class="bg-info">
+    <th>First</th>
+    <th>Last</th>
+    <th>Email</th>
+  </tr>
+
+  <tbody id="myTable"></tbody>
+</table>

@@ -1,9 +1,9 @@
 [].forEach.call(document.querySelectorAll("lol"), function (input) {
   input.addEventListener("click", function (elm) {
-    console.log(input.value);
-    // Send this value to the server with ajax or something
+    console.log(input.id);
   });
 });
+//above code for radio button
 
 let form1 = document.getElementById("forall");
 let form2 = document.getElementById("signup-form2");
@@ -17,21 +17,21 @@ form1.addEventListener("submit", (event) => {
     console.log(form_data_arr);
   }
   console.log(json);
-  console.log(JSON.stringify(json) + JSON.stringify(lol));
+  console.log(JSON.stringify(json) + JSON.stringify(i));
 });
-
+//code to convert data
 const toUrlEncoded = (obj) =>
   Object.keys(obj)
     .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]))
     .join("&");
-fetch("https://rica-remastered.herokuapp.com/api/v1/common/login", {
+fetch("link where we post data", {
   method: "POST",
   body: toUrlEncoded(json),
   headers: {
     "Content-Type": "application/x-www-form-urlencoded",
   },
 });
-
+//post data
 const myarray = [];
 $.ajax({
   method: "GET",
@@ -42,6 +42,7 @@ $.ajax({
     console.log(myArray);
   },
 });
+//above where we get data
 
 $("#search-input").on("keyup", function () {
   var value = $(this).val();
@@ -51,7 +52,7 @@ $("#search-input").on("keyup", function () {
 });
 
 buildTable(myArray);
-
+//search attribute
 function searchTable(value, data) {
   var filteredData = [];
   for (var i = 0; i < data.length; i++) {
@@ -62,7 +63,7 @@ function searchTable(value, data) {
     }
   }
   return filteredData;
-}
+} //still control
 
 function buildTable(data) {
   var table = document.getElementById("myTable");
@@ -80,3 +81,4 @@ function buildTable(data) {
     table.innerHTML += row;
   }
 }
+//table
