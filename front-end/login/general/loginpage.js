@@ -17,12 +17,13 @@ form.addEventListener("submit", (event) => {
       .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]))
       .join("&");
 
-  fetch("https://rica-remastered.herokuapp.com/api/v1/common/login", {
+  fetch(backend_url("/common/login"), {
     method: "POST",
     body: toUrlEncoded(json),
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
+    credentials: "include",
   })
     .then((res) => res.text())
     .then((html) => console.log(html))
