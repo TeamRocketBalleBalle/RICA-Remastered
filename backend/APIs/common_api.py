@@ -1,8 +1,9 @@
+import re
 from datetime import timezone
 
 import flask
 from flask import jsonify, request, session
-from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 
 from backend.utility.db_wrapper import get_cursor
 
@@ -224,4 +225,100 @@ def login(cursor):
         }
         status_code = 400
         # return jsonify(response), 400
+    return jsonify(response), status_code
+
+
+@bp.route('/register')
+@get_cursor
+def register(cursor):
+    response = dict()
+    status_code = 200
+    # Form not empty aka no blank inputs
+    if request.form:
+        name = request.form['username']
+        email = request.form['email']
+        password = generate_password_hash(request.form['password'])
+        phone = request.form['number']
+        location = request.form['address']
+        userrole = request.form['usertype']
+
+        query = "SELECT Email FROM users where email = %s;"
+        cursor.execute(query, (email))
+        existence = cursor.fetchone()
+        EMAIL_REGEX = re.compile(r"[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+")
+
+        # Email is valid -> has "@" and "."
+        if EMAIL_REGEX.match(email):
+            # Email exists in Database
+            if existence is not None:
+                response = {
+                    "status": "CONFLICT",
+                    "reason": f"Account already exist with {email}"
+                }
+                status_code = 409
+                # return jsonify(response), 409
+            # New user/email
+            else:
+
+                # If user is patient/chemist and has entered degree or specialization
+                if userrole != 'doctor':
+                    try:
+                        degree = request.form['degree']
+                        specialization = request.form['specialisation']
+                    except Exception:
+                        pass
+                    else:
+                        response = {
+                            "status": "BAD REQUEST",
+                            "reason": "Degree and Specialisation are only limited to doctor"
+                        }
+                        status_code = 400
+                        # return jsonify(response), 400
+                # if user is doctor and has not entered degree or specialization
+                else:
+                    try:
+                        degree = request.form['degree']
+                        specialization = request.form['specialisation']
+                    except Exception:
+                        response = {
+                            "status": "BAD REQUEST",
+                            "reason": "Enter degree/specialization"
+                        }
+                        status_code = 400
+                        # return jsonify(response), 400
+                    else:
+                        pass
+
+                query = "INSERT INTO users(userrole, Name, Email, Location, phone, pwhash) VALUES(%s, %s, %s, %s, %s, %s);"
+                values = (userrole, name, email, location, phone, password)
+                cursor.execute(query, values)
+                cursor.commit()
+                if userrole != 'doctor':
+                    query = "SELECT UserID from users where email =  %s;"
+                    cursor.execute(query, (email,))
+                    user_id = cursor.fetchone()[0]
+                    query = "INSERT INTO %s values(%s);"
+                    cursor.execute(query, (userrole, user_id))
+                    cursor.commit()
+                else:
+                    query = "SELECT UserID from users where email =  %s;"
+                    cursor.execute(query, (email,))
+                    user_id = cursor.fetchone()[0]
+
+                    query = "INSERT INTO doctor values(%s, %s, %s);"
+                    cursor.execute(query, (user_id, degree, specialization))
+                    cursor.commit()
+        else:
+            response = {
+                "status": "BAD REQUEST",
+                "reason": "Not a valid email"
+            }
+            status_code = 400
+    else:
+        response = {
+            "status": "BAD REQUEST",
+            "reason": "It seemed you missed something in the form... Try again"
+        }
+        status_code = 400
+
     return jsonify(response), status_code
