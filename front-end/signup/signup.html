@@ -9,30 +9,49 @@
   type="text/css"
 />
 <link rel="stylesheet" type="text/css" href="signup.css" />
-<form action="/action_page.php" method="get">
-  <div class="login">
-    <h2>Register</h2>
-    <input name="username" placeholder="Username" type="text" />
-    <input id="pw" name="password" placeholder="Password" type="password" />
-    <input name="email" placeholder="E-Mail Address" type="text" />
-    <input name="number" placeholder="Number" type="text" />
-    <input name="address" placeholder="Address" type="text" />
-    <input class="animated" type="submit" value="Register" />
-  </div>
+<html>
+  <input
+    class="ggwp"
+    type="button"
+    value="Toggle"
+    data-bind="click: toggleView"
+  />
 
-  <select id="userType" name="userType">
-    <option value="0">General Practitioner</option>
-    <option value="1">Surgeon</option>
-    <option value="2">Gynecologist</option>
-    <option value="3">Dentist</option>
-    <option value="4">Dermatologists</option>
-    <option value="5">ENT Specialist</option>
-    <option value="6">General Physicians</option>
-    <option value="7">Pediatricians</option>
-    <option value="8">Neurologist</option>
-    <option value="9">Rheumatologist</option>
-    <option value="10">Allergist/Immunologist</option>
-    <option value="11">Psychiatrist</option>
-    <option value="12">Endocrinologist</option>
-  </select>
-</form>
+  <form id="gg" method="get">
+    <div class="login" data-ind="visible: showGrid()">
+      <h2>Register</h2>
+      <input name="username" placeholder="Username" type="text" />
+      <input id="pw" name="password" placeholder="Password" type="password" />
+      <input name="email" placeholder="E-Mail Address" type="text" />
+      <input name="number" placeholder="Number" type="text" />
+      <input name="address" placeholder="Address" type="text" />
+      <input class="animated" type="submit" value="Register" form="gg" />
+    </div>
+
+    <select id="userType" name="userType">
+      <option value="0">General Practitioner</option>
+      <option value="1">Surgeon</option>
+      <option value="2">Gynecologist</option>
+      <option value="3">Dentist</option>
+      <option value="4">Dermatologists</option>
+      <option value="5">ENT Specialist</option>
+      <option value="6">General Physicians</option>
+      <option value="7">Pediatricians</option>
+      <option value="8">Neurologist</option>
+      <option value="9">Rheumatologist</option>
+      <option value="10">Allergist/Immunologist</option>
+      <option value="11">Psychiatrist</option>
+      <option value="12">Endocrinologist</option>
+    </select>
+
+    <!--<div class="lg" data-ind="visible: showGrid()">-->
+    <!--  <input name="username2" placeholder="Username" type="text" />-->
+    <!--  <input id="pw2" name="password" placeholder="Password" type="password" />-->
+    <!--  <input name="email2" placeholder="E-Mail Address" type="text" />-->
+    <!--  <input name="number2" placeholder="Number" type="text" />-->
+    <!--  <input name="address2" placeholder="Address" type="text" />-->
+    <!--  <input class="animated2" type="submit" value="Register" form="gg"/>-->
+    <!--</div>-->
+  </form>
+</html>
+<script src="signup.js"></script>
