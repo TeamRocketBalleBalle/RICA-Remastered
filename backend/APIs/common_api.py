@@ -289,7 +289,8 @@ def register(cursor):
                     else:
                         pass
 
-                query = "INSERT INTO users(userrole, Name, Email, Location, phone, pwhash) VALUES(%s, %s, %s, %s, %s, %s);"
+                query = "INSERT INTO users(userrole, Name, Email, Location, phone, pwhash)" \
+                        " VALUES(%s, %s, %s, %s, %s, %s);"
                 values = (userrole, name, email, location, phone, password)
                 cursor.execute(query, values)
                 cursor.commit()
