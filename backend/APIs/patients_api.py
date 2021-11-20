@@ -247,9 +247,9 @@ def order_medicine(cursor):
     return jsonify(response), status_code
 
 
-@bp.route('view_chemist')
+@bp.route('/view_chemist')
 @get_cursor
-def view_chemist():
+def view_chemist(cursor):
     query = "SELECT u.Name, u.UserID, u.Phone, u.email,u.Location FROM users u, chemist c where c.ChemistID = u.UserID;"
     cursor.execute(query)
     response = {"chemist_details": []}
