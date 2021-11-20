@@ -1,0 +1,59 @@
+body {
+    overflow-x: hidden;
+}
+#orderButton {
+    position: absolute;
+    left: 107%;
+    top: -47%;
+    background-color: rgb(156, 239, 245);
+    border: white;
+    width: 100px;
+    height: 60px;
+    border-radius: 10%;
+    font-family: poppins;
+}
+.table {
+    font-family: poppins;
+    position: relative;
+    top: 13%;
+}
+
+#search-input {
+    font-family: poppins;
+}
+#forall {
+    position: absolute;
+    left: 15%;
+    top: 80%;
+    font-family: "Poppins";
+}
+
+th {
+    color: #fff;
+    width: 400px;
+}
+.row {
+    position: relative;
+    top: 13%;
+}
+.buttin1 {
+    position: absolute;
+    left: 90%;
+    top: 5%;
+}
+.buttin2 {
+    position: absolute;
+    left: 85%;
+    top: 5%;
+}
+.oval {
+    position: absolute;
+    text-align: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    height: 50px;
+    width: 300px;
+    background-color: rgb(156, 239, 245);
+    border-radius: 10%;
+    left: 40%;
+    top: 1%;
+}

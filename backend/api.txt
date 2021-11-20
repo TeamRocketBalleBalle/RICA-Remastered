@@ -1,0 +1,42 @@
+## Splash page
+    - Doctor page link
+    - Chemist page link
+
+## Sign up page
+    - [API] Registration form POST data
+
+## login page
+    - [API] SRP mathematical dance method whatever.
+        -> return user type.
+            figure out some way to send directly the page or json data of the type
+
+## patient logged in page
+    - link -> appointments page
+    - link -> authorisation page                    [TBD]
+    - link -> heartbeat                             [TBD]
+
+    - ## Appointment's page
+        - [API] previous appointments
+        - link -> book appointment page
+
+        - ## book appointment page
+            - [API] get doctor,  inputs: city + specialisation [Testing required]
+            - [API] search doctors using name                  [Testing required]
+            - [API] get doctor bio                             [Info Required]
+            - [API] date time book appointment, symptoms message; return -> confirmation success? [TBD]
+
+## Doctor's page
+    - [API] get list of bookings   [Done]
+    - [API] update slots                            [TBD]
+    - [API] detailed appointment info  [Done]
+    - [API] [PATCH] accept/decline appointment      [Testing required]
+
+
+next discussion:
+    - chemist side page discussion
+    - doctor side prescription generation by clicking on appointment
+        - prescription specifics, description, PGP signature
+    - prescription can be viewed by patient
+    - prescription can be viewed by patient
+    - while contacting chemist patient can select prescription from list
+    - patient can assign or view nicknames/summary to prescriptions

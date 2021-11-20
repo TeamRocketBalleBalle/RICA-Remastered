@@ -1,18 +1,14 @@
 [pycodestyle]
-count = True
-ignore = E226,E302,E41
+count = true
+ignore = "E226,E302,E41"
 max-line-length = 120
-statistics = True
+statistics = true
 
 [flake8]
 max-line-length = 120
-exclude = .git,__pycache__
+exclude = ".git,__pycache__"
 
 
 [isort]
 line_length = 79
-balanced_wrapping = True
-
-[codespell]
-ignore-words = .github/codespell/allow-words.txt
-dictionary = .github/codespell/custom-dictionary.txt
+balanced_wrapping = true
