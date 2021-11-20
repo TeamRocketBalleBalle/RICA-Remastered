@@ -189,12 +189,16 @@ def login(cursor):
 
             # Email exists in database and password is correct
             if (check_password_hash(hashed_password, password)):
+                query = "SELECT userrole from users where Email = %s;"
+                cursor.execute(query, (email,))
+                usertype = cursor.fetchone()[0]
                 query = "SELECT UserID FROM users where Email = %s;"
                 cursor.execute(query, (email,))
                 session['id'] = cursor.fetchone()
                 response = {
                     "status": "OK",
-                    "reason": "Login Successful"
+                    "reason": "Login Successful",
+                    "usertype": usertype
                 }
                 status_code = 200
                 # return jsonify(response), 200
