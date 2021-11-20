@@ -1,18 +1,19 @@
 html,
 body {
+    overflow-x: hidden;
     height: 100%;
 }
 
-body {
-    margin: 0;
-    background: linear-gradient(
-        to right,
-        rgba(161, 196, 253, 0.55),
-        rgba(194, 233, 251, 0.55)
-    );
-    font-family: Poppins;
-    font-weight: 100;
-}
+/*body {*/
+/*    margin: 0;*/
+/*    background: linear-gradient(*/
+/*        to right,*/
+/*        rgba(161, 196, 253, 0.55),*/
+/*        rgba(194, 233, 251, 0.55)*/
+/*    );*/
+/*    font-family: Poppins;*/
+/*    font-weight: 100;*/
+/*}*/
 
 .container {
     position: absolute;
@@ -23,7 +24,6 @@ body {
 
 table {
     position: absolute;
-    width: 800px;
     border-collapse: collapse;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
