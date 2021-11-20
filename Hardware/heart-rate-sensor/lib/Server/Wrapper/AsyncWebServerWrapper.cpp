@@ -51,7 +51,7 @@ void AsyncWebServerWrapper::regiser_credential_only_API() {
 // debug methods
 #if RICA_SENSOR_DEBUG
 
-    __server->on("/show_credentials", HTTP_GET, show_credentials);
+    // __server->on("/show_credentials", HTTP_GET, show_credentials);
     __server->on("/wipe", HTTP_DELETE, [](AsyncWebServerRequest *request) {
         Preferences preferences;
         preferences.begin("config");
