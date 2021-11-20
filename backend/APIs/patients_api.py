@@ -135,7 +135,7 @@ def add_new_appointment(cursor):
         status_code = 400
         # return jsonify(response), 400
 
-    # for chemists, unauthorised for them since they dont have bookings
+    # Onlyy for patient
     elif userType[0] != "patient":
         response = {
             "status": "FORBIDDEN",
@@ -143,40 +143,123 @@ def add_new_appointment(cursor):
         }
         status_code = 403
         # return jsonify(response), 403
-
-    if request.form:
-        timing = request.form["meeting-time"]
-        symptoms = request.form["symptoms"]
-        # Subject to changes
-        doctor_id = request.form["doctor_id"]
-        timing = datetime.strptime(timing, "%Y-%m-%dT%H:%M").isoformat()
-        query = "select DoctorID from doctor where UserID = %s;"
-        cursor.execute(query, (doctor_id,))
-        doc_existence = cursor.fetchone()
-        if doc_existence is None:
-            response = {
-                "status": "NOT FOUND",
-                "reason": "Doctor not recognised by server"
-            }
-            status_code = 404
-        else:
-            cursor.execute(
-                "SELECT BookingID FROM appointments ORDER BY BookingID DESC LIMIT 1;")
-            booking_id = cursor.fetchone()[0] + 1
-            query = """INSERT INTO appointments(BookingID, PatientID, DoctorID, Timings, Confirmed, symptoms)
-            VALUES (%s, %s, %s, %s, %s, %s);"""
-
-            cursor.execute(query, (booking_id, patient_id,
-                           doctor_id, timing, 0, symptoms))
-            response = {
-                "status": "OK",
-                "reason": "Appointment added"
-            }
-            status_code = 200
     else:
+        if request.form:
+            timing = request.form["meeting-time"]
+            symptoms = request.form["symptoms"]
+            # Subject to changes
+            doctor_id = request.form["doctor_id"]
+            timing = datetime.strptime(timing, "%Y-%m-%dT%H:%M").isoformat()
+            query = "select DoctorID from doctor where UserID = %s;"
+            cursor.execute(query, (doctor_id,))
+            doc_existence = cursor.fetchone()
+            if doc_existence is None:
+                response = {
+                    "status": "NOT FOUND",
+                    "reason": "Doctor not recognised by server"
+                }
+                status_code = 404
+            else:
+                cursor.execute(
+                    "SELECT BookingID FROM appointments ORDER BY BookingID DESC LIMIT 1;")
+                booking_id = cursor.fetchone()[0] + 1
+                query = """INSERT INTO appointments(BookingID, PatientID, DoctorID, Timings, Confirmed, symptoms)
+                VALUES (%s, %s, %s, %s, %s, %s);"""
+
+                cursor.execute(query, (booking_id, patient_id,
+                               doctor_id, timing, 0, symptoms))
+                response = {
+                    "status": "OK",
+                    "reason": "Appointment added"
+                }
+                status_code = 200
+        else:
+            response = {
+                "status": "BAD REQUEST",
+                "reason": "Not are the required fields are submitted"
+            }
+            status_code = 400
+    return jsonify(response), status_code
+
+
+@bp.route('/order_medicine')
+@get_cursor
+def order_medicine(cursor):
+    patient_id = session.get("id", "")
+    response = dict()
+    status_code = 200
+    if not isinstance(patient_id, int):
         response = {
             "status": "BAD REQUEST",
-            "reason": "Not are the required fields are submitted"
+            "reason": f"\"{patient_id}\" is not a valid patient_id"
         }
         status_code = 400
+        # return jsonify(response), 400
+    query = " select userrole from users where UserID = %s"
+    cursor.execute(query, (patient_id,))
+    userType = cursor.fetchone()
+
+    # if somehow we have non-existent user id in the cookie
+    if userType is None:
+        response = {
+            "status": "BAD REQUEST",
+            "reason": f"\"{patient_id}\" is not a valid patient_id"
+        }
+        status_code = 400
+        # return jsonify(response), 400
+
+    # Only for patient
+    elif userType[0] != "patient":
+        response = {
+            "status": "FORBIDDEN",
+            "reason": f"{userType[0]} do not have access to order medicine"
+        }
+        status_code = 403
+        # return jsonify(response), 403
+    else:
+        if request.form:
+            medicine_name = request.form['medicine_name']
+            days = request.form['days']
+            dose = request.form['dosage']
+            chemist_id = request.form['chemist_id']
+
+            query = "SELECT ChemistID from chemist where ChemistID = %s;"
+            cursor.execute(query, (chemist_id,))
+            chemist_exists = cursor.fetchone()
+
+            if chemist_exists is None:
+                response = {
+                    "status": "NOT FOUND",
+                    "reason": "Chemist not recognised by server"
+                }
+                status_code = 404
+            else:
+                query = """INSERT INTO orders(PatientID, ChemistID, prescription)
+                VALUES(%s, %s, JSON_OBJECT('medicine_name', %s,'Dose', %s, 'Days', %s));"""
+
+                cursor.execute(query, (patient_id, chemist_id,
+                               medicine_name, dose, days))
+                response = {
+                    "status": "OK",
+                    "reason": "Medicine ordered successfully"
+                }
+                status_code = 200
     return jsonify(response), status_code
+
+
+@bp.route('view_chemist')
+@get_cursor
+def view_chemist():
+    query = "SELECT u.Name, u.UserID, u.Phone, u.email,u.Location FROM users u, chemist c where c.ChemistID = u.UserID;"
+    cursor.execute(query)
+    response = {"chemist_details": []}
+    for row in cursor:
+        chemist_detail = {
+            "chemist_name": row[0],
+            "chemist_id": row[1],
+            "phone": row[2],
+            "email": row[3],
+            "location": row[4]
+        }
+        response["chemist_details"].append(chemist_detail)
+    return jsonify(response), 200

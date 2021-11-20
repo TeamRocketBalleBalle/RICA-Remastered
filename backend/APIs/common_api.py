@@ -171,7 +171,9 @@ def login(cursor):
         query = "SELECT Email from users where Email = %s;"
         cursor.execute(query, (email,))
         user = cursor.fetchone()
-
+        query = "SELECT userrole from users where Email = %s;"
+        cursor.execute(query, (email,))
+        usertype = cursor.fetchone()[0]
         # If email does not exists in database
         if user is None:
             response = {
@@ -194,7 +196,8 @@ def login(cursor):
                 session['id'] = cursor.fetchone()
                 response = {
                     "status": "OK",
-                    "reason": "Login Successful"
+                    "reason": "Login Successful",
+                    "usertype": usertype
                 }
                 status_code = 200
                 # return jsonify(response), 200
