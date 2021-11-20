@@ -28,6 +28,9 @@ services:
       # to disable development API endpoints and generate a random
       # cryptographic key used for signing session cookie
       FLASK_ENV: production
+      # use python -c 'import secrets; print(secrets.token_hex())'
+      RICA_SECRET_KEY: "<some very secret key>"
+
       # database host
       RICA_MYSQL_HOST: rica-db
       # database user & password
