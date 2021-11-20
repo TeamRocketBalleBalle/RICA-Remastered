@@ -29,8 +29,8 @@ insert into chemist(ChemistID) values
 
 
 insert into orders(PatientID, ChemistID, prescription) values
-(1, 5, JSON_Object("Vitamin C tablets", "5")),
-(2, 6, JSON_Object("Patanjali Eye Drop", "100 ml"))
+(1, 5, JSON_Object("medicine_name", "Vitamin C tablets", "days","5", "Dose", "2")),
+(2, 6, JSON_Object("medicine_name", "Patanjali Eye Drop", "days", "10", "dose", "3"))
 ;
 
 
