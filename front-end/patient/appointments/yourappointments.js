@@ -9,11 +9,8 @@ $.ajax({
     console.log(myArray);
   },
 });
-
-//i am god and inevitable
-
 function buildTable(data) {
-  var table = document.getElementById("tbl-header");
+  var table = document.getElementById("table");
 
   for (var i = 0; i < data.length; i++) {
     var row = `<tr>
