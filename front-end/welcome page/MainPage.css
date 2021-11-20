@@ -189,7 +189,7 @@ button.Sign_Up:focus {
 }
 .box:hover {
     /* background-color: #30af9e; */
-    background-image: linear-gradient(315deg, #30af9e 0%, #9af1e6 74%);
+    /* background-image: linear-gradient(315deg, #30af9e 0%, #9af1e6 74%); */
     box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 .meow {
