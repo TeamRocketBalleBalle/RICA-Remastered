@@ -48,8 +48,8 @@ def init_db_command():
 def testdata_db_command():
     conn = current_app.mysql.connection
     cursor = conn.cursor()
-    addData(cursor)
     try:
+        addData(cursor)
         cursor.close()
     except MySQLdb.IntegrityError:
         click.echo("Data already present in database")

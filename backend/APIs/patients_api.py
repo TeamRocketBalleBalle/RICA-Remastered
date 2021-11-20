@@ -1,5 +1,7 @@
+from datetime import datetime
+
 import flask
-from flask import jsonify, session
+from flask import jsonify, request, session
 
 from backend.utility.db_wrapper import get_cursor
 
@@ -62,7 +64,8 @@ bp = flask.Blueprint("patients_api", __name__, url_prefix="/api/v1/patients")
 #             "reason": "Invalid name"
 #         }
 #         return jsonify(reason), 400
-#     # query = " SELECT u.Name, d.DoctorID from users u, doctor d where u.Name like %%s% and u.userrole = 'doctor' and u.UserID = d.DoctorID;"
+#     # query = " SELECT u.Name, d.DoctorID from users u, doctor d where u.Name like %%s% and u.userrole = 'doctor' \
+#               and u.UserID = d.DoctorID;"
 #     # cursor.execute(query, (Name,))
 #
 #     # Don't use 👆 commented syntax because we need: like '%<char>'
@@ -70,7 +73,8 @@ bp = flask.Blueprint("patients_api", __name__, url_prefix="/api/v1/patients")
 #     # I was not able to find a better way than the following method 👇
 #     # We are using like because if the input is `S` it can still give output as (S4DGE, 3)
 #     cursor.execute(
-#         "SELECT u.Name, d.DoctorID, u.Phone from users u, doctor d where u.Name like '%%s%' and u.userrole = 'doctor' and u.UserID = d.DoctorID;",
+#         "SELECT u.Name, d.DoctorID, u.Phone from users u, doctor d where u.Name like '%%s%' and u.userrole = 'doctor'"
+#         " and u.UserID = d.DoctorID;",
 #         Name)
 #     response = {'doctor_details': []}
 #
@@ -107,6 +111,72 @@ def get_doctors(cursor):
 
 @bp.route('/new_appointment/', methods=['GET'])
 @get_cursor
-def add_new_appointment(doctor_id, cursor):
+def add_new_appointment(cursor):
     patient_id = session.get("id", "")
-    # TODO: Ponder the question how will it receive time and Symptoms? Will it be a JSON?
+    response = dict()
+    status_code = 200
+    if not isinstance(patient_id, int):
+        response = {
+            "status": "BAD REQUEST",
+            "reason": f"\"{patient_id}\" is not a valid patient_id"
+        }
+        status_code = 400
+        # return jsonify(response), 400
+    query = " select userrole from users where UserID = %s"
+    cursor.execute(query, (patient_id,))
+    userType = cursor.fetchone()
+
+    # if somehow we have non-existent user id in the cookie
+    if userType is None:
+        response = {
+            "status": "BAD REQUEST",
+            "reason": f"\"{patient_id}\" is not a valid patient_id"
+        }
+        status_code = 400
+        # return jsonify(response), 400
+
+    # for chemists, unauthorised for them since they dont have bookings
+    elif userType[0] != "patient":
+        response = {
+            "status": "FORBIDDEN",
+            "reason": f"{userType[0]} do not have access to book new appointments"
+        }
+        status_code = 403
+        # return jsonify(response), 403
+
+    if request.form:
+        timing = request.form["meeting-time"]
+        symptoms = request.form["symptoms"]
+        # Subject to changes
+        doctor_id = request.form["doctor_id"]
+        timing = datetime.strptime(timing, "%Y-%m-%dT%H:%M").isoformat()
+        query = "select DoctorID from doctor where UserID = %s;"
+        cursor.execute(query, (doctor_id,))
+        doc_existence = cursor.fetchone()
+        if doc_existence is None:
+            response = {
+                "status": "NOT FOUND",
+                "reason": "Doctor not recognised by server"
+            }
+            status_code = 404
+        else:
+            cursor.execute(
+                "SELECT BookingID FROM appointments ORDER BY BookingID DESC LIMIT 1;")
+            booking_id = cursor.fetchone()[0] + 1
+            query = """INSERT INTO appointments(BookingID, PatientID, DoctorID, Timings, Confirmed, symptoms)
+            VALUES (%s, %s, %s, %s, %s, %s);"""
+
+            cursor.execute(query, (booking_id, patient_id,
+                           doctor_id, timing, 0, symptoms))
+            response = {
+                "status": "OK",
+                "reason": "Appointment added"
+            }
+            status_code = 200
+    else:
+        response = {
+            "status": "BAD REQUEST",
+            "reason": "Not are the required fields are submitted"
+        }
+        status_code = 400
+    return jsonify(response), status_code

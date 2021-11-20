@@ -45,7 +45,8 @@ def get_new_appointment_details(cursor):
         }
         return jsonify(reason), 403
 
-    query = "SELECT a.BookingID, a.Timings, u.Name FROM appointments a, users u where Confirmed = false and DoctorID = %s and u.UserID = a.PatientID;"
+    query = "SELECT a.BookingID, a.Timings, u.Name FROM appointments a, users u where Confirmed = false " \
+            "and DoctorID = %s and u.UserID = a.PatientID;"
     cursor.execute(query, (doctor_id,))
     response = {'booking_info': []}
     for row in cursor:
