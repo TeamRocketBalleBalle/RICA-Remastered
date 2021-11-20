@@ -171,9 +171,7 @@ def login(cursor):
         query = "SELECT Email from users where Email = %s;"
         cursor.execute(query, (email,))
         user = cursor.fetchone()
-        query = "SELECT userrole from users where Email = %s;"
-        cursor.execute(query, (email,))
-        usertype = cursor.fetchone()[0]
+
         # If email does not exists in database
         if user is None:
             response = {
@@ -191,6 +189,9 @@ def login(cursor):
 
             # Email exists in database and password is correct
             if (check_password_hash(hashed_password, password)):
+                query = "SELECT userrole from users where Email = %s;"
+                cursor.execute(query, (email,))
+                usertype = cursor.fetchone()[0]
                 query = "SELECT UserID FROM users where Email = %s;"
                 cursor.execute(query, (email,))
                 session['id'] = cursor.fetchone()
