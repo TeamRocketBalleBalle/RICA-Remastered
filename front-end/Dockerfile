@@ -10,6 +10,7 @@ COPY patient ${nginx_path}/patient
 COPY ["resource(images)", "${nginx_path}/resource"]
 COPY ["welcome page", "${nginx_path}/welcome-page"]
 COPY signup ${nginx_path}/signup
+COPY successlogout.html .
 
 # cope the nginx conf
 COPY ./nginx.conf ./etc/nginx/conf.d/default.conf
