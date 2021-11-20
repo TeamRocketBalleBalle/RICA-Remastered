@@ -218,7 +218,7 @@ def login(cursor):
             "reason": "You have been successfully logout... Try login again"
         }
         # return jsonify(response), 100
-        status_code = 100
+        status_code = 200
 
     # Form is empty
     else:
