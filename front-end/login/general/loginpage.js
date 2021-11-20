@@ -26,7 +26,15 @@ form.addEventListener("submit", (event) => {
     credentials: "include",
   })
     .then((res) => res.text())
-    .then((html) => console.log(html))
+    .then((data) => {
+      let json = JSON.parse(data);
+      let success = false;
+      if (json["status"] == "OK") {
+        success = true;
+      }
+
+      display_error(json["reason"], success);
+    })
     .catch((err) => console.error(err));
 });
 /* TODO: ideal function needed
