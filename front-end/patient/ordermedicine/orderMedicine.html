@@ -16,31 +16,31 @@
 
     <p id="uploadText">ORDER YOUR MEDICINES PRESCRIBED BY YOUR DOCTOR :</p>
 
-    <form action="/action_page.php" method="get">
+    <form id="formlol" action="/action_page.php" method="get">
       <label for="med" id="medText">MEDICINE NAME</label>
-      <input type="text" id="med" />
+      <input type="text" id="med" name="med" />
 
       <label for="num" id="numText">DOSAGE PER DAY</label>
-      <input type="text" id="num" />
+      <input type="text" id="num" name="dose" />
 
       <label for="days" id="daysText">FOR HOW MANY DAYS</label>
-      <input type="days" id="days" />
+      <input type="text" id="days" name="day" />
 
       <input type="submit" value="ORDER" id="orderButton" />
     </form>
 
-    <a href="../welcome page/successlogout.html">
+    <a href="../../welcome%20page/successlogout.html">
       <img
-        src="../resource(images)/logout-20.svg"
+        src="../../resource(images)/logout-20.svg"
         height="35px"
         width="35px"
         id="logOut"
       />
     </a>
 
-    <a href="../patient/patientHome.html">
+    <a href="../patientHome.html">
       <img
-        src="../resource(images)/iconmonstr-home-9.svg"
+        src="../../resource(images)/iconmonstr-home-9.svg"
         height="35px"
         width="35px"
         id="home"
@@ -48,3 +48,4 @@
     </a>
   </body>
 </html>
+<script src="ordermedicine.js"></script>
