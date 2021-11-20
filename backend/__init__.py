@@ -16,8 +16,11 @@ def config_app(app: Flask):
     app.config['MYSQL_USER'] = os.getenv("RICA_MYSQL_USER", 'root')
     app.config["MYSQL_PASSWORD"] = os.getenv("RICA_MYSQL_PASSWORD", "")
     app.config["MYSQL_DB"] = os.getenv("RICA_MYSQL_DB", "rica")
+
+    # no default value because you need to provide a secret key if FLASK_ENV is not development
     app.config["SECRET_KEY"] = 'dev' if os.getenv(
-        "FLASK_ENV", "development") == "development" else os.urandom(16)
+        "FLASK_ENV", "development") == "development" else os.getenv("RICA_SECRET_KEY")
+
     app.mysql = MySQL(app)
     CORS(app, withCredentials=True, supports_credentials=True)
     setup_logger(app)
