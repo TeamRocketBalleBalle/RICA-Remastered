@@ -111,7 +111,7 @@ input[type="submit"]:hover {
 
 .animated {
     position: absolute;
-    top: 140%;
+    top: 125%;
     left: 0%;
     animation-fill-mode: both;
     animation-duration: 1s;
@@ -136,17 +136,11 @@ input[type="submit"]:hover {
         transform: translateX(10px);
     }
 }
-#userType {
+#specialisation {
     height: 50px;
     width: 190px;
     background-color: transparent;
     position: absolute;
-    left: 38.5%;
-    top: 68%;
-}
-
-.redi {
-    position: absolute;
-    top: 75%;
-    left: 47%;
+    left: 43%;
+    top: 80%;
 }

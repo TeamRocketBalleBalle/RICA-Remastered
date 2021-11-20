@@ -8,7 +8,7 @@ body {
     height: 500px;
     width: 350px;
     top: 110px;
-    left: 850px;
+    left: 860px;
     box-shadow: black;
 }
 .box:hover {
@@ -119,4 +119,12 @@ input:not(:focus):valid ~ .U2 {
 .loginGif {
     position: absolute;
     top: 10%;
+}
+
+#API-input {
+    position: absolute;
+    left: 25%;
+    top: 85%;
+    width: 50px;
+    height: 20px;
 }

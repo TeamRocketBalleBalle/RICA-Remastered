@@ -5,175 +5,63 @@
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
   crossorigin="anonymous"
 />
-<link rel="stylesheet" href="docSelect.css" />
+<link rel="stylesheet" href="fordoctorselect.css" />
 <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
 
-<style>
-  body {
-    overflow-x: hidden;
-  }
-  #orderButton {
-    position: absolute;
-    left: 107%;
-    top: -47%;
-    background-color: rgb(156, 239, 245);
-    border: white;
-    width: 100px;
-    height: 60px;
-    border-radius: 10%;
-    font-family: poppins;
-  }
-  .table {
-    font-family: poppins;
-    position: relative;
-    top: 13%;
-  }
+<html>
+  <section>
+    <div class="oval" id="lol"></div>
 
-  #search-input {
-    font-family: poppins;
-  }
-  #timeSelect {
-    position: absolute;
-    left: 15%;
-    top: 80%;
-    font-family: "Poppins";
-  }
-
-  th {
-    color: #fff;
-    width: 400px;
-  }
-  .row {
-    position: relative;
-    top: 13%;
-  }
-  .buttin1 {
-    position: absolute;
-    left: 90%;
-    top: 5%;
-  }
-  .buttin2 {
-    position: absolute;
-    left: 85%;
-    top: 5%;
-  }
-  .oval {
-    position: absolute;
-    text-align: center;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    height: 50px;
-    width: 300px;
-    background-color: rgb(156, 239, 245);
-    border-radius: 10%;
-    left: 40%;
-    top: 1%;
-  }
-</style>
-
-<div class="oval" id="lol"></div>
-
-<div class="buttin1">
-  <img
-    src="../resource(images)/logout-20.svg"
-    height="35px"
-    width="35px"
-    id="logOut"
-  />
-</div>
-<div class="buttin2">
-  <a href="../patient/patientHome.html">
-    <img
-      src="../resource(images)/iconmonstr-home-9.svg"
-      height="35px"
-      width="35px"
-      id="home"
-    />
-  </a>
-</div>
-<div class="row">
-  <div class="col">
-    <div class="card card-body">
-      <input
-        id="search-input"
-        class="form-control"
-        type="text"
-        placeholder="Search Your Doctor"
+    <div class="buttin1">
+      <img
+        src="../resource(images)/logout-20.svg"
+        height="35px"
+        width="35px"
+        id="logOut"
       />
     </div>
+    <div class="buttin2">
+      <a href="../patient/patientHome.html">
+        <img
+          src="../resource(images)/iconmonstr-home-9.svg"
+          height="35px"
+          width="35px"
+          id="home"
+        />
+      </a>
+    </div>
+  </section>
+  <div class="row">
+    <div class="col">
+      <div class="card card-body">
+        <input
+          id="search-input"
+          class="form-control"
+          type="text"
+          placeholder="Search Your Doctor"
+        />
+      </div>
+    </div>
   </div>
-</div>
-<table class="table table-striped">
-  <tr class="bg-info">
-    <th class="bg-info" data-colname="name" data-order="desc">Name</th>
+  <table class="table table-striped">
+    <tr class="bg-info">
+      <th class="bg-info" data-colname="name" data-order="desc">Name</th>
 
-    <th data-colname="age" data-order="desc">profession</th>
+      <th data-colname="age" data-order="desc">profession</th>
 
-    <th data-colname="birthdate" data-order="desc">address</th>
+      <th data-colname="birthdate" data-order="desc">address</th>
 
-    <th data-colname="select" data-order="desc">select</th>
-  </tr>
+      <th data-colname="select" data-order="desc">select</th>
+    </tr>
+    <tbody id="myTable"></tbody>
+  </table>
 
-  <tbody id="myTable"></tbody>
-</table>
-
-<form id="timeSelect">
-  <label for="meeting-time">Choose a time for your appointment:</label>
-
-  <input type="datetime-local" id="meeting-time" name="meeting-time" />
-
-  <label for="sym">Any Symptoms: </label>
-  <input type="text" id="symptoms" name="symptoms" />
-  <input type="submit" value="SUBMIT" id="orderButton" form="timeSelect" />
-</form>
-
-<script>
-  const myarray = [];
-  $.ajax({
-    method: "GET",
-    url: "https://reqres.in/api/users",
-    success: function (response) {
-      myArray = response.data;
-      buildTable(myArray);
-      console.log(myArray);
-    },
-  });
-
-  $("#search-input").on("keyup", function () {
-    var value = $(this).val();
-    console.log("Value:", value);
-    var data = searchTable(value, myArray);
-    buildTable(data);
-  });
-
-  buildTable(myArray);
-
-  function searchTable(value, data) {
-    var filteredData = [];
-    for (var i = 0; i < data.length; i++) {
-      value = value.toLowerCase();
-      var name = data[i].last_name.toLowerCase();
-      if (name.includes(value)) {
-        filteredData.push(data[i]);
-      }
-    }
-    return filteredData;
-  }
-
-  function buildTable(data) {
-    var table = document.getElementById("myTable");
-    table.innerHTML = "";
-    for (var i = 0; i < data.length; i++) {
-      var row = `<tr>
-                        <td>${data[i].id}</td>
-
-                        <td>${data[i].email}</td>
-
-                        <td>${data[i].last_name}</td>
-
-                        <td><input type="radio" id="none" name="selectedDiabete1" value="no">Select</td>
-
-                   </tr>`;
-      table.innerHTML += row;
-    }
-  }
-</script>
+  <form id="forall" method="post">
+    <label for="meeting-time">Choose a time for your appointment:</label>
+    <input type="datetime-local" id="meeting-time" name="meeting-time" />
+    <label for="symptoms">Any Symptoms: </label>
+    <input type="text" id="symptoms" name="symptoms" />
+    <input type="submit" value="SUBMIT" id="orderButton" form="forall" />
+  </form>
+</html>
+<script src="fordoctorselect.js"></script>
