@@ -22,7 +22,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-table {
+#table {
     position: absolute;
     border-collapse: collapse;
     overflow: hidden;
@@ -65,4 +65,8 @@ th {
     position: absolute;
     left: 88%;
     top: 3%;
+}
+#table1{
+    position: absolute;
+    top: 20%;
 }
