@@ -55,7 +55,7 @@ def get_booking_info(cursor):
         cursor.execute(query, (user_id,))
         for row in cursor:
             appointment = {
-                "doctor_name": row[0],
+                "name": row[0],
                 "location": row[1],
                 "phone_number": row[2],
                 "time": row[3].astimezone(timezone.utc).isoformat()
@@ -67,7 +67,7 @@ def get_booking_info(cursor):
         cursor.execute(query, (user_id,))
         for row in cursor:
             appointment = {
-                "patient_name": row[0],
+                "name": row[0],
                 "location": row[1],
                 "phone_number": row[2],
                 "time": row[3].astimezone(timezone.utc).isoformat()
