@@ -1,3 +1,4 @@
+import json
 import re
 from datetime import timezone
 
@@ -132,7 +133,7 @@ def view_order_details(cursor):
                 "patient_name": row[0],
                 "location": row[1],
                 "phone_number": row[2],
-                "prescription": row[3]
+                "prescription": json.loads(row[3])
             }
             response["order_details"].append(order_detail)
     elif userType[0] == "patient":
