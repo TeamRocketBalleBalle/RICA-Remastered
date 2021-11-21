@@ -1,0 +1,54 @@
+@startuml wifi big brain logic
+usecase (WiFi Check loop) as wificheck
+usecase (Start hotspot) as starthotspot
+(ESP Start)->wificheck
+wificheck-->(credentials exist?)
+
+' start chain reaction tests
+
+(credentials exist?)->starthotspot : no
+(credentials exist?)-->(connect to wifi) : yes
+(connect to wifi)-->(special case) : SSID not available \n(error 201)
+(connect to wifi)->starthotspot : credentials invalid \n[error (15-24/202/)?]
+(special case).>starthotspot : not sure if\n hotspot should be started
+
+' on wifi connect success
+(connect to wifi)-left->(stop the server) : on CONNECTED
+(Stop the hotspot)<--(stop the server)
+(Stop the hotspot)-->(start server & WS) : register default APIs
+
+' hotspot routine?
+starthotspot->(start server) : register credential APIs
+(accept_credentials)<--(start server) : wait for credentials
+' (accept_credentials)->(set recheck flag to true) : option 2 set a flag to true \nwhich the other loop will \nlook for constantly
+(start server) -right-> ([API] status)
+(start server) -down-> ([API] client_ack)
+
+note right of (credentials exist?): if checkCredentials is true
+note top of (connect to wifi): if connect_to_wifi is true
+note right of (accept_credentials): set connect_to_wifi is true
+note right of ([API] status): fetch "STATUS" variable and send it.
+note right of ([API] client_ack): set CLOSE_SERVER to true
+note bottom of (stop the server): after CLOSE_SERVER is true
+
+note as n1
+    Some things loop has to take care of:
+    - which API to register based on STATUS
+    - valid STATUS: {
+        NO_CREDS
+        INVALID_PASS
+        NO_SSID
+        CONNECTING
+        CONNECTED
+        UNKNOWN_ERROR
+      }
+    - other status variables: {
+        CHECK_CREDENTIALS
+        CONNECT_TO_WIFI
+        CLOST_SERVER
+      }
+end note
+' note "connect_to_wifi is true" as connect_note
+' connect_note - (connect to wifi)
+
+@enduml

@@ -1,7 +1,3 @@
 {
-    "recommendations": [
-        "editorconfig.editorconfig",
-        "esbenp.prettier-vscode",
-        "vsciot-vscode.vscode-arduino"
-    ]
+    "recommendations": ["editorconfig.editorconfig", "esbenp.prettier-vscode"]
 }

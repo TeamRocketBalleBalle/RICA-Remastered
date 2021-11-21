@@ -1,3 +1,4 @@
+exclude: "Hardware/heart-rate-sensor/.pio/libdeps/"
 repos:
   - repo: https://github.com/PyCQA/isort
     rev: "5.9.1"
