@@ -1,0 +1,69 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="fordoctorselect.css" />
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+
+<html>
+  <section>
+    <div class="oval" id="lol"></div>
+
+    <div class="buttin1">
+      <a href="../../welcome%20page/successlogout.html">
+        <img
+          src="../../resource(images)/logout-20.svg"
+          height="35px"
+          width="35px"
+          id="logOut"
+        />
+      </a>
+    </div>
+    <div class="buttin2">
+      <a href="../patientHome.html">
+        <img
+          src="../../resource(images)/iconmonstr-home-9.svg"
+          height="35px"
+          width="35px"
+          id="home"
+        />
+      </a>
+    </div>
+  </section>
+  <div class="row">
+    <div class="col">
+      <div class="card card-body">
+        <input
+          id="search-input"
+          class="form-control"
+          type="text"
+          placeholder="Search Your Doctor"
+        />
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped">
+    <tr class="bg-info">
+      <th class="bg-info" data-colname="name" data-order="desc">Name</th>
+
+      <th data-colname="age" data-order="desc">profession</th>
+
+      <th data-colname="birthdate" data-order="desc">address</th>
+
+      <th data-colname="select" data-order="desc">select</th>
+    </tr>
+    <tbody id="myTable"></tbody>
+  </table>
+
+  <form id="forall" method="post">
+    <label for="meeting-time">Choose a time for your appointment:</label>
+    <input type="datetime-local" id="meeting-time" name="meeting-time" />
+    <label for="symptoms">Any Symptoms: </label>
+    <input type="text" id="symptoms" name="symptoms" />
+    <input type="submit" value="SUBMIT" id="orderButton" form="forall" />
+  </form>
+</html>
+<script src="fordoctorselect.js"></script>

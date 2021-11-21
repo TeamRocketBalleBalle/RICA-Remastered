@@ -13,7 +13,7 @@ $.ajax({
 //i am god and inevitable
 
 function buildTable(data) {
-  var table = document.getElementById("myTable");
+  var table = document.getElementById("tbl-header");
 
   for (var i = 0; i < data.length; i++) {
     var row = `<tr>

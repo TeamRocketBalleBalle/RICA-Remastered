@@ -1,3 +1,4 @@
+import json
 import re
 from datetime import timezone
 
@@ -132,7 +133,7 @@ def view_order_details(cursor):
                 "patient_name": row[0],
                 "location": row[1],
                 "phone_number": row[2],
-                "prescription": row[3]
+                "prescription": json.loads(row[3])
             }
             response["order_details"].append(order_detail)
     elif userType[0] == "patient":
@@ -189,12 +190,16 @@ def login(cursor):
 
             # Email exists in database and password is correct
             if (check_password_hash(hashed_password, password)):
+                query = "SELECT userrole from users where Email = %s;"
+                cursor.execute(query, (email,))
+                usertype = cursor.fetchone()[0]
                 query = "SELECT UserID FROM users where Email = %s;"
                 cursor.execute(query, (email,))
-                session['id'] = cursor.fetchone()
+                session['id'] = cursor.fetchone()[0]
                 response = {
                     "status": "OK",
-                    "reason": "Login Successful"
+                    "reason": "Login Successful",
+                    "usertype": usertype
                 }
                 status_code = 200
                 # return jsonify(response), 200
@@ -215,7 +220,7 @@ def login(cursor):
             "reason": "You have been successfully logout... Try login again"
         }
         # return jsonify(response), 100
-        status_code = 100
+        status_code = 200
 
     # Form is empty
     else:

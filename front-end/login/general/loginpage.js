@@ -17,6 +17,12 @@ form.addEventListener("submit", (event) => {
       .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]))
       .join("&");
 
+  login_button = document.getElementsByClassName("login")[0];
+  login_button.disabled = true;
+  setTimeout(function () {
+    login_button.disabled = false;
+  }, 1500);
+
   fetch(backend_url("/common/login"), {
     method: "POST",
     body: toUrlEncoded(json),
@@ -26,9 +32,31 @@ form.addEventListener("submit", (event) => {
     credentials: "include",
   })
     .then((res) => res.text())
-    .then((html) => console.log(html))
-    .catch((err) => console.error(err));
+    .then((data) => {
+      let json = JSON.parse(data);
+      let success = false;
+      if (json["status"] == "OK") {
+        success = true;
+      }
+      if (json["usertype"] == "patient") {
+        window.location.href = window.location.origin + "/patient/";
+      }
+      if (json["usertype"] == "doctor") {
+        window.location.href = window.location.origin + "/doctor-select/";
+      }
+      if (json["usertype"] == "chemist") {
+        window.location.href = window.location.origin + "/chemist/";
+      }
+
+      display_error(json["reason"], success);
+      login_button.disabled = false;
+    })
+    .catch((err) => {
+      console.error(err);
+      login_button.disabled = false;
+    });
 });
+
 /* TODO: ideal function needed
       backend_url("/path") ==> heroku/path; ngrok.io/path */
 
