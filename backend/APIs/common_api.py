@@ -1,3 +1,4 @@
+import json
 import re
 from datetime import timezone
 
@@ -132,7 +133,7 @@ def view_order_details(cursor):
                 "patient_name": row[0],
                 "location": row[1],
                 "phone_number": row[2],
-                "prescription": row[3]
+                "prescription": json.loads(row[3])
             }
             response["order_details"].append(order_detail)
     elif userType[0] == "patient":
@@ -194,7 +195,7 @@ def login(cursor):
                 usertype = cursor.fetchone()[0]
                 query = "SELECT UserID FROM users where Email = %s;"
                 cursor.execute(query, (email,))
-                session['id'] = cursor.fetchone()
+                session['id'] = cursor.fetchone()[0]
                 response = {
                     "status": "OK",
                     "reason": "Login Successful",
