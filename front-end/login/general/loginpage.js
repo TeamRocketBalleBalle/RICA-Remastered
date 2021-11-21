@@ -39,16 +39,13 @@ form.addEventListener("submit", (event) => {
         success = true;
       }
       if (json["usertype"] == "patient") {
-        window.location.href =
-          "http://127.0.0.1:5500/front-end/patient/patientHome.html";
+        window.location.href = window.location.origin + "/patient/";
       }
       if (json["usertype"] == "doctor") {
-        window.location.href =
-          "http://127.0.0.1:5500/front-end/doctor%20select/docHomePage.html";
+        window.location.href = window.location.origin + "/doctor-select/";
       }
       if (json["usertype"] == "chemist") {
-        window.location.href =
-          "http://127.0.0.1:5500/front-end/chemist/chemist(doc-patient-info)/chemsitHome.html";
+        window.location.href = window.location.origin + "/chemist/";
       }
 
       display_error(json["reason"], success);
