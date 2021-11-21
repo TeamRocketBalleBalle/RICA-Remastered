@@ -7,8 +7,6 @@ on:
         - "backend/**"
         - .github/workflows/run-pytest.yml
   pull_request:
-    paths:
-        - "**.py"
 
 jobs:
   pytest:
