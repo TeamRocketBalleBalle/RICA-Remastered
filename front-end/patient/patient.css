@@ -71,7 +71,7 @@ body {
     position: absolute;
     left: 70%;
     top: 40%;
-    
+
 
 
 } */
@@ -110,9 +110,10 @@ body {
     left: -1%;
 }
 .features {
+    font-family: "Poppins";
     position: absolute;
-    left: 89.5%;
-    top: 48%;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    left: 89.2%;
+    top: 50%;
+
     user-select: none;
 }

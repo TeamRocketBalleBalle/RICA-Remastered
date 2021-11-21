@@ -88,6 +88,7 @@ body {
     position: absolute;
     left: 89.5%;
     top: 50%;
-    font-family: Georgia, "Times New Roman", Times, serif;
+
+    font-family: "Poppins";
     user-select: none;
 }
