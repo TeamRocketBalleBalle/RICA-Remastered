@@ -33,10 +33,6 @@ function buildTable(data) {
   }
 }
 
-
-
-
-
 function buildtable(data) {
   var table = document.getElementById("lol");
 
