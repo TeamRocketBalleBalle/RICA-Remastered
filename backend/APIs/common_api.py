@@ -194,7 +194,7 @@ def login(cursor):
                 usertype = cursor.fetchone()[0]
                 query = "SELECT UserID FROM users where Email = %s;"
                 cursor.execute(query, (email,))
-                session['id'] = cursor.fetchone()
+                session['id'] = cursor.fetchone()[0]
                 response = {
                     "status": "OK",
                     "reason": "Login Successful",
