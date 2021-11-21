@@ -8,9 +8,6 @@ $.ajax({
   },
 });
 
-
-
-
 [].forEach.call(document.querySelectorAll("lol"), function (input) {
   input.addEventListener("click", function (elm) {
     console.log(input.id);
@@ -95,8 +92,6 @@ function buildTable(data) {
   }
 }
 //table
-
-
 
 function buildtable(data) {
   var table = document.getElementById("lol");
