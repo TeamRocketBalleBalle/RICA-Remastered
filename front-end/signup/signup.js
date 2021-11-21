@@ -5,7 +5,7 @@ form1.addEventListener("submit", (event) => {
   event.preventDefault();
   console.log(event);
   form1_data = event;
-  for (form_data_arr of new FormData(document.getElementById("signup-form"))) {
+  for (form_data_arr of new FormData(document.getElementById("gg"))) {
     json[form_data_arr[0]] = form_data_arr[1];
   }
   console.log(json);

@@ -22,6 +22,7 @@ form.addEventListener("submit", (event) => {
   setTimeout(function () {
     login_button.disabled = false;
   }, 1500);
+
   fetch(backend_url("/common/login"), {
     method: "POST",
     body: toUrlEncoded(json),
@@ -37,6 +38,18 @@ form.addEventListener("submit", (event) => {
       if (json["status"] == "OK") {
         success = true;
       }
+      if (json["usertype"] == "patient") {
+        window.location.href =
+          "http://127.0.0.1:5500/front-end/patient/patientHome.html";
+      }
+      if (json["usertype"] == "doctor") {
+        window.location.href =
+          "http://127.0.0.1:5500/front-end/doctor%20select/docHomePage.html";
+      }
+      if (json["usertype"] == "chemist") {
+        window.location.href =
+          "http://127.0.0.1:5500/front-end/chemist/chemist(doc-patient-info)/chemsitHome.html";
+      }
 
       display_error(json["reason"], success);
       login_button.disabled = false;
@@ -46,6 +59,7 @@ form.addEventListener("submit", (event) => {
       login_button.disabled = false;
     });
 });
+
 /* TODO: ideal function needed
       backend_url("/path") ==> heroku/path; ngrok.io/path */
 

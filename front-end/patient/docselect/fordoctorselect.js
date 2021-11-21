@@ -1,3 +1,13 @@
+$.ajax({
+  method: "GET",
+  url: "https://reqres.in/api/users",
+  success: function (response) {
+    myArray = response.data;
+    buildtable(myArray);
+    console.log(myArray);
+  },
+});
+
 [].forEach.call(document.querySelectorAll("lol"), function (input) {
   input.addEventListener("click", function (elm) {
     console.log(input.id);
@@ -82,3 +92,12 @@ function buildTable(data) {
   }
 }
 //table
+
+function buildtable(data) {
+  var table = document.getElementById("lol");
+
+  for (var i = 0; i < data.length; i++) {
+    var name = `${data[i].id}`;
+    table.innerHTML += name;
+  }
+}
