@@ -1,0 +1,130 @@
+body {
+    background-color: #25b6e0;
+}
+.box {
+    transition: box-shadow 0.3s;
+    position: relative;
+    border: solid 2px lightgrey;
+    height: 500px;
+    width: 350px;
+    top: 110px;
+    left: 860px;
+    box-shadow: black;
+}
+.box:hover {
+    box-shadow: 0 0 16px rgba(33, 33, 33, 0.2);
+}
+
+input:focus ~ .U1,
+input:not(:focus):valid ~ .U1 {
+    bottom: 10px;
+    left: 905px;
+    top: 306px;
+    font-size: 11px;
+    opacity: 1;
+}
+
+.email {
+    border-color: grey grey;
+    border-radius: 5px;
+    text-align: center;
+    position: absolute;
+    font-size: 17px;
+    width: 260px;
+    height: 40px;
+    left: 900px;
+    top: 300px;
+}
+.U1 {
+    color: grey;
+    text-align: center;
+    position: absolute;
+    font-size: 20px;
+    pointer-events: none;
+    left: 910px;
+    top: 310px;
+    transition: 0.2s ease all;
+}
+
+input:focus ~ .U2,
+input:not(:focus):valid ~ .U2 {
+    bottom: 10px;
+    left: 905px;
+    top: 366px;
+    font-size: 11px;
+    opacity: 1;
+}
+
+.password {
+    border-color: grey grey;
+    text-align: center;
+    position: absolute;
+    font-size: 17px;
+    width: 260px;
+    height: 40px;
+    left: 900px;
+    top: 360px;
+}
+.U2 {
+    color: grey;
+    text-align: center;
+    position: absolute;
+    font-size: 20px;
+    pointer-events: none;
+    left: 910px;
+    top: 370px;
+    transition: 0.2s ease all;
+}
+.login {
+    position: absolute;
+    border-radius: 10px;
+    left: 975px;
+    top: 440px;
+    height: 36px;
+    width: 120px;
+    font-size: 16px;
+    color: grey;
+}
+.login:hover {
+    box-shadow: 0 0 16px rgba(33, 33, 33, 0.2);
+}
+.logoinform {
+    position: absolute;
+    left: 925px;
+    bottom: 414px;
+}
+.or {
+    font-size: 18px;
+    position: absolute;
+    left: 1030px;
+    top: 510px;
+}
+
+.line {
+    position: absolute;
+    border: solid 1px black;
+    height: 0px;
+    width: 150px;
+    left: 860px;
+    top: 521px;
+}
+.line2 {
+    position: absolute;
+    border: solid 1px black;
+    height: 0px;
+    width: 150px;
+    left: 1060px;
+    top: 521px;
+}
+.loginGif {
+    position: absolute;
+    top: 10%;
+}
+
+#API-input {
+    position: absolute;
+    left: 25%;
+    top: 85%;
+    width: 50px;
+    height: 20px;
+}

@@ -1,3 +1,6 @@
 .github
 .idea
+front-end/heart_rate/plotly.min.js
+front-end/heart_rate/plotly.js
+front-end/heart_rate/jquery-1.8.3.min.js
 Hardware/heart-rate-sensor/.pio/libdeps
