@@ -65,9 +65,16 @@
     <input type="datetime-local" id="meeting-time" name="meeting-time" />
     <label for="symptoms">Any Symptoms: </label>
     <input type="text" id="symptoms" name="symptoms" />
-    <input type="submit" value="SUBMIT" id="orderButton" form="forall" />
+    <input
+      type="submit"
+      value="SUBMIT"
+      id="orderButton"
+      form="forall"
+      onclick="return confirm('are you sure?')"
+    />
   </form>
 
   <script src="../../resource(images)/config.js"></script>
   <script src="fordoctorselect.js"></script>
+  <!-- <script type="text/javascript"></script> -->
 </html>
