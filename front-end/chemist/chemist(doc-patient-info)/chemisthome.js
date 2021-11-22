@@ -1,16 +1,11 @@
 var myArray = [];
 
-$.ajax({
-  method: "GET",
-  url: "https://reqres.in/api/users",
-  success: function (response) {
-    myArray = response.data;
-    buildTable(myArray);
-    console.log(myArray);
-  },
+const { protocol, backend_ip, port, base_path } = API_CONFIG;
+fetch(backend_url("/common/view_order_detail/")).then((response) => {
+  console.log(response);
+  buildTable(myArray);
+  console.log(myArray);
 });
-
-//i am god and inevitable
 
 function buildTable(data) {
   var table = document.getElementById("tbl-header");

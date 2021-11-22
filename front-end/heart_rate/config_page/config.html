@@ -4,21 +4,26 @@
     <meta charset="UTF-8" />
     <link type="text/css" href="config.css" />
 
-    <div class="take_data">
-      <table class="tbl-header">
-        <tr class="bg-info">
-          <th>id</th>
-          <th>wifi</th>
-        </tr>
-
-        <tbody id="tbl-header"></tbody>
-      </table>
-    </div>
-
-    <form id="formlol" action="/action_page.php" method="get">
-      <label for="password" id="medText">-password</label>
-      <input type="text" id="password" name="password" />
+    <form class="form" id="form ">
+      <input
+        type="text"
+        class="name"
+        id="name"
+        placeholder="name"
+        value="lol"
+      />
+      <input
+        type="text"
+        id="password"
+        name="password"
+        class="password"
+        placeholder="pass"
+        value="XD"
+      />
+      <input type="button" name="submit" id="submit" />
     </form>
+
+    <input type="button" id="bumton" class="bumton" />
     <script src="configu.js"></script>
   </head>
 </html>
