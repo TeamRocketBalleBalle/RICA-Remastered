@@ -1,6 +1,6 @@
 const { protocol, backend_ip, port, base_path } = API_CONFIG;
 
-fetch(backend_url("/common/view_order_details"))
+fetch(backend_url("/common/view_order_detail/"))
   .then((res) => res.text())
   .then((data) => {
     let json = JSON.parse(data);
@@ -16,8 +16,8 @@ function buildTable(details) {
   for (var i = 0; i < details.length; i++) {
     var row = `<tr>
 							<td>${details[i].patient_name}</td>
-							<td>${details[i].phone_number}</td>
 							<td>${details[i].location}</td>
+							<td>${details[i].phone_number}</td>
 							<td>${details[i].prescription}</td>
 					  </tr>`;
     table.innerHTML += row;
