@@ -8,6 +8,13 @@
 //   },
 // });
 //
+builtable(localStorage.getItem("name"));
+function builtable(_data) {
+  var table = document.getElementById("lol");
+  table.innerHTML += "Hello ";
+  table.innerHTML += _data;
+}
+
 let myArray = [];
 const { protocol, backend_ip, port, base_path } = API_CONFIG;
 
@@ -95,11 +102,16 @@ function searchTable(value, data) {
   return filteredData;
 } //still control
 
-function buildtable(data) {
-  var table = document.getElementById("lol");
+function buildTable(details) {
+  var table = document.getElementById("myTable");
 
-  for (var i = 0; i < data.length; i++) {
-    var name = `${data[i].id}`;
-    table.innerHTML += name;
+  for (var i = 0; i < details.length; i++) {
+    var row = `<tr>
+							<td>${details[i].name}</td>
+							<td>${details[i].location}</td>
+							<td>${details[i].phone}</td>
+							<td>${details[i].time}</td>
+					  </tr>`;
+    table.innerHTML += row;
   }
 }
