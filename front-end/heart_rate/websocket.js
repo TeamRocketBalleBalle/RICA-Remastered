@@ -5,7 +5,7 @@ Plotly.plot("chart", [
   },
 ]);
 
-let gateway = "ws:/14a3-112-196-163-216.ngrok.io/ws";
+let gateway = "ws:/heart-sensor.trballeballe.ml/ws";
 
 let websocket;
 var cnt = 0;
