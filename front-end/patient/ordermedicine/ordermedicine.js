@@ -16,7 +16,8 @@ const toUrlEncoded = (obj) =>
   Object.keys(obj)
     .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]))
     .join("&");
-fetch("link where we post data", {
+
+fetch("/patients/order_medicine", {
   method: "POST",
   body: toUrlEncoded(json),
   headers: {
