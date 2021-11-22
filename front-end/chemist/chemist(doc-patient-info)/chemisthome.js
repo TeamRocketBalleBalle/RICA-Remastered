@@ -15,11 +15,10 @@ function buildTable(details) {
 
   for (var i = 0; i < details.length; i++) {
     var row = `<tr>
-							<td>${details[i].doctor_id}</td>
-							<td>${details[i].doctor_name}</td>
+							<td>${details[i].patient_name}</td>
+							<td>${details[i].phone_number}</td>
 							<td>${details[i].location}</td>
-							<td>${details[i].phone}</td>
-							<td>${details[i].email}</td>
+							<td>${details[i].prescription}</td>
 					  </tr>`;
     table.innerHTML += row;
   }
