@@ -115,3 +115,7 @@ function buildTable(details) {
     table.innerHTML += row;
   }
 }
+
+// function click(){
+//   alert("APPOINTMENT BOOKED")
+// }
