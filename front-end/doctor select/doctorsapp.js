@@ -1,3 +1,10 @@
+builtable(localStorage.getItem("name"));
+function builtable(_data) {
+  var table = document.getElementById("lol");
+  table.innerHTML += "Hello ";
+  table.innerHTML += _data;
+}
+
 let myArray = [];
 const { protocol, backend_ip, port, base_path } = API_CONFIG;
 

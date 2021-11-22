@@ -25,3 +25,10 @@ function buildTable(details) {
     table.innerHTML += row;
   }
 }
+
+builtable(localStorage.getItem("name"));
+function builtable(_data) {
+  var table = document.getElementById("lol");
+  table.innerHTML += "Hello ";
+  table.innerHTML += _data;
+}
