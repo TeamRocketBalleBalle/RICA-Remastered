@@ -1,6 +1,6 @@
 const { protocol, backend_ip, port, base_path } = API_CONFIG;
 
-fetch(backend_url("/common/view_order_details/"))
+fetch(backend_url("/common/view_order_details"))
   .then((res) => res.text())
   .then((data) => {
     let json = JSON.parse(data);
