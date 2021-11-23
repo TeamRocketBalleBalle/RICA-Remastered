@@ -18,7 +18,10 @@ function buildTable(details) {
 							<td>${details[i].patient_name}</td>
 							<td>${details[i].location}</td>
 							<td>${details[i].phone_number}</td>
-							<td>${details[i].prescription}</td>
+							<td>${details[i].prescription["dose"]}</td>
+							<td>${details[i].prescription["days"]}</td>
+              <td>${details[i].prescription["medicine_name"]}</td>
+
 					  </tr>`;
     table.innerHTML += row;
   }
