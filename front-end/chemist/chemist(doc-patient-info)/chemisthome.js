@@ -15,7 +15,7 @@ function buildTable(details) {
 
   for (var i = 0; i < details.length; i++) {
     var row = `<tr>
-							<td>${details[i].patient_name}</td>
+							<td>${details[i].name}</td>
 							<td>${details[i].location}</td>
 							<td>${details[i].phone_number}</td>
 							<td>${details[i].prescription["Dose"]}</td>
