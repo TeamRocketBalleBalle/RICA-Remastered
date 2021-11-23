@@ -16,3 +16,12 @@ downButton.onclick = function () {
   circle.style.transform = sum;
   rotate = sum;
 };
+
+// below function prints the users name
+
+buildTable(localStorage.getItem("name"));
+function buildTable(data) {
+  var table = document.getElementById("lol");
+  table.innerHTML += "Hello ";
+  table.innerHTML += data;
+}

@@ -7,6 +7,11 @@ form.addEventListener("submit", (event) => {
   for (form_data_arr of new FormData(document.getElementById("f1"))) {
     json[form_data_arr[0]] = form_data_arr[1];
   }
+
+  // below line stores the username to the local storage
+  setName_localSt(form_data_arr[1]);
+  // console.log(getName_localSt());
+
   // TODO: debug print statement
   console.log(json);
   console.log(JSON.stringify(json));
@@ -43,6 +48,7 @@ form.addEventListener("submit", (event) => {
       }
       if (json["usertype"] == "doctor") {
         window.location.href = window.location.origin + "/doctor-select/";
+        // window.location.href = "";
       }
       if (json["usertype"] == "chemist") {
         window.location.href = window.location.origin + "/chemist/";
@@ -127,4 +133,12 @@ function validURL(str) {
     "i"
   ); // fragment locator
   return !!pattern.test(str);
+}
+
+// below code stores usernames to the local storage
+function setName_localSt(_name) {
+  localStorage.setItem("name", _name);
+}
+function getName_localSt() {
+  return localStorage.getItem("name");
 }

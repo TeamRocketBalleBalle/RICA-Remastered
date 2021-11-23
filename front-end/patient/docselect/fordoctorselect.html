@@ -45,25 +45,38 @@
       </div>
     </div>
   </div>
-  <table class="table table-striped">
-    <tr class="bg-info">
-      <th class="bg-info" data-colname="name" data-order="desc">Name</th>
-
-      <th data-colname="age" data-order="desc">profession</th>
-
-      <th data-colname="birthdate" data-order="desc">address</th>
-
-      <th data-colname="select" data-order="desc">select</th>
-    </tr>
-    <tbody id="myTable"></tbody>
-  </table>
-
   <form id="forall" method="post">
+    <table class="table table-striped">
+      <tr class="bg-info">
+        <th class="bg-info" data-colname="name" data-order="desc">ID</th>
+
+        <th data-colname="age" data-order="desc">Name</th>
+
+        <th data-colname="birthdate" data-order="desc">address</th>
+
+        <th data-colname="select" data-order="desc">phone</th>
+
+        <th data-colname="select" data-order="desc">email</th>
+      </tr>
+
+      <tbody id="myTable"></tbody>
+    </table>
     <label for="meeting-time">Choose a time for your appointment:</label>
     <input type="datetime-local" id="meeting-time" name="meeting-time" />
     <label for="symptoms">Any Symptoms: </label>
     <input type="text" id="symptoms" name="symptoms" />
-    <input type="submit" value="SUBMIT" id="orderButton" form="forall" />
+    <input type="text" id="doc_id" name="doc_id" />
+    <label for="doc_id">Doc ID:</label>
+    <input
+      type="submit"
+      value="SUBMIT"
+      id="orderButton"
+      form="forall"
+      onclick="return confirm('are you sure?')"
+    />
   </form>
+
+  <script src="../../resource(images)/config.js"></script>
+  <script src="fordoctorselect.js"></script>
+  <!-- <script type="text/javascript"></script> -->
 </html>
-<script src="fordoctorselect.js"></script>

@@ -1,25 +1,26 @@
-var myArray = [];
+const { protocol, backend_ip, port, base_path } = API_CONFIG;
 
-$.ajax({
-  method: "GET",
-  url: "https://reqres.in/api/users",
-  success: function (response) {
-    myArray = response.data;
-    buildTable(myArray);
-    console.log(myArray);
-  },
-});
+fetch(backend_url("/common/view_order_detail/"))
+  .then((res) => res.text())
+  .then((data) => {
+    let json = JSON.parse(data);
+    console.log(json["order_details"]);
+    let details = json["order_details"];
 
-//i am god and inevitable
+    buildTable(details);
+  });
 
-function buildTable(data) {
+function buildTable(details) {
   var table = document.getElementById("tbl-header");
 
-  for (var i = 0; i < data.length; i++) {
+  for (var i = 0; i < details.length; i++) {
     var row = `<tr>
-							<td>${data[i].id}</td>
-							<td>${data[i].last_name}</td>
-							<td>${data[i].email}</td>
+							<td>${details[i].name}</td>
+							<td>${details[i].location}</td>
+							<td>${details[i].phone_number}</td>
+							<td>${details[i].prescription["Dose"]}</td>
+							<td>${details[i].prescription["days"]}</td>
+              <td>${details[i].prescription["medicine_name"]}</td>
 					  </tr>`;
     table.innerHTML += row;
   }

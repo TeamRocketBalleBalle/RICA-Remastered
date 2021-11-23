@@ -1,42 +1,50 @@
-$.ajax({
-  method: "GET",
-  url: "https://reqres.in/api/users",
-  success: function (response) {
-    myArray = response.data;
-    buildtable(myArray);
-    console.log(myArray);
-  },
-});
+let myArray = [];
+const { protocol, backend_ip, port, base_path } = API_CONFIG;
 
-var myArray = [];
-
-$.ajax({
-  method: "GET",
-  url: "https://reqres.in/api/users",
-  success: function (response) {
-    myArray = response.data;
-    buildTable(myArray);
-    console.log(myArray);
-  },
-});
-function buildTable(data) {
+fetch(backend_url("/common/appointment"))
+  .then((res) => res.text())
+  .then((data) => {
+    let json = JSON.parse(data);
+    console.log(json["appointments"]);
+    let details = json["appointments"];
+    // // myarray = res.data
+    // console.log(myArray)
+    buildTable(details);
+  });
+let details = {
+  appointments: [
+    {
+      location: "Himanshu ke ghar pr",
+      name: "S4DGE",
+      phone_number: "9874563211",
+      time: "2021-11-03T11:30:00+00:00",
+    },
+    {
+      location: "Rampur bushahar",
+      name: "Windy",
+      phone_number: "1236547891",
+      time: "2021-11-01T10:00:00+00:00",
+    },
+  ],
+};
+function buildTable(details) {
+  console.log(details);
   var table = document.getElementById("table1");
 
-  for (var i = 0; i < data.length; i++) {
+  for (var i = 0; i < details.length; i++) {
     var row = `<tr>
-							<td>${data[i].id}</td>
-							<td>${data[i].last_name}</td>
-							<td>${data[i].email}</td>
+							<td>${details[i].name}</td>
+							<td>${details[i].location}</td>
+							<td>${details[i]["phone_number"]}</td>
+							<td>${new Date(details[i].time).toLocaleString()}</td>
 					  </tr>`;
     table.innerHTML += row;
   }
 }
 
-function buildtable(data) {
+builtable(localStorage.getItem("name"));
+function builtable(_data) {
   var table = document.getElementById("lol");
-
-  for (var i = 0; i < data.length; i++) {
-    var name = `${data[i].id}`;
-    table.innerHTML += name;
-  }
+  table.innerHTML += "Hello ";
+  table.innerHTML += _data;
 }

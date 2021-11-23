@@ -1,6 +1,6 @@
 const API_CONFIG = {
-  protocol: "https",
-  backend_ip: "rica-remastered.herokuapp.com",
+  protocol: "http",
+  backend_ip: "rica.trballeballe.ml",
   base_path: "/api/v1",
   KEY_NAME: "API_URL",
 };

@@ -5,13 +5,19 @@
     href="https://fonts.googleapis.com/css?family=Poppins"
     rel="stylesheet"
   />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
   <body>
     <p>
       <blink id="BLINK">GET WELL SOON</blink>
     </p>
-    <div class="oval">
-      <p>Hey RandomUser69</p>
-    </div>
+    <div class="oval" id="lol"></div>
     <h1 id="order">ORDER YOUR MEDICINES</h1>
 
     <p id="uploadText">ORDER YOUR MEDICINES PRESCRIBED BY YOUR DOCTOR :</p>
@@ -26,10 +32,15 @@
       <label for="days" id="daysText">FOR HOW MANY DAYS</label>
       <input type="text" id="days" name="day" />
 
-      <input type="submit" value="ORDER" id="orderButton" />
+      <input
+        type="submit"
+        value="ORDER"
+        id="orderButton"
+        onclick="return confirm('ORDER PLACED!')"
+      />
     </form>
 
-    <a href="../../welcome%20page/successlogout.html">
+    <a href="../successlogout.html">
       <img
         src="../../resource(images)/logout-20.svg"
         height="35px"
@@ -47,5 +58,6 @@
       />
     </a>
   </body>
+  <script src="../../resource(images)/config.js"></script>
+  <script src="ordermedicine.js"></script>
 </html>
-<script src="ordermedicine.js"></script>

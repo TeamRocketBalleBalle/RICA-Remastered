@@ -33,7 +33,7 @@
         />
       </a>
     </div>
-    <div class="buttin2">
+    <!-- <div class="buttin2">
       <a href="../doctor select/docHomePage.html">
         <img
           src="../resource(images)/iconmonstr-home-9.svg"
@@ -42,27 +42,15 @@
           id="home"
         />
       </a>
-    </div>
+    </div> -->
     <div class="oval" id="lol"></div>
   </body>
 </html>
 <script>
-  $.ajax({
-    method: "GET",
-    url: "https://reqres.in/api/users",
-    success: function (response) {
-      myArray = response.data;
-      buildTable(myArray);
-      console.log(myArray);
-    },
-  });
-
+  buildTable(localStorage.getItem("name"));
   function buildTable(data) {
     var table = document.getElementById("lol");
-
-    for (var i = 0; i < data.length; i++) {
-      var name = `${data[i].id}`;
-      table.innerHTML += name;
-    }
+    table.innerHTML += "Hello ";
+    table.innerHTML += data;
   }
 </script>

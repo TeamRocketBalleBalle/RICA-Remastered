@@ -16,10 +16,19 @@ const toUrlEncoded = (obj) =>
   Object.keys(obj)
     .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]))
     .join("&");
-fetch("link where we post data", {
+
+fetch(backend_url("/patients/order_medicine"), {
   method: "POST",
   body: toUrlEncoded(json),
   headers: {
     "Content-Type": "application/x-www-form-urlencoded",
   },
 });
+// below function prints the users name
+
+buildTable(localStorage.getItem("name"));
+function buildTable(data) {
+  var table = document.getElementById("lol");
+  table.innerHTML += "Hello ";
+  table.innerHTML += data;
+}

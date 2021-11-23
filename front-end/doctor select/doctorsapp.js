@@ -1,43 +1,31 @@
-$.ajax({
-  method: "GET",
-  url: "https://reqres.in/api/users",
-  success: function (response) {
-    myArray = response.data;
-    buildtable(myArray);
-    console.log(myArray);
-  },
-});
+fetch(backend_url("/common/appointment"))
+  .then((res) => res.text())
+  .then((data) => {
+    let json = JSON.parse(data);
+    console.log(json["appointments"]);
+    let details = json["appointments"];
+    // // myarray = res.data
+    // console.log(myArray)
+    buildTable(details);
+  });
 
-var myArray = [];
-
-$.ajax({
-  method: "GET",
-  url: "https://reqres.in/api/users",
-  success: function (response) {
-    myArray = response.data;
-    buildTable(myArray);
-    console.log(myArray);
-  },
-});
-
-function buildTable(data) {
-  var table = document.getElementById("myTable");
-
-  for (var i = 0; i < data.length; i++) {
-    var row = `<tr>
-							<td>${data[i].id}</td>
-							<td>${data[i].last_name}</td>
-							<td>${data[i].email}</td>
-					  </tr>`;
-    table.innerHTML += row;
-  }
+builtable(localStorage.getItem("name"));
+function builtable(_data) {
+  var table = document.getElementById("lol");
+  table.innerHTML += "Hello ";
+  table.innerHTML += _data;
 }
 
-function buildtable(data) {
-  var table = document.getElementById("lol");
+function buildTable(details) {
+  var table = document.getElementById("myTable");
 
-  for (var i = 0; i < data.length; i++) {
-    var name = `${data[i].id}`;
-    table.innerHTML += name;
+  for (var i = 0; i < details.length; i++) {
+    var row = `<tr>
+							<td>${details[i].patient_name}</td>
+							<td>${details[i].location}</td>
+							<td>${details[i].phone_number}</td>
+							<td>${new Date(details[i].time).toLocaleString()}</td>
+					  </tr>`;
+    table.innerHTML += row;
   }
 }
