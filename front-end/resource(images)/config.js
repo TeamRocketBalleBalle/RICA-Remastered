@@ -1,5 +1,5 @@
 const API_CONFIG = {
-  protocol: "http",
+  protocol: "https",
   backend_ip: "rica.trballeballe.ml",
   base_path: "/api/v1",
   KEY_NAME: "API_URL",
