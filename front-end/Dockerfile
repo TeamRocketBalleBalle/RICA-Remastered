@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx:1.22.0-alpine
 
 # copy front end files
 ARG nginx_path=./usr/share/nginx/html
